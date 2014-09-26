@@ -1,0 +1,5 @@
+This product includes Apache licensed software
+
+src/main/java/org/jboss/aerogear/quickstarts/contacts/util/CORSFilter
+contains source code from https://github.com/eBay/cors-filter
+Copyright 2012-2013 eBay Software Foundation, All Rights Reserved.

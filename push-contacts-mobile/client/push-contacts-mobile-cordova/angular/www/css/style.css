@@ -1,0 +1,87 @@
+input.ng-dirty.ng-invalid {
+  border-left: 5px solid #cc2511; 
+}
+.error {
+  color: #cc2511;
+}
+.contact-details li {
+  border-width: 0;
+  padding-bottom: 5px;
+}
+a:active .contact-details li {
+  background-color: #D9D9D9;
+}
+.active .contact-details li, .activated .contact-details li {
+    background-color: #D9D9D9;
+}
+
+/* bug on android 4.4 buttons in header not beside each other */ 
+.right-buttons button {
+  float:left;
+}
+
+/* bug on android 4.4 buttons in header not beside each other */ 
+.left-buttons button {
+  float:left;
+}
+
+.notification {
+    position: absolute;
+/*    display: none;*/
+    z-index: 99;
+    width: 90%;
+    margin: 5%;
+    -webkit-box-shadow: 3px 3px 5px 0px #333;
+    -moz-box-shadow: 3px 3px 5px 0px #333;
+    box-shadow: 3px 3px 5px 0px #333;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.alert h4 {
+    margin-top: 0;
+    color: inherit;
+}
+.alert .alert-link {
+    font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+    margin-bottom: 0;
+}
+.alert > p + p {
+    margin-top: 5px;
+}
+.alert-info {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #31708f;
+}
+.alert-info hr {
+    border-top-color: #a6e1ec;
+}
+.alert-info .alert-link {
+    color: #245269;
+}
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;    
+}
+#root {
+  z-index: 0;  
+}

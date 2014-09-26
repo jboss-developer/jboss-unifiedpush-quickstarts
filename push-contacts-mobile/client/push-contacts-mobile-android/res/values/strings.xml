@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="birth_date">Birth date</string>
+    <string name="save">Save</string>
+    <string name="logout">Logout</string>
+    <string name="message">Message</string>
+    <string name="enter_your_message">Enter your message</string>
+    <string name="send">Send</string>
+    <string name="message_sent">Message sent successfully!</string>
+    <string name="an_error_occurred">An error occurred</string>
+    <string name="new_contact">New contact</string>
+    <string name="contact_added">Contact added</string>
+    <string name="delete">Delete</string>
+    <string name="select_contacts_remove">Choose contact to delete</string>
+    <string name="contact_deleted">Contact deleted</string>
+    <string name="wait">Wait...</string>
+    <string name="loading_contacts">Loading contacts</string>
+    <string name="deleting_contacts">Deleting contact</string>
+    <string name="saving_contact">Saving contact</string>
+    <string name="contact_updated">Contact updated</string>
+    <string name="cannot_blank">Can not be blank</string>
+    <string name="use_phone_us_format">Please use a standard US formats. And remember the area code and prefix may not
+        start with 1.
+    </string>
+    <string name="error_email">Please use a valid email address.
+    </string>
+    <string name="hint_first_name">Enter a first name</string>
+    <string name="hint_last_name">Enter a last name</string>
+    <string name="hint_phone">(XXX) XXX-XXXX</string>
+    <string name="hint_email">name@company.domain</string>
+</resources>

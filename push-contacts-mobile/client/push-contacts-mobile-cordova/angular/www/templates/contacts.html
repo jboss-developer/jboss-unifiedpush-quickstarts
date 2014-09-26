@@ -1,0 +1,48 @@
+<ion-view title="Contacts" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <button class="button button-icon icon ion-refresh" ng-click="refresh()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios7-eye" ng-click="details = !details"></button>
+    <button class="button button-icon icon ion-ios7-minus-outline" ng-click="showDelete = !showDelete"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="search">
+      </label>
+    </div>
+    <ion-list show-delete="showDelete">
+
+      <ion-item class="item-divider" ng-repeat-start="(letter, contacts) in groupedContacts">
+        {{letter}}
+      </ion-item>
+
+      <ion-item href="#/app/contact/{{contact.id}}" ng-repeat="contact in contacts | filter:search" class="item-icon-right">
+        {{contact.firstName}} {{contact.lastName}}
+        <ul ng-show="details" class="contact-details">
+          <li class="item item-icon-right">
+            <i class="icon ion-email"></i>
+            {{contact.email}}
+          </li>
+          <li class="item item-icon-right">
+            <i class="icon ion-ios7-telephone"></i>
+            {{contact.phoneNumber}}
+          </li>
+          <li class="item item-icon-right">
+            <i class="icon ion-calendar"></i>
+            {{contact.birthDate}}
+          </li>
+        </ul>
+        
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-delete-button class="ion-minus-circled" ng-click="deleteContact(contact)">
+        </ion-delete-button>
+      </ion-item>
+
+      <div ng-repeat-end></div>
+    </ion-list>
+  </ion-content>
+</ion-view>

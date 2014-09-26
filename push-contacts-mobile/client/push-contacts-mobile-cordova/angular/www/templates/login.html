@@ -1,0 +1,19 @@
+<ion-view title="Login" hide-back-button="true">
+  <ion-content class="has-header">
+    <ion-list>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">User name</span>
+        <input type="text" placeholder="Enter your username" ng-model="user.name" autocorrect="off" autocapitalize="off">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" placeholder="Enter your password" ng-model="user.password">
+      </label>
+      <div class="padding">
+        <button class="button button-block button-calm" ng-click="login(user)">
+          Log In
+        </button>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

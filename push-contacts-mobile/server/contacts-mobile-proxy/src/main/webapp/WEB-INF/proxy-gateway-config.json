@@ -1,0 +1,9 @@
+{ "rulebase" : [
+    { "rule": "/rest/contacts", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts"},
+    { "rule": "/rest/contacts/{id}", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts/{id}"},
+    { "rule": "/rest/security/user", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/security/user"},
+    { "rule": "/rest/security/user/info", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/security/user/info"},
+    { "rule": "/rest/security/logout", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/security/logout"}
+  ],
+  "cookiePath": "/jboss-contacts-mobile-proxy"
+}

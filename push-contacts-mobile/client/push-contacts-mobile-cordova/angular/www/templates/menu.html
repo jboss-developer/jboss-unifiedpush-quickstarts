@@ -1,0 +1,36 @@
+<ion-side-menus>
+    <div id="notification" class="notification alert alert-info" ng-show="notification">
+      <button type="button" class="close" aria-hidden="true" ng-click="dismissAlert()">&times;</button>
+      <span>{{ notification.alert }}</span>&nbsp;&nbsp;
+      <a href ng-click="dismissAlert(notification.payload.id)" class="alert-link">See details</a>
+    </div>  
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/app/contacts" class="item-icon-right">
+          List
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/contact/" class="item-icon-right">
+          Add Contact
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/about" class="item-icon-right">
+          About
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="logout()">
+          Logout
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
