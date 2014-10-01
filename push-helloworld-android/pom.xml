@@ -30,13 +30,6 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
-    <developers>
-        <developer>
-            <id>aerogear</id>
-            <name>AeroGear Team</name>
-            <email>aerogear-dev@lists.jboss.org</email>
-        </developer>
-    </developers>
     <properties>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

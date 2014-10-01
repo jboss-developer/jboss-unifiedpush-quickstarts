@@ -20,9 +20,6 @@
     <description>
         A sample Cordova application that shows how to use the UnifiedPush server in a CRUD application
     </description>
-    <author email="aerogear-dev@lists.jboss.org" href="http://aerogear.org">
-        AeroGear Developer Mailing List
-    </author>
     <content src="index.html" />
     <access origin="*" />
 </widget>
