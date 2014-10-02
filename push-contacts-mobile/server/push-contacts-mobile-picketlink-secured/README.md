@@ -4,7 +4,7 @@ Author: Joshua Wilson, Pedro Igor, Erik Jan De Wit, Daniel Bevenius
 Level: Beginner  
 Technologies: REST, Unified Push Java Client, PicketLink  
 Summary: A PicketLink secured example of CRUD REST endpoints with push functionality.  
-Target Product: Unified Push  
+Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

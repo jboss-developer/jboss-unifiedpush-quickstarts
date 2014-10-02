@@ -4,7 +4,7 @@ Author: Daniel Passos, Erik Jan de Wit, Christos Vasilakis, Daniel Bevenius, Jos
 Level: Intermediate  
 Technologies: Java, JavaScript, jQuery Mobile, Android, Cordova, HTML5, REST, Unified Push Java Client, PicketLink    
 Summary: A secured contacts CRUD mobile application with push notification integration with Android, Cordova and iOS.  
-Target Product: Unified Push   
+Target Product: JBoss Unified Push   
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

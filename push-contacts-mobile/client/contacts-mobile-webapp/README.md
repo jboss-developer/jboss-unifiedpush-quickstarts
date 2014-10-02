@@ -4,7 +4,7 @@ Author: Joshua Wilson
 Level: Beginner  
 Technologies: jQuery Mobile, jQuery, JavaScript, HTML5, REST  
 Summary: A basic example of CRUD operations in a mobile only website.  
-Target Product: Unified Push  
+Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

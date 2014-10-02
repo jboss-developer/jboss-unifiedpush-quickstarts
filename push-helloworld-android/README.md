@@ -4,7 +4,7 @@ Author: Daniel Passos (dpassos)
 Level: Beginner  
 Technologies: Java, Android  
 Summary: A basic example of Push : Registration and receiving messages.  
-Target Product: Unified Push  
+Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

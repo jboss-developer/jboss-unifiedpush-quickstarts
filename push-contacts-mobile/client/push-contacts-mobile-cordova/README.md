@@ -4,7 +4,7 @@ Author: Erik Jan de Wit (edewit)
 Level: Intermediate  
 Technologies: JavaScript Cordova  
 Summary: A contacts CRUD mobile application with push notification integration.  
-Target Product: Unified Push   
+Target Product: JBoss Unified Push   
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

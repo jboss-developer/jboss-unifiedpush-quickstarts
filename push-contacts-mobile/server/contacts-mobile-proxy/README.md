@@ -4,7 +4,7 @@ Author: Daniel Bevenius
 Level: Beginner  
 Technologies: REST  
 Summary: A basic example of CRUD operations that are proxied to a backend system.  
-Target Product: Unified Push  
+Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 

@@ -4,7 +4,7 @@ Author: Daniel Passos (dpassos)
 Level: Intermediate  
 Technologies: Java, Android  
 Summary: A contacts CRUD mobile application with push notification integration.  
-Target Product: Unified Push  
+Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
