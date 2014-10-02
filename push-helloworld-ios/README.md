@@ -17,11 +17,12 @@ When the application is deployed to an iOS device, the push functionality enable
 
 ## How do I run it?
 
-###0. System requirements
+### 0. System requirements
+
 * iOS 7.X
 * Xcode version 5.1.X
 
-###1. Configuration
+### 1. Configuration
 
 #### Creation of Certificate Signing Request and SSL certificate for APNs
 
@@ -42,7 +43,7 @@ In order to test Push Notifications you neeed to create a _Provisioning Profile_
   *  `Development Provisioning Profile`: In the _Provisioning Portal_ you need to create an _iOS App Development_ provisioning profile, so that you can test the Push Notifications on your own iOS devices. Select the `App ID` that you created earlier and your _Developer Certificate_. Select a _Test_ Device, give it a Profile Name and generate it. Now download the Profile and open the file. Go to `Xcode -> preferences...` menu, select the `Account` tab, on the right bottom corner click `View details...` and you should see your provisioning profile.
   *  `Distribution Provisioning Profile`: In order to test Push Notifications on a `production environment`, you need to create an _iOS App Distribution_ provisioning profile in the _Provisioning Portal_. Select the `App ID`, that you created earlier and your _Production Certificate_. You still need a _test device_ to try your _production_ app with your _distribution provisioning profile_. Select a _Test_ Device, give it a Profile Name and generate it. Now download the Profile and open the file. Go to `Xcode -> preferences...` menu, select the `Account` tab, on the right bottom corner click `View details...` and you should see your provisioning profile.
   
-###2. Register Application with Push Services
+### 2. Register Application with Push Services
 
 You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
@@ -57,7 +58,7 @@ You must register the application and an iOS variant of the application with the
 9. When created, expand the variant name and make note of the `Server URL`, `Variant ID`, and `Secret`.
 
 
-###3. Customize and Build Application
+### 3. Customize and Build Application
 
 Replace the bundleId with your bundleId (the one associated with your certificate).
 Go to `HelloWorld target -> Info` and modify the `Bundle Identifier`:
@@ -117,9 +118,10 @@ In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to
 
 ```
 
-###4. Test Application
+### 4. Test the Application
 
 #### Send a Push Message
+
 You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
 1. Log into the Unified Push Server console.
@@ -165,7 +167,7 @@ FAQ
 
 * Which iOS version is supported by JBoss Unified Push for iOS libraries?
 
-JBoss Unified Push supports iOS 7.0 and later.
+    JBoss Unified Push supports iOS 7.0 and later.
 
 
 Debug the Application

@@ -29,6 +29,7 @@ integrating your own build systems or integrating with version control systems.
 __Remember__: Make your scripts executable.
 
 ## Hook Directories
+
 The following subdirectories will be used for hooks:
 
     after_build/
