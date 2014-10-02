@@ -18,7 +18,7 @@
 <widget id="org.jboss.aerogear.unifiedpush.ionic.Quickstart" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Angular Quickstart</name>
     <description>
-        A sample Cordova application that shows how to use the UnifiedPush server in a CRUD application with the ionic framework
+        A sample Cordova application that shows how to use the Unified Push Server in a CRUD application with the ionic framework
     </description>
     <content src="index.html" />
     <access origin="*" />

@@ -30,15 +30,15 @@ function Push(){
 }
 
 /**
-    Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    Registers the device with the APNS (iOS) or GCM (Android) and the Unified Push Server.
     @param {Function} onNotification - callback to be executed if a message arrives
     @param {Function} successCallback - callback to be executed when register is succesful
     @param {Function} [errorCallback] - callback to be executed if the request results in error
-    @param {Object} options - A configuration for the Unified Push server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
+    @param {Object} options - A configuration for the Unified Push Server, so that it can register this device. If an object or array containing objects is used, the objects can have the following properties:
     @param {String} [options.senderId] - android specific - the id representing the Google project ID
     @param {String} options.variantID - the id representing the mobile application variant
     @param {String} options.variantSecret - the secret for the mobile application variant
-    @param {String} options.pushServerURL - the location of the UnifiedPush server e.g. http(s)//host:port/context
+    @param {String} options.pushServerURL - the location of the Unified Push Server e.g. http(s)//host:port/context
     @param {String} [options.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
     @param {Object} [options.ios] - Holder of the ios specific values variantID and variantSecret
     @param {String} [options.ios.variantID] - the id representing the mobile application variant for iOS
@@ -94,7 +94,7 @@ Push.prototype.register = function (onNotification, successCallback, errorCallba
 };
 
 /**
-    Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push server.
+    Unregisters the device with the APNS (iOS) or GCM (Android) and the Unified Push Server.
     @status Stable
     @param {Function} success - callback to be executed if the request results in success
     @param {Function} [error] - callback to be executed if the request results in error

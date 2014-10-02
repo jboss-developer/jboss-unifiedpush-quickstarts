@@ -4,7 +4,7 @@ Author: Daniel Bevenius
 Level: Beginner  
 Technologies: REST  
 Summary: A basic example of CRUD operations that are proxied to a backend system.  
-Target Product: Mobile Add-On  
+Target Product: Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
@@ -24,9 +24,9 @@ A proxied web application would be deployed on a server on the other side of tha
 * Red Hat JBoss Enterprise Application Platform (EAP) 6.3.0.GA
 
 ###1. Prepare Maven Libraries
-This quickstart is designed to be built with Maven. It requires the JBoss Mobile Add-on and JBoss EAP 6.3.0 Maven repositories.
+This quickstart is designed to be built with Maven. It requires the JBoss Unified Push and JBoss EAP 6.3.0 Maven repositories.
 
-You must have the JBoss Mobile Add-on Maven repository available and Maven configured to use it. For more information, see the [JBoss Mobile Add-On documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Mobile_Add-On/) or the README distributed with the JBoss Mobile Add-on Maven repository.
+You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/) or the README distributed with the JBoss Unified Push Maven repository.
 
 
 ###2. Start the JBoss EAP Server

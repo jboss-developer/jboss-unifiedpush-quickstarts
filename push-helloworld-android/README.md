@@ -4,16 +4,16 @@ Author: Daniel Passos (dpassos)
 Level: Beginner  
 Technologies: Java, Android  
 Summary: A basic example of Push : Registration and receiving messages.  
-Target Product: Mobile Add-On  
+Target Product: Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
-This quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Mobile Add-On Android Push plug-in.
+This quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Unified Push Android Push plug-in.
 
-This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Mobile UnifiedPush Server instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
+This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
 
-When the application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Mobile UnifiedPush Server instance and receive push notifications.
+When the application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications.
 
 ## How do I run it?
 
@@ -24,9 +24,9 @@ When the application is deployed to an Android device, the push functionality en
 * Latest [Android Support Library](http://developer.android.com/tools/support-library/index.html) and [Google Play Services](http://developer.android.com/google/play-services/index.html)
 
 ###1. Prepare Maven Libraries
-This quickstart is designed to be built with Maven. It requires the JBoss Mobile Add-on Maven repository and Google libraries.
+This quickstart is designed to be built with Maven. It requires the JBoss Unified Push Maven repository and Google libraries.
 
-You must have the JBoss Mobile Add-on Maven repository available and Maven configured to use it. For more information, see the [JBoss Mobile Add-On documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Mobile_Add-On/) or the README distributed with the JBoss Mobile Add-on Maven repository.
+You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/) or the README distributed with the JBoss Unified Push Maven repository.
 
 Google does not ship all the required libraries to Maven Central so you must deploy them locally with the helper utility [maven-android-sdk-deployer](https://github.com/mosabua/maven-android-sdk-deployer) as detailed here.
 
@@ -57,7 +57,7 @@ $ mvn install -N
 ```
 
 ###2. Register Application with Push Services
-First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the UnifiedPush Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account.
+First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the Unified Push Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account.
 
 1. Log into the [Google Cloud Console](https://console.developers.google.com)
 2. In the `Projects` view, click `Create Project`.
@@ -67,9 +67,9 @@ First, you must register the application with Google Cloud Messaging for Android
 6. Click `APIs and auth`>`Credentials` and under `Public API access` click `Create new Key`.
 7. Click `Server Key` and click `Create`. Make note of the `API KEY`.
 
-Second, you must register the application and an Android variant of the application with the UnifiedPush Server. This requires a running UnifiedPush Server instance and uses the unique metadata assigned to the application by GCM. For information on installing the UnifiedPush Server, see the README distributed with the UnifiedPush Server or the [JBoss Mobile Add-On documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Mobile_Add-On/).
+Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the README distributed with the Unified Push Server or the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the UnifiedPush Server console.
+1. Log into the Unified Push Server console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -80,10 +80,10 @@ Second, you must register the application and an Android variant of the applicat
 9. When created, expand the variant name and make note of the `Server URL`, `Variant ID`, and `Secret`.
 
 ###3. Customize and Build Application
-The project source code must be customized with the unique metadata assigned to the application variant by the UnifiedPush Server and GCM. 
+The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and GCM. 
 
 1. Open `/path/to/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
-2. Enter the application variant values allocated by the UnifiedPush Server and GCM for the following constants:
+2. Enter the application variant values allocated by the Unified Push Server and GCM for the following constants:
 ```java
 String UNIFIED_PUSH_URL = "";
 String VARIANT_ID = "";
@@ -100,7 +100,7 @@ $ mvn compile
 ###4. Test Application
 
 ####0. Prerequisites
-The UnifiedPush Server must be running before the application is deployed to ensure that the device successfully registers with the UnifiedPush Server on application deployment.
+The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 
 ####1. Deploy for testing
 The application can be tested on physical Android devices only; push notifications are not available for Android emulators. To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
@@ -112,9 +112,9 @@ $ mvn clean package android:deploy android:run
 Application output is displayed in the command line window.
 
 ####2. Send a Push Message
-You can send a push notification to your device using the UnifiedPush Server console by completing the following steps:
+You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
-1. Log into the UnifiedPush Server console.
+1. Log into the Unified Push Server console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
@@ -168,7 +168,7 @@ To enable the permissions we add these as child of the manifest element.
 <uses-permission android:name="org.jboss.aerogear.unifiedpush.helloworld" />
 ```
 
-And add this element as a child of the application element, to register the default JBoss Mobile Add-On for Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
+And add this element as a child of the application element, to register the default JBoss Unified Push for Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.
 
 ```xml
 <receiver

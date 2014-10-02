@@ -27,8 +27,8 @@
     <artifactId>jboss-quickstart-parent</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>JBoss Mobile Add-On Quickstart: Parent</name>
-    <description>JBoss Mobile Add-On Quickstarts Parent</description>
+    <name>JBoss Unified Push Quickstart: Parent</name>
+    <description>JBoss Unified Push Quickstarts Parent</description>
     <url>http://www.jboss.org/jdf/quickstarts/get-started/</url>
     <licenses>
         <license>

@@ -21,8 +21,8 @@
     <artifactId>jboss-push-helloworld-android</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>apk</packaging>
-    <name>JBoss Mobile Add-On Quickstart: push-helloworld-android</name>
-    <description>JBoss Mobile Add-On Quickstart: push-helloworld-android</description>
+    <name>JBoss Unified Push Quickstart: push-helloworld-android</name>
+    <description>JBoss Unified Push Quickstart: push-helloworld-android</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>

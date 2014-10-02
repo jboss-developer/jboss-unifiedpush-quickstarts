@@ -21,7 +21,7 @@
     <artifactId>jboss-push-contacts-mobile-picketlink-secured</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>JBoss Mobile Add-On Quickstart: push-contacts-mobile-picketlink-secured</name>
+    <name>JBoss Unified Push Quickstart: push-contacts-mobile-picketlink-secured</name>
     <description>A Java EE 6 HTML5 mobile web application for use with JBoss.</description>
     <url>http://jboss.org/</url>
     <licenses>
@@ -273,7 +273,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- The Java UPS Sender Client to send UnifiedPush messages -->
+        <!-- The Java Unified Push Sender Client to send Unified Push messages -->
         <dependency>
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>unifiedpush-java-client</artifactId>

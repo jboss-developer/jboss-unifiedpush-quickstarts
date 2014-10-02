@@ -4,16 +4,16 @@ Author: Erik Jan de Wit (edewit)
 Level: Beginner   
 Technologies: JavaScript Cordova   
 Summary: A basic example of Push : Registration and receiving messages.   
-Target Product: Mobile Add-On   
+Target Product: Unified Push   
 Versions: 1.0   
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
-This quickstart demonstrates how to include basic push functionality in Cordova applications using the JBoss Mobile Add-On Cordova Push plug-in.
+This quickstart demonstrates how to include basic push functionality in Cordova applications using the JBoss Unified Push Cordova Push plug-in.
 
-This simple project consists of a ready-to-build Cordova application. Before building the application, you must register the Android or iOS variant of the application with a running JBoss Mobile UnifiedPush Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
+This simple project consists of a ready-to-build Cordova application. Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 
-When the application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Mobile UnifiedPush Server instance and receive push notifications.
+When the application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications.
 
 ## How do I run it?
 
@@ -44,7 +44,7 @@ To deploy and run Cordova applications on Android the Apache Ant tool needs to b
 For the configuration and registration of Android or iOS Applications with PushServices, please refer to the specific guides inside *push-helloworld-android* and *push-helloworld-ios* quickstarts.
 
 ###2. Customize and Build Application
-In `www/js/index.js` find the `pushConfig` and change `pushServerURL` with the url of your UnifiedPush Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by UnifiedPush Server and GCM or APNS:
+In `www/js/index.js` find the `pushConfig` and change `pushServerURL` with the url of your Unified Push Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
 
 ```javascript
 var pushConfig = {
@@ -62,16 +62,16 @@ var pushConfig = {
 
 ```
 
-**Note:** You can also copy/paste these settings from your UnifiedPush Server console
+**Note:** You can also copy/paste these settings from your Unified Push Server console
 
 ###3. Install platforms
 
-After changing the push configuration you can install the platforms you want on the Cordova app. JBoss Mobile Add-On for Cordova currently supports Android and iOS.
+After changing the push configuration you can install the platforms you want on the Cordova app. JBoss Unified Push for Cordova currently supports Android and iOS.
 ```shell
 cordova platform add <android or ios>
 ```
 
-###4. Add JBoss Mobile Add-On Cordova Push plug-in
+###4. Add JBoss Unified Push Cordova Push plug-in
 You now need to add the plugin to the Cordova app.
 ```shell
 cordova plugin add `/path/to/cordova_pushplugin/org.jboss.aerogear.cordova.push`
@@ -85,9 +85,9 @@ cordova run <android or ios>
 ```
 
 #### Send a Push Message
-You can send a push notification to your device using the UnifiedPush Server console by completing the following steps:
+You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
-1. Log into the UnifiedPush Server console.
+1. Log into the Unified Push Server console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
@@ -96,7 +96,7 @@ You can send a push notification to your device using the UnifiedPush Server con
 ## How does it work?
 
 ### Registration
-When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the UnifiedPush server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.
+When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.
 
 
 ## Run push-helloworld-cordova in JBoss Developer Studio or Eclipse

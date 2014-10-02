@@ -4,7 +4,7 @@ Author: Erik Jan de Wit (edewit)
 Level: Intermediate  
 Technologies: JavaScript Cordova  
 Summary: A contacts CRUD mobile application with push notification integration.  
-Target Product: Mobile Add-On   
+Target Product: Unified Push   
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
@@ -14,7 +14,7 @@ This quickstart demonstrates how to develop more advanced Cordova push applicati
 
 This client-side Cordova project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality.  
 
-When the client application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Mobile UnifiedPush Server instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the UnifiedPush Server in response to new contacts being created. Push notifications received by the Android or iOS device contain details of newly added contacts.
+When the client application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server in response to new contacts being created. Push notifications received by the Android or iOS device contain details of newly added contacts.
 
 
 ## How do I run it?
@@ -49,12 +49,12 @@ There are 2 examples for Cordova; one is built using [jquery mobile](jqm) and on
 
 ###3. Install platforms
 
-After changing the push configuration you can install the platforms you want on the Cordova app. JBoss Mobile Add-On for Cordova currently supports Android and iOS.
+After changing the push configuration you can install the platforms you want on the Cordova app. JBoss Unified Push for Cordova currently supports Android and iOS.
 ```shell
 cordova platform add <android or ios>
 ```
 
-###4. Add JBoss Mobile Add-On Cordova Push plug-in
+###4. Add JBoss Unified Push Cordova Push plug-in
 You now need to add the plugin to the Cordova app.
 ```shell
 cordova plugin add `/path/to/push-contacts-mobile/client/push-contacts-mobile-cordova/cordova_pushplugin/org.jboss.aerogear.cordova.push`
@@ -63,7 +63,7 @@ cordova plugin add `/path/to/push-contacts-mobile/client/push-contacts-mobile-co
 ###5. Test Application
 
 ####0. Prerequisites
-1. The UnifiedPush Server must be running before the application is deployed to ensure that the device successfully registers with the UnifiedPush Server on application deployment.
+1. The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 2. The `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the `push-contacts-mobile-picketlink-secured` application.
 
 ####1. Deploy for Testing

@@ -19,7 +19,7 @@ package org.jboss.aerogear.unifiedpush.helloworld;
 public interface Constants {
 
     /**
-     * This is the URL of the UnifiedPush Server.
+     * This is the URL of the Unified Push Server.
      *
      * For example (your IP/hostname will differ):
      * String UNIFIED_PUSH_URL = "http://192.168.1.157:8080/ag-push";
@@ -29,13 +29,13 @@ public interface Constants {
 
     /**
      * The variant id which was generated when creating the variant with
-     * the UnifiedPush Server.
+     * the Unified Push Server.
      */
     String VARIANT_ID = "";
 
     /**
      * The secret which was generated when creating the variant with
-     * the UnifiedPush Server
+     * the Unified Push Server
      */
     String SECRET = "";
 

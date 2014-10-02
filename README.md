@@ -1,6 +1,6 @@
-# Red Hat JBoss Mobile Add-On Quickstarts
+# Red Hat JBoss Unified Push Quickstarts
 
-Summary: The JBoss Mobile Add-On quickstarts are ready-to-assemble applications, provided in a variety of mobile API formats. The mobile formats typically have prerequisite library and application configuration that must be completed before the applications can be built and deployed.    
+Summary: The JBoss Unified Push quickstarts are ready-to-assemble applications, provided in a variety of mobile API formats. The mobile formats typically have prerequisite library and application configuration that must be completed before the applications can be built and deployed.    
 
 ## Introduction
 
@@ -44,9 +44,9 @@ The `JBOSS_HOME` *environment* variable, which is used in scripts, continues to 
 
 ## Available Quickstarts
 
-* `push-helloworld-android`, `push-helloworld-cordova` and `push-helloworld-ios` demonstrate how to include basic push functionality in mobile applications, provided in Android, Cordova and iOS variants. Once the application is deployed to a mobile device, the push functionality enables the device to register with a running JBoss Mobile UnifiedPush Server instance and receive push notifications.
+* `push-helloworld-android`, `push-helloworld-cordova` and `push-helloworld-ios` demonstrate how to include basic push functionality in mobile applications, provided in Android, Cordova and iOS variants. Once the application is deployed to a mobile device, the push functionality enables the device to register with a running JBoss Unified Push Server instance and receive push notifications.
 
-* `push-contacts-mobile` shows how to develop a more advanced push example, centered around a CRUD contacts application. The complete `push-contacts-mobile` example functionality is provided by a server application and a client application. The server application sends push notification requests to a running JBoss Mobile UnifiedPush Server instance when new contacts are added. The client application enables devices to register with the UnifiedPush Server and receive push notifications with details of newly added contacts. The client application is provided in Android, Cordova, iOS and web application variants.
+* `push-contacts-mobile` shows how to develop a more advanced push example, centered around a CRUD contacts application. The complete `push-contacts-mobile` example functionality is provided by a server application and a client application. The server application sends push notification requests to a running JBoss Unified Push Server instance when new contacts are added. The client application enables devices to register with the Unified Push Server and receive push notifications with details of newly added contacts. The client application is provided in Android, Cordova, iOS and web application variants.
 
 The list of all currently available quickstarts can be found here: <http://site-jdf.rhcloud.com/quickstarts/get-started/>. The table lists each quickstart name, the technologies it demonstrates, gives a brief description of the quickstart, and the level of experience required to set it up. For more detailed information about a quickstart, click on the quickstart name.
 
@@ -124,6 +124,6 @@ The following components are needed for only a small subset of the quickstarts. 
 
 
 
-For information about JBoss Mobile Add-On, see the [JBoss Mobile Add-On documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Mobile_Add-On/).
+For information about JBoss Unified Push, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
 

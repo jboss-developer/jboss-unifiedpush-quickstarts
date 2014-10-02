@@ -21,8 +21,8 @@
     <artifactId>jboss-push-contacts-mobile-android</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>apk</packaging>
-    <name>JBoss Mobile Add-On Quickstart: push-contacts-mobile-android</name>
-    <description>JBoss Mobile Add-On Quickstart push-contacts-mobile-android</description>
+    <name>JBoss Unified Push Quickstart: push-contacts-mobile-android</name>
+    <description>JBoss Unified Push Quickstart push-contacts-mobile-android</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>

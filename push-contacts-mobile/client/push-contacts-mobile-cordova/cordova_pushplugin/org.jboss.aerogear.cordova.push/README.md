@@ -1,7 +1,7 @@
-# JBoss Mobile Add-On PushPlugin for Cordova
+# JBoss Unified Push PushPlugin for Cordova
 ---------
 
-`JBoss Mobile Add-On PushPlugin for Cordova` is an extension of the standard Cordova Push Plugin and provides support for integrating with push and registering Cordova applications with the JBoss Mobile UnifiedPush Server, while making your javascript less verbose and easier to maintain. It currently supports Google’s Cloud Messaging (GCM) and Apple's Push Notification Service (APNS) with the JBoss Mobile UnifiedPush Server.
+`JBoss Unified Push PushPlugin for Cordova` is an extension of the standard Cordova Push Plugin and provides support for integrating with push and registering Cordova applications with the JBoss Unified Push Server, while making your javascript less verbose and easier to maintain. It currently supports Google’s Cloud Messaging (GCM) and Apple's Push Notification Service (APNS) with the JBoss Unified Push Server.
 
 ## How do I use it?
 
@@ -20,24 +20,24 @@
 
 ###1. Pre-requisites
 
-Before building the application, you must register the Android or iOS variant of the application with a running JBoss Mobile UnifiedPush Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
+Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 
-For the configuration and registration of Android or iOS Applications with GCM or APNS, please refer to the specific guides inside `JBoss Mobile Add-On for Android` and `JBoss Mobile Add-On for iOS` libraries.
+For the configuration and registration of Android or iOS Applications with GCM or APNS, please refer to the specific guides inside `JBoss Unified Push for Android` and `JBoss Unified Push for iOS` libraries.
 
-###2. Use JBoss Mobile Add-On PushPlugin for Cordova
+###2. Use JBoss Unified Push PushPlugin for Cordova
 
-Extract the `JBoss Mobile Add-On PushPlugin for Cordova` and install it specifying the local path to the plugin directory that contains the `plugin.xml` file, executing the following command from within your project folder:
+Extract the `JBoss Unified Push PushPlugin for Cordova` and install it specifying the local path to the plugin directory that contains the `plugin.xml` file, executing the following command from within your project folder:
 ```shell
 cordova plugin add <path-to-org.jboss.aerogear.cordova.push-dir>
 ```
 
-Done! Your project now contains the JBoss Mobile Add-On PushPlugin. For an integration with the `JBoss Mobile Add-On UnifiedPush Server` open the `www` folder in your text editor and apply the code from the example below. You can then execute the project with the command:
+Done! Your project now contains the JBoss Unified Push PushPlugin. For an integration with the `JBoss Unified Push Server` open the `www` folder in your text editor and apply the code from the example below. You can then execute the project with the command:
 ```shell
 cordova run <android or ios>
 ```
 ## Example Usage
 ###1. Register the application
-The following JavaScript code shows how to register a device with the JBoss Mobile Add-On UnifiedPush Server. You need to change `pushServerURL` with the url of your UnifiedPush Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by UnifiedPush Server and GCM or APNS:
+The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change `pushServerURL` with the url of your Unified Push Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
 ```
 var pushConfig = {
     pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
@@ -115,8 +115,8 @@ function errorHandler(message) {
 ```
 
 ## Demo
-For more information about configuring and using the JBoss Mobile Add-On PushPlugin for Cordova, refer to `JBoss Mobile Add-On Push Helloworld Cordova` and `JBoss Mobile Add-On Push Contacts Mobile Cordova`, as examples of projects using the push feature with JBoss Mobile Add-On for Cordova.
+For more information about configuring and using the JBoss Unified Push PushPlugin for Cordova, refer to `JBoss Unified Push Helloworld Cordova` and `JBoss Unified Push Contacts Mobile Cordova`, as examples of projects using the push feature with JBoss Unified Push for Cordova.
 
-###JBoss Mobile Add-On UnifiedPush Server
-For more information about deploying, configuring and using the JBoss Mobile Add-On UnifiedPush Server, see the [JBoss Mobile Add-On documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Mobile_Add-On/).
+###JBoss Unified Push Server
+For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 

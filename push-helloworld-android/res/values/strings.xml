@@ -16,8 +16,8 @@
     limitations under the License.
 -->
 <resources>
-    <string name="app_name">AeroGear UnifiedPush HelloWorld</string>
-    <string name="project_name">UnifiedPush HelloWorld</string>
+    <string name="app_name">Unified Push HelloWorld</string>
+    <string name="project_name">Unified Push HelloWorld</string>
     <string name="aerogear_logo">AeroGear Logo</string>
     <string name="registration_successful">Registration Successful</string>
     <string name="registering">Registering...</string>
