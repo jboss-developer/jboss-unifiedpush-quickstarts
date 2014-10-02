@@ -161,7 +161,7 @@ QUnit is a JavaScript unit testing framework used and built by jQuery. Because J
 
 Simply load the following HTML in the browser you wish to test.
 ```
-/path/to/push-contacts-mobile/client/contacts-mobile-webapp/src/test/qunit/index.html
+QUICKSTART_HOME/push-contacts-mobile/client/contacts-mobile-webapp/src/test/qunit/index.html
 ```
 **Note:** If you use `Chrome`, some date tests fail. These are false failures and are known issues with Chrome. FireFox, Safari, and IE run the tests correctly.
 

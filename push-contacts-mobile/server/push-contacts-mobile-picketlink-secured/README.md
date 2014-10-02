@@ -50,7 +50,7 @@ The project source code must be customized with the unique metadata assigned to 
 3. Save the file.
 4. Build the application
 ```shell
-$ cd /path/to/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
+$ cd QUICKSTART_HOME/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
 $ mvn clean package
 ```
 
@@ -68,10 +68,10 @@ For Windows: EAP_HOME\bin\standalone.bat
 ```
 2. Build and deploy the packaged application
 ```shell
-$ cd /path/to/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
+$ cd QUICKSTART_HOME/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
 $ mvn clean package jboss-as:deploy
 ```
-This deploys `/path/to/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured/target/jboss-push-contacts-mobile-picketlink-secured.war` to the running instance of the server.
+This deploys `QUICKSTART_HOME/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured/target/jboss-push-contacts-mobile-picketlink-secured.war` to the running instance of the server.
 
 **Note:** Adding "-b 0.0.0.0" to the above commands will allow external clients (phones, tablets, desktops, etc...) to connect through your local network.
 For example
@@ -90,7 +90,7 @@ For information on building and deploying any of the client application variants
 1. Make sure you have started the JBoss EAP server as described above.
 2. When you are finished testing, type this command to undeploy the archive:
 ```shell
-$ cd /path/to/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
+$ cd QUICKSTART_HOME/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured
 $ mvn jboss-as:undeploy
 ```
 

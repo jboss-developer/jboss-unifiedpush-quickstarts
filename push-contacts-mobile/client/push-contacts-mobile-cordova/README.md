@@ -57,7 +57,7 @@ cordova platform add <android or ios>
 ###4. Add JBoss Unified Push Cordova Push plug-in
 You now need to add the plugin to the Cordova app.
 ```shell
-cordova plugin add `/path/to/push-contacts-mobile/client/push-contacts-mobile-cordova/cordova_pushplugin/org.jboss.aerogear.cordova.push`
+cordova plugin add `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-cordova/cordova_pushplugin/org.jboss.aerogear.cordova.push`
 ```
 
 ###5. Test Application

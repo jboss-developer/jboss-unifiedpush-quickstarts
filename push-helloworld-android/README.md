@@ -82,7 +82,7 @@ Second, you must register the application and an Android variant of the applicat
 ###3. Customize and Build Application
 The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and GCM. 
 
-1. Open `/path/to/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
+1. Open `QUICKSTART_HOME/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
 2. Enter the application variant values allocated by the Unified Push Server and GCM for the following constants:
 ```java
 String UNIFIED_PUSH_URL = "";
@@ -93,7 +93,7 @@ String GCM_SENDER_ID = "";
 3. Save the file.
 4. Build the application
 ```shell
-$ cd /path/to/push-helloworld-android
+$ cd QUICKSTART_HOME/push-helloworld-android
 $ mvn compile
 ```
 
@@ -105,7 +105,7 @@ The Unified Push Server must be running before the application is deployed to en
 ####1. Deploy for testing
 The application can be tested on physical Android devices only; push notifications are not available for Android emulators. To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:
 ```shell
-$ cd /path/to/push-helloworld-android
+$ cd QUICKSTART_HOME/push-helloworld-android
 $ mvn clean package android:deploy android:run
 ```
 

@@ -71,7 +71,7 @@ Ensure the Apple _Provisioning profile_ is correctly set:
   
 The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and APNS.  
 
-1. Open `/path/to/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Controllers/AGLoginViewController.m` for editing.
+1. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Controllers/AGLoginViewController.m` for editing.
 2. Modify the URL, variant and secret to match the values allocated by the Unified Push Server and APNS for the following constants:
 ```objective-c
 AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running Unified Push Server #>"]];
@@ -81,7 +81,7 @@ AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServe
 ```
 **Note:** You can also copy/paste these settings from your Unified Push Server console
 3. Save the file.
-4. Open `/path/to/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m` for editing.
+4. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m` for editing.
 5. Modify the URL to match the path to the Contacts server backend:
 ```objective-c
 static NSString * const kAPIBaseURLString = @"<# URL of the Contacts application backend #>";
@@ -125,7 +125,7 @@ This automatically triggers a push notification request to the Unified Push Serv
 
 ## 'Content-Available'
 
-Instead of the regular `didReceiveRemoteNotification` callback invoked when a new notification is received, the application utilizes the 'silent' push feature (offered by iOS 7 and later), so the application can be instructed to fetch the new content even if background (and possible suspended). Thus when the user opens up the app, the content is already available to be viewed. Take a look at the `didReceiveRemoteNotification` notification callback method inside the file `/path/to/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/AGAppDelegate.m` for the implementation details.
+Instead of the regular `didReceiveRemoteNotification` callback invoked when a new notification is received, the application utilizes the 'silent' push feature (offered by iOS 7 and later), so the application can be instructed to fetch the new content even if background (and possible suspended). Thus when the user opens up the app, the content is already available to be viewed. Take a look at the `didReceiveRemoteNotification` notification callback method inside the file `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/AGAppDelegate.m` for the implementation details.
 
 ```objective-c
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
