@@ -1,5 +1,5 @@
-# push-contacts-mobile-ios: Push Contacts Mobile iOS - develop more advanced iOS push applications
-
+push-contacts-mobile-ios: Push Contacts Mobile iOS
+===========================
 Author: Christos Vasilakis (cvasilak)  
 Level: Intermediate  
 Technologies: Objective-C, iOS  

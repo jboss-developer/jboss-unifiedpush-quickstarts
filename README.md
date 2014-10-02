@@ -1,5 +1,5 @@
-# Red Hat JBoss Unified Push Quickstarts
-
+Red Hat JBoss Unified Push Quickstarts
+===========================================================
 Summary: The JBoss Unified Push quickstarts are ready-to-assemble applications, provided in a variety of mobile API formats. The mobile formats typically have prerequisite library and application configuration that must be completed before the applications can be built and deployed.    
 
 ## Introduction

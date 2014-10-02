@@ -1,5 +1,5 @@
-# push-helloworld-android: Push Helloworld Android - include basic push functionality in Android applications
-
+push-helloworld-android: Push Helloworld Android
+===========================
 Author: Daniel Passos (dpassos)  
 Level: Beginner  
 Technologies: Java, Android  

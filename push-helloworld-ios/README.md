@@ -1,5 +1,5 @@
-# push-helloworld-ios: Push Helloworld iOS - include basic push functionality in iOS applications
-
+push-helloworld-ios: Push Helloworld iOS
+===========================
 Author: Corinne Krych (ckrych)   
 Level: Beginner   
 Technologies: Objective-C, iOS   

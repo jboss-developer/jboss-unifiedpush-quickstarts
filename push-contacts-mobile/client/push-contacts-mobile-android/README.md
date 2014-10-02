@@ -1,5 +1,5 @@
-# push-contacts-mobile-android: Push Contacts Mobile Android - develop more advanced Android push applications
-
+push-contacts-mobile-android: Push Contacts Mobile Android
+===========================
 Author: Daniel Passos (dpassos)  
 Level: Intermediate  
 Technologies: Java, Android  

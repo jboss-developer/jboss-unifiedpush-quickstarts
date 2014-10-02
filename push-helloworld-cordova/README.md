@@ -1,5 +1,5 @@
-# push-helloworld-cordova: Push Helloworld Cordova - include basic push functionality in Cordova applications
-
+push-helloworld-cordova: Push Helloworld Cordova
+===========================
 Author: Erik Jan de Wit (edewit)   
 Level: Beginner   
 Technologies: JavaScript Cordova   

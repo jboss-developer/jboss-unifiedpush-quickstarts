@@ -1,5 +1,5 @@
-# push-contacts-mobile-cordova: Push Contacts Mobile Cordova - develop more advanced Cordova push applications
-
+push-contacts-mobile-cordova: Push Contacts Mobile Cordova
+===========================
 Author: Erik Jan de Wit (edewit)  
 Level: Intermediate  
 Technologies: JavaScript Cordova  

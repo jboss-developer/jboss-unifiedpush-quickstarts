@@ -1,5 +1,5 @@
-# contacts-mobile-webapp: Contacts Mobile Webapp - develop HTML5 based mobile web applications with Java EE 6 on JBoss EAP
-
+contacts-mobile-webapp: Contacts Mobile Webapp
+===========================
 Author: Joshua Wilson  
 Level: Beginner  
 Technologies: jQuery Mobile, jQuery, JavaScript, HTML5, REST  

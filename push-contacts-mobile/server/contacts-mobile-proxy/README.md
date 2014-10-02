@@ -1,5 +1,5 @@
-# contacts-mobile-proxy: Contacts Mobile Proxy - develop proxied web applications with Java EE 6 on JBoss EAP
-
+contacts-mobile-proxy: Contacts Mobile Proxy
+===========================
 Author: Daniel Bevenius  
 Level: Beginner  
 Technologies: REST  
