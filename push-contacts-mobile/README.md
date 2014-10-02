@@ -31,9 +31,9 @@ The source for the client applications is located in the `QUICKSTART_HOME/push-c
 
 * `push-contacts-mobile-android`, `push-contacts-mobile-ios`, and `push-contacts-mobile-cordova` are implementations of the same client application for different mobile APIs. When the client application is deployed to a mobile device, the push functionality enables the device to register with the JBoss Unified Push Server and receive push notifications when new contacts are created. The client applications are secured and authentication managed by `push-contacts-mobile-picketlink-secured`. Additionally, all contact data for the client applications is sourced from the server-side application. For information on how to deploy these applications, see the individual README files at the following links:
 
-** [push-contacts-mobile-android README](client/push-contacts-mobile-android/README.md)
-** [push-contacts-mobile-ios README](client/push-contacts-mobile-ios/README.md)
-** [push-contacts-mobile-cordova README](client/push-contacts-mobile-cordova/README.md)
+  * [push-contacts-mobile-android README](client/push-contacts-mobile-android/README.md)
+  * [push-contacts-mobile-ios README](client/push-contacts-mobile-ios/README.md)
+  * [push-contacts-mobile-cordova README](client/push-contacts-mobile-cordova/README.md)
 
 
 * `contacts-mobile-webapp` is an implementation of the client application for deployment to a server rather than a mobile device. Like the mobile client applications, this application requires authentication to view and manage contacts. But this application has no push functionality; it does not register with the Unified Push Server on deployment and it does not receive push notifications when contacts are created by other client applications. For information on how to deploy this application, see the [contacts-mobile-webapp README](client/contacts-mobile-webapp/README.md) file.
