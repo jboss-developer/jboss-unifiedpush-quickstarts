@@ -43,7 +43,11 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(updateDateTextField:) forControlEvents:UIControlEventValueChanged];
-
+    
+    // setup the min/max date on the date picker to comply with the server side
+    datePicker.minimumDate = [self dateFromString:@"1900-01-01"];
+    datePicker.maximumDate = [NSDate date];
+    
     [self.birthdateTxtField setInputView:datePicker];
 
     // if set, edit existing one
