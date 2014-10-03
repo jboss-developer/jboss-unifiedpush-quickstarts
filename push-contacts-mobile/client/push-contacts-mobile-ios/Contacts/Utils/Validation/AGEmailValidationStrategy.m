@@ -20,16 +20,10 @@
 @implementation AGEmailValidationStrategy
 
 - (BOOL)validate:(NSString *)input {
-    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:NULL];
-    NSArray *matches = [detector matchesInString:input options:0 range:NSMakeRange(0, input.length)];
-    for (NSTextCheckingResult *match in matches) {
-        if (match.resultType == NSTextCheckingTypeLink &&
-            [match.URL.absoluteString rangeOfString:@"mailto:"].location != NSNotFound) {
-            return YES;
-        }
-    }
+    NSString *regex = @"^(?!.*\\.{2})[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",  regex];
     
-    return NO;
+    return [predicate evaluateWithObject:input];
 }
 
 @end
