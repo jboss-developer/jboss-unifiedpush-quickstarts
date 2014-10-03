@@ -73,12 +73,12 @@
 
         if (!error) { // success
             
-            // time to register user with the "AeroGear UnifiedPush Server"
+            // time to register user with the "Unified Push Server"
             
             // initialize "Registration helper" object using the
-            // base URL where the "AeroGear Unified Push Server" is running.
+            // base URL where the "Unified Push Server" is running.
             AGDeviceRegistration *registration = [[AGDeviceRegistration alloc]
-                                                  initWithServerURL:[NSURL URLWithString:@"<# URL of the running AeroGear UnifiedPush Server #>"]];
+                                                  initWithServerURL:[NSURL URLWithString:@"<# URL of the running Unified Push Server #>"]];
             
             // perform registration of this device
             [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
@@ -91,8 +91,8 @@
                 
                 // You need to fill the 'Variant Id' together with the 'Variant Secret'
                 // both received when performing the variant registration with the server.
-                // See section "Register an iOS Variant" in the guide:
-                // http://aerogear.org/docs/guides/aerogear-push-ios/unified-push-server/
+                // For more information about JBoss Unified Push,
+                // see https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/
                 [clientInfo setVariantID:@"<# Variant Id #>"];
                 [clientInfo setVariantSecret:@"<# Variant Secret #>"];
                 

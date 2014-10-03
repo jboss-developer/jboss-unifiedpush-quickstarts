@@ -21,7 +21,7 @@
     <artifactId>jboss-contacts-mobile-proxy</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>JBoss Mobile Add-On Quickstart: contacts-mobile-proxy</name>
+    <name>JBoss Unified Push Quickstart: contacts-mobile-proxy</name>
     <description>A Java EE 6 HTML5 mobile web application for use with JBoss.</description>
     <url>http://jboss.org/</url>
     <licenses>

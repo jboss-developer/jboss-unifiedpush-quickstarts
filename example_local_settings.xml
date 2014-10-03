@@ -21,13 +21,13 @@
 
   <profiles>
 
-    <!-- Configure the JBoss Mobile Add-On Maven repository -->
+    <!-- Configure the JBoss Unified Push Maven repository -->
     <profile>
-      <id>jboss-mobile-repository</id>
+      <id>jboss-unified-push-repository</id>
       <repositories>
         <repository>
-          <id>jboss-mobile-repository</id>
-          <url>file:///path/to/repo/jboss-mobile-1.0-maven-repository</url>
+          <id>jboss-unified-push-repository</id>
+          <url>file:///path/to/repo/jboss-unified-push-1.0-maven-repository</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -38,8 +38,8 @@
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>jboss-mobile-repository</id>
-          <url>file:///path/to/repo/jboss-mobile-1.0-maven-repository</url>
+          <id>jboss-unified-push-repository</id>
+          <url>file:///path/to/repo/jboss-unified-push-1.0-maven-repository</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -83,7 +83,7 @@
 
   <activeProfiles>
     <!-- Optionally, make the repositories active by default -->
-    <activeProfile>jboss-mobile-repository</activeProfile>
+    <activeProfile>jboss-unified-push-repository</activeProfile>
     <activeProfile>jboss-eap-repository</activeProfile>
   </activeProfiles>
 
