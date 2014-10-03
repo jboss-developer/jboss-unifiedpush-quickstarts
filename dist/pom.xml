@@ -28,8 +28,8 @@
     <artifactId>jboss-quickstart-dist</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>JBoss Mobile Add-On Quickstart: Distribution</name>
-    <description>JBoss Mobile Add-On Quickstart Distribution</description>
+    <name>JBoss Unified Push Quickstart: Distribution</name>
+    <description>JBoss Unified Push Quickstart Distribution</description>
     <url>https://github.com/jboss-developer/jboss-mobile-quickstarts</url>
 
     <licenses>

@@ -77,12 +77,12 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // initialize "Registration helper" object using the
-    // base URL where the "AeroGear Unified Push Server" is running.
+    // base URL where the "Unified Push Server" is running.
     AGDeviceRegistration *registration =
     
     // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
     // from the iPhone, you can NOT use localhost :)
-    [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running AeroGear UnifiedPush Server #>"]];
+    [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running Unified Push Server #>"]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         // You need to fill the 'Variant Id' together with the 'Variant Secret'

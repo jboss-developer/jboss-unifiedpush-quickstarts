@@ -1,10 +1,10 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.jboss.aerogear.cordova.push" version="1.0.1">
   <name>
-    JBoss Mobile PushPlugin
+    JBoss Unified Push PushPlugin
   </name>
   <description>
     This plugin allows your application to receive push notifications on both Android and iOS devices. Using the
-    JBoss Mobile Unified Push Server.
+    JBoss Unified Push Server.
   </description>
   <license>
     MIT

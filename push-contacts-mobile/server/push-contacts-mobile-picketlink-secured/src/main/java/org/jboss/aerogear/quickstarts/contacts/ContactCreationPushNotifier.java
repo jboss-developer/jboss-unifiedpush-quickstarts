@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 
 /**
  * Sends a push notification to all mobile devices to inform them that a new Contact has been created using
- * UnifiedPush server.
+ * Unified Push Server.
  */
 public class ContactCreationPushNotifier {
     private static final Logger logger = Logger.getLogger(ContactCreationPushNotifier.class.getName());

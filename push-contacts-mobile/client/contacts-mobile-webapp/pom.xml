@@ -21,7 +21,7 @@
     <artifactId>jboss-contacts-mobile-webapp</artifactId>
     <version>1.0.0.redhat-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>JBoss Mobile Add-On Quickstart: contacts-mobile-webapp</name>
+    <name>JBoss Unified Push Quickstart: contacts-mobile-webapp</name>
     <description>A HTML5 mobile web application for use with JBoss.</description>
     <url>http://jboss.org/</url>
     <licenses>

@@ -27,7 +27,7 @@ public interface Constants {
     String BASE_URL = "";
 
     /**
-     * This is the URL of the UnifiedPush Server.
+     * This is the URL of the Unified Push Server.
      *
      * In the case of an Android VM the host machine's address would be:
      * String UNIFIED_PUSH_URL = "http://10.0.2.2:8080/ag-push";
@@ -37,13 +37,13 @@ public interface Constants {
 
     /**
      * The variant id which was generated when creating the variant with
-     * the UnifiedPush Server.
+     * the Unified Push Server.
      */
     String VARIANT_ID = "";
 
     /**
      * The secret which was generated when creating the variant with
-     * the UnifiedPush Server
+     * the Unified Push Server
      */
     String SECRET = "";
 

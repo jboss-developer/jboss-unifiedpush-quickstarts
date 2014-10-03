@@ -81,7 +81,7 @@ public class RegisterActivity extends Activity {
     }
 
     private void handleException(Exception e) {
-        final String msg = "Unable to reach UnifiedPushServer at \"" + UNIFIED_PUSH_URL + "\".";
+        final String msg = "Unable to reach Unified Push Server at \"" + UNIFIED_PUSH_URL + "\".";
         Log.e("RegisterActivity", msg, e);
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
         finish();
