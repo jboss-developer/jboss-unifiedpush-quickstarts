@@ -26,7 +26,7 @@
 
     <groupId>org.jboss.quickstarts.mobile</groupId>
     <artifactId>jboss-quickstart-dist</artifactId>
-    <version>1.0.0.redhat-SNAPSHOT</version>
+    <version>1.1.0.redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>JBoss Unified Push Quickstart: Distribution</name>
     <description>JBoss Unified Push Quickstart Distribution</description>
