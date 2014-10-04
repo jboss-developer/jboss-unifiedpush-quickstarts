@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Default theme with just 2 schemes, A (light) and B (dark) -->
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.4.css" type="text/css" media="all" />
 <!--     <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css" type="text/css" media="all" /> -->
 <!--     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" /> -->
 
@@ -59,7 +59,7 @@
          Unlike other jQuery projects, such as jQuery and jQuery UI, jQuery Mobile automatically applies
          many markup enhancements as soon as it loads (long before the document.ready event fires).
          Therefore call the jQuery Mobile code last. -->
-    <script src="js/libs/jquery.mobile-1.4.2.js"></script>
+    <script src="js/libs/jquery.mobile-1.4.4.js"></script>
 <!--     <script src="js/libs/jquery.mobile-1.4.2.min.js"></script> -->
 <!--     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.js"></script> -->
 </head>
@@ -85,7 +85,7 @@
             <a href="#contacts-list-page-menu-panel" id="contacts-list-page-menu-button" class="ui-btn ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-notext ui-mini ui-btn-inline">Menu</a>
             <h1>Welcome <span id="user-name-page-message"></span>.</h1>
             <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">
-              <button id="contacts-refresh-list-button" class="ui-btn ui-corner-all ui-shadow ui-icon-refresh ui-btn-icon-notext ui-mini ui-btn-inline" onclick="CONTACTS.app.getContacts()">Refresh</button>
+              <a href="javascript:void(0)" id="contacts-refresh-list-button" class="ui-btn ui-corner-all ui-shadow ui-icon-refresh ui-btn-icon-notext ui-mini ui-btn-inline" onclick="CONTACTS.app.getContacts()">Refresh</a>
               <a href="#contacts-detail-list-page" id="contacts-detail-list-page-button" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-d ui-btn-icon-notext ui-mini ui-btn-inline">Details</a>
             </div>
         </div>
@@ -333,7 +333,7 @@
                     <label for="signin-form-input-password">Password:</label>
                     <input name="password" id="signin-form-input-password" class="name" data-clear-btn="true" value="" placeholder="Enter your password." type="password"/>
                 </div>
-                <input id="submit-signin-btn" data-inline="true" type="submit" value="Sign In" />
+                <input id="submit-signin-btn" data-inline="true" type="button" value="Next" />
             </form>
         </div>
     </div>
