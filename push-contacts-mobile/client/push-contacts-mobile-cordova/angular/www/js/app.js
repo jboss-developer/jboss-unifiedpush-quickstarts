@@ -22,6 +22,13 @@ angular.module('quickstart', [
   'quickstart.services',
   'ngResource'
 ])
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+      if (window.StatusBar) {
+        StatusBar.hide();
+      }
+    });
+})
 
 .constant('BACKEND_URL', '< backend URL e.g http(s)//host:port >/jboss-push-contacts-mobile-picketlink-secured')
 

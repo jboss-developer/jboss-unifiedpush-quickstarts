@@ -22,4 +22,7 @@
     </description>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="StatusBar">
+        <param name="id" value="org.apache.cordova.statusbar" />
+    </feature>
 </widget>
