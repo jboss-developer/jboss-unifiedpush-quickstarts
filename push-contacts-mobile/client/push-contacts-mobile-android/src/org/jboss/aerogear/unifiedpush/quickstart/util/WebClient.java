@@ -47,25 +47,6 @@ public final class WebClient {
         httpClient = new DefaultHttpClient();
     }
 
-    public boolean register(User user) {
-        try {
-            String registerURL = Constants.BASE_URL + "/rest/security/registration";
-
-            HttpPost post = new HttpPost(registerURL);
-            post.setEntity(new StringEntity(new Gson().toJson(user)));
-
-            post.setHeader("Accept", "application/json");
-            post.setHeader("Content-type", "application/json");
-
-            httpClient.execute(post);
-
-            return true;
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-            return false;
-        }
-    }
-
     public User authenticate(String username, String password) {
 
         try {
