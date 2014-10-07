@@ -90,10 +90,12 @@ The project source code must be customized with the unique metadata assigned to 
 1. Open `QUICKSTART_HOME/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
 2. Enter the application variant values allocated by the Unified Push Server and GCM for the following constants:
 
-        String UNIFIED_PUSH_URL = "";
-        String VARIANT_ID = "";
-        String SECRET = "";
-        String GCM_SENDER_ID = "";
+        String UNIFIED_PUSH_URL = "<pushServerURL e.g http(s)//host:port/context >";
+        String VARIANT_ID = "<variantID e.g. 1234456-234320>";
+        String SECRET = "<variantSecret e.g. 1234456-234320>";
+        String GCM_SENDER_ID = "<senderID e.g Google Project ID only for android>";
+
+   **Note:** When changing the value of _UNIFIED_PUSH_URL_ use `ip` or `hostname` and not `localhost` for the `host` value
 
 3. Save the file.
 4. Build the application
