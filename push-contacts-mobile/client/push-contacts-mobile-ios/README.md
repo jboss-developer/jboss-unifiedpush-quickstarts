@@ -80,7 +80,8 @@ The project source code must be customized with the unique metadata assigned to 
         [clientInfo setVariantID:@"<# Variant Id #>"];
         [clientInfo setVariantSecret:@"<# Variant Secret #>"];
 
-**Note:** You can also copy/paste these settings from your Unified Push Server console
+   **Note 1:** You can also copy/paste these settings from your Unified Push Server console  
+   **Note 2:** When changing the value of `<# URL of the running Unified Push Server #>`, use `ip` or `hostname` and not `localhost` for the `host` value (e.g. <http(s)//host:port/context> )
 3. Save the file.
 4. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m` for editing.
 5. Modify the URL to match the path to the Contacts server backend:
