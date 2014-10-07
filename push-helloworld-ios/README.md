@@ -117,7 +117,7 @@ In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to
 }
 
 ```
-**Note:** When changing the value of `<# URL of the running JBoss Unified Push Server #>`, use `ip` or `hostname` and not `localhost` for the `host` value (e.g. <http(s)//host:port/context> )
+**Note:** When changing the value of `<# URL of the running JBoss Unified Push Server #>`, use `ip` or `hostname` and not `localhost` for the `host` value (e.g. `<http(s)//host:port/context>` )
 
 
 ### 4. Test the Application
