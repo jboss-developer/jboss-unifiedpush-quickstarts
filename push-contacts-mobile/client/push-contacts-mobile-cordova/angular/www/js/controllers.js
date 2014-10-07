@@ -118,6 +118,8 @@ angular.module('quickstart.controllers', [])
     //to be able to test this in your browser where there is no push plugin installed
     if (typeof push !== "undefined") {
       push.register(onNotification, successHandler, errorHandler, pushConfig);
+    } else {
+      alert('Push plugin not installed!');
     }
 
     function successHandler() {
