@@ -38,8 +38,12 @@ CONTACTS.app.registerWithUPS = function() {
           variantID: "<variantID e.g. 1234456-234320>",
           variantSecret: "<variantSecret e.g. 1234456-234320>"
       }
-    };    
-    push.register(CONTACTS.app.onNotification, successHandler, errorHandler, pushConfig);
+    };
+    if (typeof push !== 'undefined') {
+      push.register(CONTACTS.app.onNotification, successHandler, errorHandler, pushConfig);
+    } else {
+      alert('Push plugin not installed!');
+    }
 
     function successHandler() {
         console.log('Successfully Registered');
