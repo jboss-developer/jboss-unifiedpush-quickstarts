@@ -44,12 +44,12 @@ var app = {
 
       function successHandler() {
          document.getElementById("messages").removeChild(document.getElementById("waiting"));
-         app.addMessage('successful registered');
+         app.addMessage('Successfully Registered');
       }
 
       function errorHandler(error) {
          app.clearMessages();
-         app.addMessage('error registering ' + error);
+         app.addMessage('Error Registering ' + error);
       }
    },
    onNotification: function (event) {
