@@ -121,11 +121,11 @@ angular.module('quickstart.controllers', [])
     }
 
     function successHandler() {
-      console.log('successful registered');
+      console.log('Successfully Registered');
     }
 
     function errorHandler(error) {
-      alert('error registering ' + error);
+      alert('Error Registering ' + error);
     }
 
     function onNotification(event) {

@@ -42,11 +42,11 @@ CONTACTS.app.registerWithUPS = function() {
     push.register(CONTACTS.app.onNotification, successHandler, errorHandler, pushConfig);
 
     function successHandler() {
-        console.log('successful registered');
+        console.log('Successfully Registered');
     }
 
     function errorHandler(error) {
-        alert('error registering ' + error);
+        alert('Error Registering ' + error);
     }
 };
 
