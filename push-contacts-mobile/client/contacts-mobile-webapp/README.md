@@ -73,7 +73,7 @@ If you are running multiple servers on the same machine you can use `jboss.socke
 This web application can be configured to use the `push-contacts-mobile-picketlink-secured` or the `contacts-mobile-proxy` as the backend REST API.
 To switch between backends update `CONTACTS.app.serverUrl` in `src/main/webapp/js/app.js`:
 
-        CONTACTS.app.serverUrl = "http://localhost:9080/jboss-push-contacts-mobile-picketlink-secured";
+        CONTACTS.app.serverUrl = "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured";
 
 or
 
