@@ -27,23 +27,23 @@ public interface Constants {
     String BASE_URL = "";
 
     /**
-     * This is the URL of the Unified Push Server.
+     * This is the URL of the Unified Push Server OpenShift instance.
      *
-     * In the case of an Android VM the host machine's address would be:
-     * String UNIFIED_PUSH_URL = "http://10.0.2.2:8080/ag-push";
+     * For example (your APP and DOMAIN will differ):
+     * String UNIFIED_PUSH_URL = "https://{APP}-{DOMAIN}.rhcloud.com/ag-push";
      *
      */
     String UNIFIED_PUSH_URL = "";
 
     /**
      * The variant id which was generated when creating the variant with
-     * the Unified Push Server.
+     * the Unified Push Server OpenShift instance.
      */
     String VARIANT_ID = "";
 
     /**
      * The secret which was generated when creating the variant with
-     * the Unified Push Server
+     * the Unified Push Server OpenShift instance.
      */
     String SECRET = "";
 

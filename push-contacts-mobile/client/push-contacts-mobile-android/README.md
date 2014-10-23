@@ -15,7 +15,7 @@ This quickstart demonstrates how to develop more advanced Android push applicati
 
 This client-side Android project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality. 
 
-When the client application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server in response to new contacts being created. Push notifications received by the Android device contain details of newly added contacts.
+When the client application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server in response to new contacts being created. Push notifications received by the Android device contain details of newly added contacts.
 
 ## How do I run it?
 
@@ -72,9 +72,9 @@ First, you must register the application with Google Cloud Messaging for Android
 6. Click `APIs and auth`>`Credentials` and under `Public API access` click `Create new Key`.
 7. Click `Server Key` and click `Create`. Make note of the `API KEY`.
 
-Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the README distributed with the Unified Push Server or the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -86,17 +86,15 @@ Second, you must register the application and an Android variant of the applicat
 
 ### 3. Customize and Build Application
 
-The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and GCM. 
+The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server OpenShift instance and GCM. 
 
 1. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-android/src/org/jboss/aerogear/unifiedpush/quickstart/Constants.java` for editing.
-2. Enter the application variant values allocated by the Unified Push Server and GCM for the following constants:
+2. Enter the application variant values allocated by the Unified Push Server OpenShift instance and GCM for the following constants:
 
-        String UNIFIED_PUSH_URL = "<pushServerURL e.g http(s)//host:port/context >";
+        String UNIFIED_PUSH_URL = "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >";
         String VARIANT_ID = "<variantID e.g. 1234456-234320>";
         String SECRET = "<variantSecret e.g. 1234456-234320>";
         String GCM_SENDER_ID = "<senderID e.g Google Project ID only for android>";
-
-   **Note:** When changing the value of _UNIFIED_PUSH_URL_ use `ip` or `hostname` and not `localhost` for the `host` value
 
 3. Save the file.
 4. Build the application
@@ -109,7 +107,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-1. The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+1. The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 2. The `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the `push-contacts-mobile-picketlink-secured` application.
 
 #### 1. Deploy for Testing
@@ -145,7 +143,7 @@ You can also send a push notification to your device using the `push-contacts-mo
 1. Open the web interface of the `push-contacts-mobile/client/contacts-mobile-webapp` application in a browser at the following URL: <http://localhost:8080/jboss-contacts-mobile-webapp/> .
 2. Add a new Contact.
 
-This automatically triggers a push notification request to the Unified Push Server and subsequently the push notification displays on the mobile device.
+This automatically triggers a push notification request to the Unified Push Server OpenShift instance and subsequently the push notification displays on the mobile device.
 
 ![contact details](doc/notification.png)
 
