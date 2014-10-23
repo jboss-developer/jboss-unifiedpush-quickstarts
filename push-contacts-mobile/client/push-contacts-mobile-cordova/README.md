@@ -14,7 +14,7 @@ This quickstart demonstrates how to develop more advanced Cordova push applicati
 
 This client-side Cordova project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality.  
 
-When the client application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server in response to new contacts being created. Push notifications received by the Android or iOS device contain details of newly added contacts.
+When the client application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server OpenShift instance in response to new contacts being created. Push notifications received by the Android or iOS device contain details of newly added contacts.
 
 
 ## How do I run it?
@@ -68,7 +68,7 @@ You now need to add the plugin to the Cordova app.
 
 #### 0. Prerequisites
 
-1. The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+1. The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 2. The `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the `push-contacts-mobile-picketlink-secured` application.
 
 #### 1. Deploy for Testing

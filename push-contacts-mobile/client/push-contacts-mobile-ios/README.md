@@ -14,7 +14,7 @@ This quickstart demonstrates how to develop more advanced iOS push applications,
 
 This client-side iOS project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality. 
 
-When the client application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server in response to new contacts being created. Push notifications received by the iOS device contain details of newly added contacts.
+When the client application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server OpenShift instance in response to new contacts being created. Push notifications received by the iOS device contain details of newly added contacts.
 
 ## How do I run it?
 
@@ -46,9 +46,9 @@ In order to test Push Notifications you neeed to create a _Provisioning Profile_
   
 ### 2. Register Application with Push Services
 
-You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -75,13 +75,12 @@ The project source code must be customized with the unique metadata assigned to 
 1. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Controllers/AGLoginViewController.m` for editing.
 2. Modify the URL, variant and secret to match the values allocated by the Unified Push Server and APNS for the following constants:
 
-        AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running Unified Push Server #>"]];
+        AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running JBoss Unified Push Server OpenShift instance #>"]];
         ...
         [clientInfo setVariantID:@"<# Variant Id #>"];
         [clientInfo setVariantSecret:@"<# Variant Secret #>"];
 
-   **Note 1:** You can also copy/paste these settings from your Unified Push Server console  
-   **Note 2:** When changing the value of `<# URL of the running Unified Push Server #>`, use `ip` or `hostname` and not `localhost` for the `host` value (e.g. `<http(s)//host:port/context>` )
+   **Note :** You can also copy/paste these settings from your Unified Push Server console  
 3. Save the file.
 4. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m` for editing.
 5. Modify the URL to match the path to the Contacts server backend:
@@ -95,7 +94,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-1. The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+1. The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 2. The `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the `push-contacts-mobile-picketlink-secured` application.
 
 #### 1. Deploy for Testing
@@ -125,7 +124,7 @@ You can also send a push notification to your device using the `push-contacts-mo
 1. Open the web interface of the `push-contacts-mobile/client/contacts-mobile-webapp` application in a browser at the following URL: <http://localhost:8080/jboss-contacts-mobile-webapp/> .
 2. Add a new Contact.
 
-This automatically triggers a push notification request to the Unified Push Server and subsequently the push notification displays on the mobile device.
+This automatically triggers a push notification request to the Unified Push Server OpenShift instance and subsequently the push notification displays on the mobile device.
 
 ![contact details](doc/notification.png)
 
