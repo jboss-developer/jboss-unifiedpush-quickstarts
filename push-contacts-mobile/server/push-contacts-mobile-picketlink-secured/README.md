@@ -12,9 +12,9 @@ Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>
 
 This quickstart demonstrates how to develop secured server-side applications with push functionality, centered around a CRUD contacts application. It creates a PicketLink secured Java EE 6 application using JAX-RS, CDI 1.0, EJB 3.1, JPA 2.0 and Bean Validation 1.0.
 
-When the `push-contacts-mobile-picketlink-secured` application is deployed, the push functionality enables the application to register with the running JBoss Unified Push Server instance and send it push notification requests. The server-side application rest endpoints are secured with PicketLink and can only be accessed by client applications with authenticated users.
+When the `push-contacts-mobile-picketlink-secured` application is deployed, the push functionality enables the application to register with the running JBoss Unified Push Server OpenShift instance and send it push notification requests. The server-side application rest endpoints are secured with PicketLink and can only be accessed by client applications with authenticated users.
 
-When contacts are created with the client contacts-mobile application, the contact information is relayed to the `push-contacts-mobile-picketlink-secured` application. On receiving the contact infomation, this backend application sends a push notification request to the Unified Push Server. The Unified Push Server then routes a push notification containing details of the newly added contact to devices that are registered with the Unified Push Server for the specific client application. 
+When contacts are created with the client contacts-mobile application, the contact information is relayed to the `push-contacts-mobile-picketlink-secured` application. On receiving the contact infomation, this backend application sends a push notification request to the Unified Push Server OpenShift instance. The Unified Push Server OpenShift instance then routes a push notification containing details of the newly added contact to devices that are registered with the Unified Push Server OpenShift instance for the specific client application. 
 
 **Note:** This quickstart uses the following Jackson libraries that are a part of the JBoss EAP private API.
 
@@ -39,16 +39,16 @@ You must have the JBoss Unified Push Maven repository available and Maven config
 
 ### 2. Register Application with Push Services
 
-You must register the application with the Unified Push Server. This requires a running Unified Push Server instance. For information on installing the Unified Push Server, see the README distributed with the Unified Push Server or the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+You must register the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, click the application name and make note of the `Server URL`, `Application ID`, and `Master Secret`.
 
 ### 3. Customize JBoss Unified Push Java Sender and Build Application
 
-The project source code must be customized with the unique metadata assigned to the application by the JBoss Unified Push Server. 
+The project source code must be customized with the unique metadata assigned to the application by the JBoss Unified Push Server OpenShift instance. 
 
 1. Open [quickstarts-config.json](./src/main/resources/META-INF/quickstarts-config.json) configuration file for editing.
 2. Enter the ` serverUrl `,  ` pushApplicationId ` and ` masterSecret ` parameters.
@@ -62,7 +62,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-The Unified Push Server must be running before the application is deployed to ensure that it successfully registers with the Unified Push Server on deployment.
+The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that it successfully registers with the Unified Push Server on deployment.
 
 #### 1. Deploy for Testing
 
