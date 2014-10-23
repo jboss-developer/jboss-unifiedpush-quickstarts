@@ -12,9 +12,9 @@ Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>
 
 This quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Unified Push Android Push plug-in.
 
-This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
+This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Unified Push Server OpenShift instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
 
-When the application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications.
+When the application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications.
 
 ## How do I run it?
 
@@ -71,9 +71,9 @@ First, you must register the application with Google Cloud Messaging for Android
 6. Click `APIs and auth`>`Credentials` and under `Public API access` click `Create new Key`.
 7. Click `Server Key` and click `Create`. Make note of the `API KEY`.
 
-Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the README distributed with the Unified Push Server or the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -85,17 +85,15 @@ Second, you must register the application and an Android variant of the applicat
 
 ### 3. Customize and Build Application
 
-The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and GCM. 
+The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server OpenShift instance and GCM. 
 
 1. Open `QUICKSTART_HOME/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
-2. Enter the application variant values allocated by the Unified Push Server and GCM for the following constants:
+2. Enter the application variant values allocated by the Unified Push Server OpenShift instance and GCM for the following constants:
 
-        String UNIFIED_PUSH_URL = "<pushServerURL e.g http(s)//host:port/context >";
+        String UNIFIED_PUSH_URL = "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >";
         String VARIANT_ID = "<variantID e.g. 1234456-234320>";
         String SECRET = "<variantSecret e.g. 1234456-234320>";
         String GCM_SENDER_ID = "<senderID e.g Google Project ID only for android>";
-
-   **Note:** When changing the value of _UNIFIED_PUSH_URL_ use `ip` or `hostname` and not `localhost` for the `host` value
 
 3. Save the file.
 4. Build the application
@@ -108,7 +106,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-The Unified Push Server must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
 
 #### 1. Deploy the Application for testing
 
@@ -124,7 +122,7 @@ Application output is displayed in the command line window.
 
 You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
