@@ -27,7 +27,7 @@ CONTACTS.app.restEndpoint = CONTACTS.app.baseUrl.replace(/\/+$/, "") + "/rest/co
 
 CONTACTS.app.registerWithUPS = function() {
     var pushConfig = {
-        pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+        pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
         alias: "<alias e.g. a username or an email address optional>",
         android: {
           senderID: "<senderID e.g Google Project ID only for android>",

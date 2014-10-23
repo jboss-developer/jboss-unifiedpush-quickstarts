@@ -103,7 +103,7 @@ angular.module('quickstart.controllers', [])
 .controller('LoginCtrl', function ($scope, $rootScope, $location, authz, users) {
   function registerWithUPS() {
     var pushConfig = {
-      pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+      pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
       android: {
         senderID: "<senderID e.g Google Project ID only for android>",
         variantID: "<variantID e.g. 1234456-234320>",
