@@ -12,7 +12,7 @@ Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>
 
 This quickstart demonstrates how to include basic push functionality in Cordova applications using the JBoss Unified Push Cordova Push plug-in.
 
-This simple project consists of a ready-to-build Cordova application. Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
+This simple project consists of a ready-to-build Cordova application. Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server OpenShift instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 
 When the application is deployed to an Android or iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications.
 
@@ -48,21 +48,20 @@ For the configuration and registration of Android or iOS Applications with PushS
 
 ### 2. Customize and Build Application
 
-In `www/js/index.js` find the `pushConfig` and change `pushServerURL` with the url of your Unified Push Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
+In `www/push-config.json` change `pushServerURL` with the url of your Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server OpenShift instance and GCM or APNS:
 
-        var pushConfig = {
-           pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
-           android: {
-              senderID: "<senderID e.g Google Project ID only for android>",
-              variantID: "<variantID e.g. 1234456-234320>",
-              variantSecret: "<variantSecret e.g. 1234456-234320>"
+        {
+           "pushServerURL": "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
+           "android": {
+              "senderID": "<senderID e.g Google Project ID only for android>",
+              "variantID": "<variantID e.g. 1234456-234320>",
+              "variantSecret": "<variantSecret e.g. 1234456-234320>"
            },
-           ios: {
-              variantID: "<variantID e.g. 1234456-234320>",
-              variantSecret: "<variantSecret e.g. 1234456-234320>"
+           "ios": {
+              "variantID": "<variantID e.g. 1234456-234320>",
+              "variantSecret": "<variantSecret e.g. 1234456-234320>"
            }
-        };
-
+        }
 
 **Note:** You can also copy/paste these settings from your Unified Push Server console
 
@@ -91,7 +90,7 @@ The application can be tested on physical Android or iOS devices only; push noti
 
 You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
