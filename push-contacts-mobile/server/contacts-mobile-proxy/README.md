@@ -125,12 +125,12 @@ By default there is nothing to configure in this quickstart. But you might be in
 
 This JSON file defines the mapping of URLs that the proxy can handle. You can define as many rules are you like; the basic single rule looks like this:
 
-        { "rule": "/rest/contacts", "to": "http://localhost:9080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts"}
+        { "rule": "/rest/contacts", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts"}
 
 The above can be read as: any request with a request URI of `/rest/contacts` should be sent to the URI of `to`.  
 You can also have path parameters in your rules. For example, we have the following rule in addition to the one above exists in this quickstart:
 
-        { "rule": "/rest/contacts/{id}", "to": "http://localhost:9080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts{id}"}
+        { "rule": "/rest/contacts/{id}", "to": "http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts{id}"}
 
 
 With this rule, any request URI in the format `/rest/contacts/10001` will be proxied to the URI of `to`.
