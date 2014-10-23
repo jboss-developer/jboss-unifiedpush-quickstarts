@@ -11,9 +11,9 @@ Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>
 ## What is it?
 This quickstart demonstrates how to include basic push functionality in iOS applications using the JBoss Unified Push iOS Push plug-in.
 
-This simple project consists of a ready-to-build iOS application. Before building the application, you must register the iOS variant of the application with a running JBoss Unified Push Server instance and Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to iOS devices. 
+This simple project consists of a ready-to-build iOS application. Before building the application, you must register the iOS variant of the application with a running JBoss Unified Push Server OpenShift instance and Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to iOS devices. 
 
-When the application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server instance and receive push notifications.
+When the application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications.
 
 ## How do I run it?
 
@@ -45,9 +45,9 @@ In order to test Push Notifications you neeed to create a _Provisioning Profile_
   
 ### 2. Register Application with Push Services
 
-You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -67,17 +67,15 @@ Go to `HelloWorld target -> Info` and modify the `Bundle Identifier`:
 
 Now open **HelloWorld.xcodeproj**.
 
-In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to your JBoss Unified Push Server instance and variant/secret:
+In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to your JBoss Unified Push Server OpenShift instance and variant/secret:
 
 ```objective-c
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // initialize "Registration helper" object using the
-    // base URL where the "JBoss Unified Push Server" is running.
+    // base URL where the "JBoss Unified Push Server OpenShift instance" is running.
     AGDeviceRegistration *registration =
 
-    // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
-    // from the iPhone, you can NOT use localhost
-    [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running JBoss Unified Push Server #>"]];
+    [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running JBoss Unified Push Server OpenShift instance #>"]];
 
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         // You need to fill the 'Variant Id' together with the 'Variant Secret'
@@ -117,8 +115,6 @@ In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to
 }
 
 ```
-**Note:** When changing the value of `<# URL of the running JBoss Unified Push Server #>`, use `ip` or `hostname` and not `localhost` for the `host` value (e.g. `<http(s)//host:port/context>` )
-
 
 ### 4. Test the Application
 
@@ -126,7 +122,7 @@ In `HelloWorld/AGAppDelegate.m` find the pushConfig and change the server url to
 
 You can send a push notification to your device using the Unified Push Server console by completing the following steps:
 
-1. Log into the Unified Push Server console.
+1. Log into the Unified Push Server OpenShift instance console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
@@ -161,7 +157,7 @@ When the application is launched, AGAppDelegate's `application:didFinishLaunchin
 
 Therefore, AGAppDelegate's `application:didRegisterForRemoteNotificationsWithDeviceToken:` will be called.
 
-When AGAppDelegate's `application:didRegisterForRemoteNotificationsWithDeviceToken:` is called, the device is registered to Unified Push Server instance. This is where configuration changes are required (see code snippet below).
+When AGAppDelegate's `application:didRegisterForRemoteNotificationsWithDeviceToken:` is called, the device is registered to Unified Push Server OpenShift instance. This is where configuration changes are required (see code snippet below).
 
 
 FAQ
