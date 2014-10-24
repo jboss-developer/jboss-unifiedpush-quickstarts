@@ -15,6 +15,7 @@
 */
 
 var exec = require("cordova/exec");
+var ajax = require("./ajax");
 
 /**
  * This is a global variable called push exposed by cordova
@@ -38,7 +39,7 @@ function Push(){
     @param {String} [options.senderId] - android specific - the id representing the Google project ID
     @param {String} options.variantID - the id representing the mobile application variant
     @param {String} options.variantSecret - the secret for the mobile application variant
-    @param {String} options.pushServerURL - the location of the Unified Push Server e.g. http(s)//host:port/context
+    @param {String} options.pushServerURL - the location of the Unified Push Server e.g. https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push
     @param {String} [options.alias] - Application specific alias to identify users with the system. Common use case would be an email address or a username.
     @param {Object} [options.ios] - Holder of the ios specific values variantID and variantSecret
     @param {String} [options.ios.variantID] - the id representing the mobile application variant for iOS
@@ -50,7 +51,7 @@ function Push(){
     @example
 
     var pushConfig = {
-        pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+        pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
         senderID: "<senderID e.g Google Project ID>",
         variantID: "<variantID e.g. 1234456-234320>",
         variantSecret: "<variantSecret e.g. 1234456-234320>"
@@ -62,7 +63,7 @@ function Push(){
     @example
     //combined android and ios configuration
     var pushConfig = {
-        pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+        pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
         alias: "<alias e.g. a username or an email address optional>",
         android: {
           senderID: "<senderID e.g Google Project ID>",
@@ -86,11 +87,25 @@ Push.prototype.register = function (onNotification, successCallback, errorCallba
     }
 
     if (typeof onNotification != "function") {
-        console.log("Push.register failure: onNotification callback parameter must be a function");
+        errorCallback("Push.register failure: onNotification callback parameter must be a function");
         return;
     }
 
-    cordova.exec(onNotification, errorCallback, "PushPlugin", "register", [options]);
+    if (!options) {
+        ajax({
+            url: "push-config.json",
+            dataType: "text"
+        })
+        .then( function( result ) {
+            cordova.exec(onNotification, errorCallback, "PushPlugin", "register", [JSON.parse(result.data)]);
+        })
+        .catch( function( error ) {
+            errorCallback("Error reading config file " + error);
+        });
+    } else {
+        cordova.exec(onNotification, errorCallback, "PushPlugin", "register", [options]);
+    }
+
 };
 
 /**
