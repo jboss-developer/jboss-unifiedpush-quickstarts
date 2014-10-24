@@ -10,15 +10,15 @@
 * [Apache Cordova CLI](https://github.com/apache/cordova-cli/)
 * [Node.js](http://nodejs.org/download/)
 * Install Cordova by executing:
-
+  
         npm install -g cordova
-
+  
   To deploy on iOS you need to install also the ios-deploy package:
-
+  
         npm install -g ios-deploy
+  
 
-
-### 1. Prerequisites
+### 1. Pre-requisites
 
 Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 
@@ -36,13 +36,11 @@ Done! Your project now contains the JBoss Unified Push PushPlugin. For an integr
         cordova run <android or ios>
 
 ## Example Usage
-
 ### 1. Register the application
-
-The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change `pushServerURL` with the url of your Unified Push Server instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
+The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change `pushServerURL` with the url of your Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
 
         var pushConfig = {
-            pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+            pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
             alias: "<alias e.g. a username or an email address optional>",
             android: {
               senderID: "<senderID e.g Google Project ID only for android>",
@@ -54,19 +52,20 @@ The following JavaScript code shows how to register a device with the JBoss Unif
               variantSecret: "<variantSecret e.g. 1234456-234320>"
             }
         };
-        
+
         push.register(onNotification, successHandler, errorHandler, pushConfig);
 
 
 If you are only targeting one platform, you can simplify the code above by:
 
+
         var pushConfig = {
-            pushServerURL: "<pushServerURL e.g http(s)//host:port/context >",
+            pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
             alias: "<alias e.g. a username or an email address optional>",
             variantID: "<ios variantID e.g. 1234456-234320>",
             variantSecret: "<ios variantSecret e.g. 1234456-234320>"
         };
-        
+
         push.register(onNotification, successHandler, errorHandler, pushConfig);
 
 
@@ -91,7 +90,7 @@ Sending notifications that contain `content-available` on iOS will call the Java
 
 
         function onNotification(event) {
-        
+
           if (event['content-available'] === 1) {
             if (!event.foreground) {
               // fetch content
@@ -101,11 +100,14 @@ Sending notifications that contain `content-available` on iOS will call the Java
         }
 
 
+#### Android VIBRATE Permission
+For applications using the Cordova Push API and running on Android 4.1 or earlier (but for some vendors also Android 4.2 and 4.3 versions are affected), the application may fail with error `java.lang.SecurityException: Requires VIBRATE permission` when a push notification is received and vibration for notifications is enabled on the device. To work around this issue, add `<uses-permission android:name="android.permission.VIBRATE" />` to the application AndroidManifest.xml file. This will ensure that the application does not fail when a push notification is received and the device has vibration for notifications enabled. 
+
 ### 3. Unregister the Application (only available on Android):
 
 
         push.unregister(successHandler, errorHandler);
-        
+
         function successHandler() {
             console.log('success')
         }
