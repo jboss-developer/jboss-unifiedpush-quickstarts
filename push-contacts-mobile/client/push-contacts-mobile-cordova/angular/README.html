@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h3><a id="3-customize-and-build-application-for-angular" class="anchor" href="#3-customize-and-build-application-for-angular"><span class="anchor-icon"></span></a>3. Customize and Build Application for Angular</h3>
+
+<p>Please first refer to the Cordova guide located in this <a href="../README.html">README</a></p>
+
+<ul>
+<li><p>In <code>www/js/controllers.js</code> find the <em>pushConfig</em> (at the top) and change <em>pushServerURL</em> with the url of your Unified Push Server OpenShift instance. You also need to change <em>senderID</em>, <em>variantID</em> and <em>variantSecret</em> with the values assigned by Unified Push Server OpenShift instance and GCM or APNS:</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">pushConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nl">pushServerURL:</span><span class="w"> </span><span class="s2">&quot;&lt;pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push &gt;&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nl">android:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nl">senderID:</span><span class="w"> </span><span class="s2">&quot;&lt;senderID e.g Google Project ID only for android&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">variantID:</span><span class="w"> </span><span class="s2">&quot;&lt;variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">variantSecret:</span><span class="w"> </span><span class="s2">&quot;&lt;variantSecret e.g. 1234456-234320&gt;&quot;</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nl">ios:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nl">variantID:</span><span class="w"> </span><span class="s2">&quot;&lt;variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">variantSecret:</span><span class="w"> </span><span class="s2">&quot;&lt;variantSecret e.g. 1234456-234320&gt;&quot;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div></li>
+</ul>
+
+<p><strong>Note:</strong> You can also copy/paste these settings from your Unified Push Server OpenShift instance console</p>
+
+<ul>
+<li><p>In <code>www/js/app.js</code> change the value of <em>BACKEND_URL</em> with the url of your running <code>Push Contacts Mobile Picketlink Secured</code> instance. Use <code>ip</code> or <code>hostname</code> and not <code>localhost</code> for the <code>host</code> value:</p>
+<div class="highlight"><pre><span class="c1">//app.js    </span>
+<span class="p">.</span><span class="n">constant</span><span class="p">(&#39;</span><span class="no">BACKEND_URL</span><span class="sc">&#39;,&#39;</span><span class="o">&lt;</span> <span class="n">backend</span> <span class="no">URL</span> <span class="n">e</span><span class="p">.</span><span class="n">g</span> <span class="n">http</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="c1">//host:port &gt;/jboss-push-contacts-mobile-picketlink-secured/&#39;)</span>
+</pre></div></li>
+</ul>
+</body></html>

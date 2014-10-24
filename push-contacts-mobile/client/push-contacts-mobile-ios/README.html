@@ -1,0 +1,166 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="pushcontactsmobileios-push-contacts-mobile-ios" class="anchor" href="#pushcontactsmobileios-push-contacts-mobile-ios"><span class="anchor-icon"></span></a>push-contacts-mobile-ios: Push Contacts Mobile iOS</h1>
+
+<p>Author: Christos Vasilakis (cvasilak)<br/>
+Level: Intermediate<br/>
+Technologies: Objective-C, iOS<br/>
+Summary: A contacts CRUD mobile application with push notification integration.<br/>
+Target Product: JBoss Unified Push<br/>
+Versions: 1.0<br/>
+Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">https://github.com/jboss-developer/jboss-mobile-quickstarts/</a>  </p>
+
+<h2><a id="what-is-it" class="anchor" href="#what-is-it"><span class="anchor-icon"></span></a>What is it?</h2>
+
+<p>This quickstart demonstrates how to develop more advanced iOS push applications, centered around a CRUD contacts application.</p>
+
+<p>This client-side iOS project must be used in conjunction with the <code>push-contacts-mobile/server/push-contacts-mobile-picketlink-secured</code> application, which provide the accompanying server-side functionality. </p>
+
+<p>When the client application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server OpenShift instance in response to new contacts being created. Push notifications received by the iOS device contain details of newly added contacts.</p>
+
+<h2><a id="how-do-i-run-it" class="anchor" href="#how-do-i-run-it"><span class="anchor-icon"></span></a>How do I run it?</h2>
+
+<h3><a id="0-system-requirements" class="anchor" href="#0-system-requirements"><span class="anchor-icon"></span></a>0. System requirements</h3>
+
+<ul>
+<li>iOS 7.X</li>
+<li>Xcode version 5.1.X</li>
+</ul>
+
+<h3><a id="1-configuration" class="anchor" href="#1-configuration"><span class="anchor-icon"></span></a>1. Configuration</h3>
+
+<h4><a id="creation-of-certificate-signing-request-and-ssl-certificate-for-apns" class="anchor" href="#creation-of-certificate-signing-request-and-ssl-certificate-for-apns"><span class="anchor-icon"></span></a>Creation of Certificate Signing Request and SSL certificate for APNs</h4>
+
+<p>First you need to submit a request for a new digital certificate, which is based on a public/private key. The Certificate itself is acting as the public key, and when you request it, a private key is added to your <code>KeyChain</code> tool. The Cerficate will be used later on, to request an SSL certificate for the <code>Apple Push Network Service</code>, which will allow the JBoss Unified Push Server to send notification messages to it.</p>
+
+<ol>
+<li>Request a new CSR (Certificate Signing Request) using <code>KeyChain Access</code> tool found in <code>Applications &gt; Utilities</code> folder on your Mac.  Once opened, in the <code>KeyChain Access</code> menu, choose <code>Certificate Assistant &gt; Request a Certificate from a Certificate Authority</code>. Make sure that you have choosen to store the CSR <em>on file</em>, so we can upload it later in the provisioning portal when requesting the actual SSL cert.</li>
+<li>Go to the <a href="https://developer.apple.com/account/overview.action">Provisioning Portal</a> and log in with your Apple developer account. Now, click on the <code>Identifiers</code> link in order to create a new <code>App ID</code> (use the <code>PLUS</code> Icon on the right). In the formular give the <code>App ID</code> a descriptive name. Double check that the <code>Push Notifications</code> checkbox is <em>selected</em>.</li>
+<li>Later in the same page you are asked for an <code>Explicit App ID</code>, since the generic <code>Wildcard App ID</code> does not work with Push Notifications. In the <code>Bundle ID</code> field enter <em>YOUR</em> <code>Bundle ID</code>. This is similar to Java packages. <strong>NOTE:</strong> The <code>Bundle ID</code> has to match the one from the actual iOS application that you are building later in this guide.</li>
+<li>In the next screen confirm your new <code>App ID</code>, and double check that the <code>Push Notifications</code> option is <em>enabled</em>. Afterwards click the <code>Submit</code> button. In the next screen, click on on the newly created <code>App ID</code>, then click the <code>Edit</code> button and scroll down to the <code>Push Notifications</code> section. Here we are asked to generate a <code>Development</code> and a <code>Production</code> certificate that will be used by the Unified Push Server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. 
+
+<ul>
+<li> <code>Development Certificate</code>: Click the <code>Create Certificate</code> button on the <code>Development SSL Certificate</code> section. Upload the <code>Certificate Signing Request</code> that you created earlier and click the <code>Generate</code> button. The <code>Development SSL Certificate</code> file is being downloaded as <code>aps_development.cer</code>. </li>
+<li> <code>Production Certificate</code>: Click the <code>Create Certificate</code> button on the <code>Production SSL Certificate</code> section. Upload the <code>Certificate Signing Request</code> that you created earlier and click the <code>Generate</code> button. The <code>Production SSL Certificate</code> file is being downloaded as <code>aps_production.cer</code>.</li>
+</ul></li>
+</ol>
+
+<p>You have to export this certificates/private keys pair to the .p12 (Personal Information Exchange). These files will be uploaded later on to the JBoss Unified Push Server enabling it to authorize themselves for your development application on Apple Push Network Service and send messages to them. When exporting the files, as your private keys, you need to assign a passphrase for them. Make note of them, because later when uploading them to the JBoss Unified Push Server you will need both the exported files (<code>aps_development.cer</code>, <code>aps_production.cer</code>) and the passphrases.</p>
+
+<h4><a id="creation-of-a-provisioning-profile" class="anchor" href="#creation-of-a-provisioning-profile"><span class="anchor-icon"></span></a>Creation of a Provisioning Profile</h4>
+
+<p>In order to test Push Notifications you neeed to create a <em>Provisioning Profile</em>.
+  *  <code>Development Provisioning Profile</code>: In the <em>Provisioning Portal</em> you need to create an <em>iOS App Development</em> provisioning profile, so that you can test the Push Notifications on your own iOS devices. Select the <code>App ID</code> that you created earlier and your <em>Developer Certificate</em>. Select a <em>Test</em> Device, give it a Profile Name and generate it. Now download the Profile and open the file. Go to <code>Xcode -&gt; preferences...</code> menu, select the <code>Account</code> tab, on the right bottom corner click <code>View details...</code> and you should see your provisioning profile.
+  *  <code>Distribution Provisioning Profile</code>: In order to test Push Notifications on a <code>production environment</code>, you need to create an <em>iOS App Distribution</em> provisioning profile in the <em>Provisioning Portal</em>. Select the <code>App ID</code>, that you created earlier and your <em>Production Certificate</em>. You still need a <em>test device</em> to try your <em>production</em> app with your <em>distribution provisioning profile</em>. Select a <em>Test</em> Device, give it a Profile Name and generate it. Now download the Profile and open the file. Go to <code>Xcode -&gt; preferences...</code> menu, select the <code>Account</code> tab, on the right bottom corner click <code>View details...</code> and you should see your provisioning profile.</p>
+
+<h3><a id="2-register-application-with-push-services" class="anchor" href="#2-register-application-with-push-services"><span class="anchor-icon"></span></a>2. Register Application with Push Services</h3>
+
+<p>You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+
+<ol>
+<li>Log into the Unified Push Server OpenShift instance console.</li>
+<li>In the <code>Applications</code> view, click <code>Create Application</code>.</li>
+<li>In the <code>Name</code> and <code>Description</code> fields, type values for the application and click <code>Create</code>.</li>
+<li>When created, under the application click <code>No variants</code>.</li>
+<li>Click <code>Add Variant</code>.</li>
+<li>In the <code>Name</code> and <code>Description</code> fields, type values for the iOS application variant.</li>
+<li>Click <code>iOS</code> and type the values assigned to the project by APNS (you will have to upload your Developer or Production Certificate)</li>
+<li>Click <code>Add</code>.</li>
+<li>When created, expand the variant name and make note of the <code>Server URL</code>, <code>Variant ID</code>, and <code>Secret</code>.</li>
+</ol>
+
+<h3><a id="3-customize-and-build-application" class="anchor" href="#3-customize-and-build-application"><span class="anchor-icon"></span></a>3. Customize and Build Application</h3>
+
+<p>Replace the bundleId with your bundleId (the one associated with your certificate).
+Click on the <code>Contacts target -&gt; General</code> and modify the <em>Bundle Identifier</em>:</p>
+
+<p><img src="doc/change-contacts-bundle.png" alt="change contacts bundle"/></p>
+
+<p>Ensure the Apple <em>Provisioning profile</em> is correctly set:</p>
+
+<p><img src="doc/change-provisioning-profile.png" alt="change provisioning profile"/></p>
+
+<p>The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and APNS.  </p>
+
+<ol>
+<li>Open <code>QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Controllers/AGLoginViewController.m</code> for editing.</li>
+<li><p>Modify the URL, variant and secret to match the values allocated by the Unified Push Server and APNS for the following constants:</p>
+<div class="highlight"><pre><span class="n">AGDeviceRegistration</span> <span class="o">*</span><span class="n">registration</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AGDeviceRegistration</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithServerURL</span><span class="p">:[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;&lt;# URL of the running JBoss Unified Push Server OpenShift instance #&gt;&quot;</span><span class="p">]];</span>
+<span class="p">...</span>
+<span class="p">[</span><span class="n">clientInfo</span> <span class="nl">setVariantID</span><span class="p">:</span><span class="s">@&quot;&lt;# Variant Id #&gt;&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">clientInfo</span> <span class="nl">setVariantSecret</span><span class="p">:</span><span class="s">@&quot;&lt;# Variant Secret #&gt;&quot;</span><span class="p">];</span>
+</pre></div></li>
+</ol>
+
+<p><strong>Note :</strong> You can also copy/paste these settings from your Unified Push Server console<br/>
+3. Save the file.
+4. Open <code>QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m</code> for editing.
+5. Modify the URL to match the path to the Contacts server backend:</p>
+<div class="highlight"><pre>    <span class="k">static</span> <span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">kAPIBaseURLString</span> <span class="o">=</span> <span class="s">@&quot;&lt;# URL of the Contacts application backend #&gt;&quot;</span><span class="p">;</span>
+</pre></div>
+<ol>
+<li>Save the file.</li>
+<li>Build the application</li>
+</ol>
+
+<h3><a id="4-test-the-application" class="anchor" href="#4-test-the-application"><span class="anchor-icon"></span></a>4. Test the Application</h3>
+
+<h4><a id="0-prerequisites" class="anchor" href="#0-prerequisites"><span class="anchor-icon"></span></a>0. Prerequisites</h4>
+
+<ol>
+<li>The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.</li>
+<li>The <code>push-contacts-mobile/server/push-contacts-mobile-picketlink-secured</code> application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the <code>push-contacts-mobile-picketlink-secured</code> application.</li>
+</ol>
+
+<h4><a id="1-deploy-for-testing" class="anchor" href="#1-deploy-for-testing"><span class="anchor-icon"></span></a>1. Deploy for Testing</h4>
+
+<p>The application can be tested on physical iOS devices only; push notifications are not available for iOS simulators. </p>
+
+<h4><a id="2-log-in" class="anchor" href="#2-log-in"><span class="anchor-icon"></span></a>2. Log In</h4>
+
+<p>When the application is deployed to an iOS device, you can log into it and begin using the CRUD functionality. Note that access to the application is restricted to users registered with the server-side application and to assist you in getting started a number of default users are preconfigured.</p>
+
+<ol>
+<li>Launch the application on the iOS device.</li>
+<li><p>Log into the application using one of the default user credentials (&lsquo;<em>maria:maria</em>&rsquo;,&lsquo;<em>dan:dan</em>&rsquo;, or &lsquo;<em>john:john</em>&rsquo;).</p>
+
+<p>After successful login, you are presented with a list of existing Contacts residing on the server.</p>
+
+<p><img src="doc/contacts-list.png" alt="contacts list home screen"/></p></li>
+<li><p>Click a contact to open the Edit screen where you can modify the contact&rsquo;s details.</p>
+
+<p><img src="doc/contact-details.png" alt="contact details"/></p></li>
+</ol>
+
+<h4><a id="3-send-a-push-message" class="anchor" href="#3-send-a-push-message"><span class="anchor-icon"></span></a>3. Send a Push Message</h4>
+
+<p>You can send a push notification to your device by creating a new Contact.<br/>
+You can also send a push notification to your device using the <code>push-contacts-mobile/client/contacts-mobile-webapp</code> application by completing the following steps (for more information, see the README distributed with the <code>contacts-mobile-webapp</code> application):</p>
+
+<ol>
+<li>Open the web interface of the <code>push-contacts-mobile/client/contacts-mobile-webapp</code> application in a browser at the following URL: <a href="http://localhost:8080/jboss-contacts-mobile-webapp/">http://localhost:8080/jboss-contacts-mobile-webapp/</a> .</li>
+<li>Add a new Contact.</li>
+</ol>
+
+<p>This automatically triggers a push notification request to the Unified Push Server OpenShift instance and subsequently the push notification displays on the mobile device.</p>
+
+<p><img src="doc/notification.png" alt="contact details"/></p>
+
+<h2><a id="39contentavailable39" class="anchor" href="#39contentavailable39"><span class="anchor-icon"></span></a>&lsquo;Content-Available&rsquo;</h2>
+
+<p>Instead of the regular <code>didReceiveRemoteNotification</code> callback invoked when a new notification is received, the application utilizes the &lsquo;silent&rsquo; push feature (offered by iOS 7 and later), so the application can be instructed to fetch the new content even if background (and possible suspended). Thus when the user opens up the app, the content is already available to be viewed. Take a look at the <code>didReceiveRemoteNotification</code> notification callback method inside the file <code>QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/AGAppDelegate.m</code> for the implementation details.</p>
+<div class="highlight"><pre><span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="vg">void</span><span class="p">)</span><span class="nl">application:</span><span class="p">(</span><span class="vg">UIApplication</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="vg">application</span><span class="w"> </span><span class="nl">didReceiveRemoteNotification:</span><span class="p">(</span><span class="vg">NSDictionary</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="vg">userInfo</span><span class="w"> </span><span class="nl">fetchCompletionHandler:</span><span class="p">(</span><span class="vg">void</span><span class="w"> </span><span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="vg">UIBackgroundFetchResult</span><span class="p">))</span><span class="vg">completionHandler</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="o">...</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+<h2><a id="" class="anchor" href="#"><span class="anchor-icon"></span></a>FAQ</h2>
+
+<ul>
+<li>Which iOS version is supported by JBoss Unified Push CRUD mobile app?</li>
+</ul>
+
+<p>JBoss Unified Push supports iOS 7.0 and later.</p>
+
+<h1><a id="debug-the-application" class="anchor" href="#debug-the-application"><span class="anchor-icon"></span></a>Debug the Application</h1>
+
+<p>Set a break point in Xcode.</p>
+</body></html>

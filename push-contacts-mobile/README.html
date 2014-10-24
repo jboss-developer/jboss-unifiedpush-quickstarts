@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="pushcontactsmobile-push-contacts-mobile-assorted-examples" class="anchor" href="#pushcontactsmobile-push-contacts-mobile-assorted-examples"><span class="anchor-icon"></span></a>push-contacts-mobile: Push Contacts Mobile Assorted Examples</h1>
+
+<p>Author: Daniel Passos, Erik Jan de Wit, Christos Vasilakis, Daniel Bevenius, Joshua Wilson, Pedro Igor<br/>
+Level: Intermediate<br/>
+Technologies: Java, JavaScript, jQuery Mobile, Android, Cordova, HTML5, REST, Unified Push Java Client, PicketLink<br/>
+Summary: A secured contacts CRUD mobile application with push notification integration with Android, Cordova and iOS.<br/>
+Target Product: JBoss Unified Push<br/>
+Versions: 1.0<br/>
+Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">https://github.com/jboss-developer/jboss-mobile-quickstarts/</a>  </p>
+
+<h2><a id="what-is-it" class="anchor" href="#what-is-it"><span class="anchor-icon"></span></a>What is it?</h2>
+
+<p>This project contains the JBoss Unified Push <code>push-contacts-mobile</code> quickstart. It demonstrates how to develop more advanced push examples, centered around a CRUD contacts application.</p>
+
+<p>The quickstart consists of several server and client applications, some of which must be deployed simultaneously to achieve a fully working example. Users can view, create and manage contacts through either applications on their mobile devices or a web application. On the creation of new contacts from any one of these applications, the Unified Push Server OpenShift instance sends push notifications containing details of newly added contacts to devices that are registered with the Unified Push Server OpenShift instance for the mobile contacts application.</p>
+
+<p>The following sections describe the individual applications that comprise this example.  </p>
+
+<p><em>NOTE:</em> See the individual quickstart README files for instructions to run them.</p>
+
+<h3><a id="serverside-applications" class="anchor" href="#serverside-applications"><span class="anchor-icon"></span></a>Server-side Applications</h3>
+
+<p>The source for the server applications is located in the <code>QUICKSTART_HOME/push-contacts-mobile/server</code> directory. These applications are deployed to the server and accessed by the client applications.</p>
+
+<ul>
+<li><p><a href="server/push-contacts-mobile-picketlink-secured/README.html">push-contacts-mobile-picketlink-secured</a> is the core server-side application and fundamental to the example. It manages the contacts data, receiving the details of new contacts as they are created in the client applications and storing the details in a server-side database. It also sends push notification requests to the Unified Push Server OpenShift instance when new contacts are created to initiate the sending of push notifications to registered devices. The server-side application rest endpoints are secured with PicketLink and can only be accessed by client applications with authenticated users. This application has no user interface.</p></li>
+<li><p><a href="server/contacts-mobile-proxy/README.html">contacts-mobile-proxy</a> layers the <code>push-contacts-mobile-picketlink-secured</code> quickstart and it can only be used in conjunction with the latter. It is intended for use when the <code>push-contacts-mobile-picketlink-secured</code> application is deployed on a server that is protected behind a firewall, preventing access by clients outside the firewall. The <code>contacts-mobile-proxy</code> is deployed on a server outside the firewall to act as a proxy or router application. This application has an accessible user interface, in which contacts can be viewed and managed as in the client applications. Note that this application has no push functionality. </p></li>
+</ul>
+
+<h3><a id="clientside-applications" class="anchor" href="#clientside-applications"><span class="anchor-icon"></span></a>Client-side Applications</h3>
+
+<p>The source for the client applications is located in the <code>QUICKSTART_HOME/push-contacts-mobile/client</code> directory. This project provides a variety of client applications to demonstrate different mobile APIs and traditional web access.</p>
+
+<ul>
+<li><p><a href="client/push-contacts-mobile-android/README.html">push-contacts-mobile-android</a>, <a href="client/push-contacts-mobile-ios/README.html">push-contacts-mobile-ios</a>, and <a href="client/push-contacts-mobile-cordova/README.html">push-contacts-mobile-cordova</a> are implementations of the same client application for different mobile APIs. When the client application is deployed to a mobile device, the push functionality enables the device to register with the JBoss Unified Push Server OpenShift instance and receive push notifications when new contacts are created. The client applications are secured and authentication managed by the server-side <code>push-contacts-mobile-picketlink-secured</code> application. Additionally, all contact data for the client applications is sourced from the server-side application. </p></li>
+<li><p><a href="client/contacts-mobile-webapp/README.html">contacts-mobile-webapp</a> is an implementation of the client application for deployment to a server rather than a mobile device. Like the mobile client applications, this application requires authentication to view and manage contacts. But this application has no push functionality; it does not register with the Unified Push Server OpenShift instance on deployment and it does not receive push notifications when contacts are created by other client applications. </p></li>
+</ul>
+
+<p>For information about JBoss Unified Push, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+</body></html>

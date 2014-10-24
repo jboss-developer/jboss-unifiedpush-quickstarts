@@ -1,0 +1,85 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body><!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+
+<h1><a id="cordova-hooks" class="anchor" href="#cordova-hooks"><span class="anchor-icon"></span></a>Cordova Hooks</h1>
+
+<p>This directory may contain scripts used to customize cordova commands. This
+directory used to exist at <code>.cordova/hooks</code>, but has now been moved to the
+project root. Any scripts you add to these directories will be executed before
+and after the commands corresponding to the directory name. Useful for
+integrating your own build systems or integrating with version control systems.</p>
+
+<p><strong>Remember</strong>: Make your scripts executable.</p>
+
+<h2><a id="hook-directories" class="anchor" href="#hook-directories"><span class="anchor-icon"></span></a>Hook Directories</h2>
+
+<p>The following subdirectories will be used for hooks:</p>
+<div class="highlight"><pre><span class="vg">after_build</span><span class="o">/</span>
+<span class="vg">after_compile</span><span class="o">/</span>
+<span class="vg">after_docs</span><span class="o">/</span>
+<span class="vg">after_emulate</span><span class="o">/</span>
+<span class="vg">after_platform_add</span><span class="o">/</span>
+<span class="vg">after_platform_rm</span><span class="o">/</span>
+<span class="vg">after_platform_ls</span><span class="o">/</span>
+<span class="vg">after_plugin_add</span><span class="o">/</span>
+<span class="vg">after_plugin_ls</span><span class="o">/</span>
+<span class="vg">after_plugin_rm</span><span class="o">/</span>
+<span class="vg">after_plugin_search</span><span class="o">/</span>
+<span class="vg">after_prepare</span><span class="o">/</span>
+<span class="vg">after_run</span><span class="o">/</span>
+<span class="vg">after_serve</span><span class="o">/</span>
+<span class="vg">before_build</span><span class="o">/</span>
+<span class="vg">before_compile</span><span class="o">/</span>
+<span class="vg">before_docs</span><span class="o">/</span>
+<span class="vg">before_emulate</span><span class="o">/</span>
+<span class="vg">before_platform_add</span><span class="o">/</span>
+<span class="vg">before_platform_rm</span><span class="o">/</span>
+<span class="vg">before_platform_ls</span><span class="o">/</span>
+<span class="vg">before_plugin_add</span><span class="o">/</span>
+<span class="vg">before_plugin_ls</span><span class="o">/</span>
+<span class="vg">before_plugin_rm</span><span class="o">/</span>
+<span class="vg">before_plugin_search</span><span class="o">/</span>
+<span class="vg">before_prepare</span><span class="o">/</span>
+<span class="vg">before_run</span><span class="o">/</span>
+<span class="vg">before_serve</span><span class="o">/</span>
+<span class="vg">pre_package</span><span class="o">/</span><span class="w"> </span><span class="o">&lt;--</span><span class="w"> </span><span class="vg">Windows</span><span class="w"> </span><span class="il">8</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="vg">Windows</span><span class="w"> </span><span class="vg">Phone</span><span class="w"> </span><span class="vg">only</span><span class="o">.</span>
+</pre></div>
+<h2><a id="script-interface" class="anchor" href="#script-interface"><span class="anchor-icon"></span></a>Script Interface</h2>
+
+<p>All scripts are run from the project&rsquo;s root directory and have the root directory passes as the first argument. All other options are passed to the script using environment variables:</p>
+
+<ul>
+<li>CORDOVA_VERSION - The version of the Cordova-CLI.</li>
+<li>CORDOVA_PLATFORMS - Comma separated list of platforms that the command applies to (e.g.: android, ios).</li>
+<li>CORDOVA_PLUGINS - Comma separated list of plugin IDs that the command applies to (e.g.: org.apache.cordova.file, org.apache.cordova.file-transfer)</li>
+<li>CORDOVA_HOOK - Path to the hook that is being executed.</li>
+<li>CORDOVA_CMDLINE - The exact command-line arguments passed to cordova (e.g.: cordova run ios &ndash;emulate)</li>
+</ul>
+
+<p>If a script returns a non-zero exit code, then the parent cordova command will be aborted.</p>
+
+<h2><a id="writing-hooks" class="anchor" href="#writing-hooks"><span class="anchor-icon"></span></a>Writing hooks</h2>
+
+<p>We highly recommend writting your hooks using Node.js so that they are
+cross-platform. Some good examples are shown here:</p>
+
+<p><a href="http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/">http://devgirl.org/2013/11/12/three-hooks-your-cordovaphonegap-project-needs/</a></p>
+</body></html>

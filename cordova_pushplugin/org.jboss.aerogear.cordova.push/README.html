@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="jboss-unified-push-pushplugin-for-cordova" class="anchor" href="#jboss-unified-push-pushplugin-for-cordova"><span class="anchor-icon"></span></a>JBoss Unified Push PushPlugin for Cordova</h1>
+
+<hr/>
+
+<p><code>JBoss Unified Push PushPlugin for Cordova</code> is an extension of the standard Cordova Push Plugin and provides support for integrating with push and registering Cordova applications with the JBoss Unified Push Server, while making your javascript less verbose and easier to maintain. It currently supports Google’s Cloud Messaging (GCM) and Apple&rsquo;s Push Notification Service (APNS) with the JBoss Unified Push Server.</p>
+
+<h2><a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it"><span class="anchor-icon"></span></a>How do I use it?</h2>
+
+<h3><a id="0-system-requirements" class="anchor" href="#0-system-requirements"><span class="anchor-icon"></span></a>0. System Requirements</h3>
+
+<ul>
+<li><a href="https://github.com/apache/cordova-cli/">Apache Cordova CLI</a></li>
+<li><a href="http://nodejs.org/download/">Node.js</a></li>
+<li><p>Install Cordova by executing:</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">cordova</span>
+</pre></div></li>
+</ul>
+
+<p>To deploy on iOS you need to install also the ios-deploy package:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">ios</span><span class="o">-</span><span class="vg">deploy</span>
+</pre></div>
+<h3><a id="1-prerequisites" class="anchor" href="#1-prerequisites"><span class="anchor-icon"></span></a>1. Pre-requisites</h3>
+
+<p>Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.</p>
+
+<p>For the configuration and registration of Android or iOS Applications with GCM or APNS, please refer to the specific guides inside <code>JBoss Unified Push for Android</code> and <code>JBoss Unified Push for iOS</code> libraries.</p>
+
+<h3><a id="2-use-jboss-unified-push-pushplugin-for-cordova" class="anchor" href="#2-use-jboss-unified-push-pushplugin-for-cordova"><span class="anchor-icon"></span></a>2. Use JBoss Unified Push PushPlugin for Cordova</h3>
+
+<p>Extract the <code>JBoss Unified Push PushPlugin for Cordova</code> and install it specifying the local path to the plugin directory that contains the <code>plugin.xml</code> file, executing the following command from within your project folder:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">cordova</span><span class="w"> </span><span class="vg">plugin</span><span class="w"> </span><span class="vg">add</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">path</span><span class="o">-</span><span class="vg">to</span><span class="o">-</span><span class="vg">org</span><span class="o">.</span><span class="vg">jboss</span><span class="o">.</span><span class="vg">aerogear</span><span class="o">.</span><span class="vg">cordova</span><span class="o">.</span><span class="vg">push</span><span class="o">-</span><span class="vg">dir</span><span class="o">&gt;</span>
+</pre></div>
+<p>Done! Your project now contains the JBoss Unified Push PushPlugin. For an integration with the <code>JBoss Unified Push Server</code> open the <code>www</code> folder in your text editor and apply the code from the example below. You can then execute the project with the command:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">cordova</span><span class="w"> </span><span class="vg">run</span><span class="w"> </span><span class="o">&lt;</span><span class="vg">android</span><span class="w"> </span><span class="vg">or</span><span class="w"> </span><span class="vg">ios</span><span class="o">&gt;</span>
+</pre></div>
+<h2><a id="example-usage" class="anchor" href="#example-usage"><span class="anchor-icon"></span></a>Example Usage</h2>
+
+<h3><a id="1-register-the-application" class="anchor" href="#1-register-the-application"><span class="anchor-icon"></span></a>1. Register the application</h3>
+
+<p>The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change <code>pushServerURL</code> with the url of your Unified Push Server OpenShift instance. You also need to change <code>senderID</code>, <code>variantID</code> and <code>variantSecret</code> with the values assigned by Unified Push Server and GCM or APNS:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">pushConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nl">pushServerURL:</span><span class="w"> </span><span class="s2">&quot;&lt;pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push &gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">alias:</span><span class="w"> </span><span class="s2">&quot;&lt;alias e.g. a username or an email address optional&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">android:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nl">senderID:</span><span class="w"> </span><span class="s2">&quot;&lt;senderID e.g Google Project ID only for android&gt;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nl">variantID:</span><span class="w"> </span><span class="s2">&quot;&lt;variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nl">variantSecret:</span><span class="w"> </span><span class="s2">&quot;&lt;variantSecret e.g. 1234456-234320&gt;&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nl">ios:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nl">variantID:</span><span class="w"> </span><span class="s2">&quot;&lt;variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nl">variantSecret:</span><span class="w"> </span><span class="s2">&quot;&lt;variantSecret e.g. 1234456-234320&gt;&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="vg">push</span><span class="o">.</span><span class="vg">register</span><span class="p">(</span><span class="vg">onNotification</span><span class="p">,</span><span class="w"> </span><span class="vg">successHandler</span><span class="p">,</span><span class="w"> </span><span class="vg">errorHandler</span><span class="p">,</span><span class="w"> </span><span class="vg">pushConfig</span><span class="p">);</span>
+</pre></div>
+<p>If you are only targeting one platform, you can simplify the code above by:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">pushConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nl">pushServerURL:</span><span class="w"> </span><span class="s2">&quot;&lt;pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push &gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">alias:</span><span class="w"> </span><span class="s2">&quot;&lt;alias e.g. a username or an email address optional&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">variantID:</span><span class="w"> </span><span class="s2">&quot;&lt;ios variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nl">variantSecret:</span><span class="w"> </span><span class="s2">&quot;&lt;ios variantSecret e.g. 1234456-234320&gt;&quot;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="vg">push</span><span class="o">.</span><span class="vg">register</span><span class="p">(</span><span class="vg">onNotification</span><span class="p">,</span><span class="w"> </span><span class="vg">successHandler</span><span class="p">,</span><span class="w"> </span><span class="vg">errorHandler</span><span class="p">,</span><span class="w"> </span><span class="vg">pushConfig</span><span class="p">);</span>
+</pre></div>
+<h3><a id="2-receive-remote-notifications" class="anchor" href="#2-receive-remote-notifications"><span class="anchor-icon"></span></a>2. Receive Remote Notifications</h3>
+
+<p>The <code>onNotification</code> callback will get executed by the plugin when a new message arrives. </p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">function</span><span class="w"> </span><span class="vg">onNotification</span><span class="p">(</span><span class="vg">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">alert</span><span class="p">(</span><span class="vg">event</span><span class="o">.</span><span class="vg">alert</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+<p>The passed in <code>event</code> object contains:</p>
+
+<ul>
+<li><code>alert</code>: the alert message send</li>
+<li><code>coldstart</code>: information whether the app was running when the message was received</li>
+<li><code>badge</code>: the number to display on the icon (iOS specific)</li>
+<li>any custom set of properties that are available under e.payload ( e.g <code>alert(e.payload.foo);</code> )</li>
+</ul>
+
+<h4><a id="ios-background-notification" class="anchor" href="#ios-background-notification"><span class="anchor-icon"></span></a>iOS Background Notification</h4>
+
+<p>Sending notifications that contain <code>content-available</code> on iOS will call the JavaScript before launching the application. This will enable you to update the UI or do a silent push (e.g. without an alert) to update the content of your application without the user noticing.  After fetching the content, you&rsquo;ll have to <em>inform</em> the os about the result by calling <code>setContentAvailable</code> with either <code>NewData</code>, <code>NoData</code> or <code>Failed</code>:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">function</span><span class="w"> </span><span class="vg">onNotification</span><span class="p">(</span><span class="vg">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">event</span><span class="p">[</span><span class="c1">&#39;content-available&#39;] === 1) {</span>
+<span class="w">        </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="vg">event</span><span class="o">.</span><span class="vg">foreground</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="o">//</span><span class="w"> </span><span class="vg">fetch</span><span class="w"> </span><span class="vg">content</span>
+<span class="w">          </span><span class="vg">push</span><span class="o">.</span><span class="vg">setContentAvailable</span><span class="p">(</span><span class="vg">push</span><span class="o">.</span><span class="vg">FetchResult</span><span class="o">.</span><span class="vg">NewData</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+<h4><a id="android-vibrate-permission" class="anchor" href="#android-vibrate-permission"><span class="anchor-icon"></span></a>Android VIBRATE Permission</h4>
+
+<p>For applications using the Cordova Push API and running on Android 4.1 or earlier (but for some vendors also Android 4.2 and 4.3 versions are affected), the application may fail with error <code>java.lang.SecurityException: Requires VIBRATE permission</code> when a push notification is received and vibration for notifications is enabled on the device. To work around this issue, add <code>&lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;</code> to the application AndroidManifest.xml file. This will ensure that the application does not fail when a push notification is received and the device has vibration for notifications enabled. </p>
+
+<h3><a id="3-unregister-the-application-only-available-on-android" class="anchor" href="#3-unregister-the-application-only-available-on-android"><span class="anchor-icon"></span></a>3. Unregister the Application (only available on Android):</h3>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">push</span><span class="o">.</span><span class="vg">unregister</span><span class="p">(</span><span class="vg">successHandler</span><span class="p">,</span><span class="w"> </span><span class="vg">errorHandler</span><span class="p">);</span>
+
+<span class="w">    </span><span class="vg">function</span><span class="w"> </span><span class="vg">successHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="c1">&#39;success&#39;)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="vg">function</span><span class="w"> </span><span class="vg">errorHandler</span><span class="p">(</span><span class="vg">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="c1">&#39;error &#39; + message);</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+<h2><a id="demo" class="anchor" href="#demo"><span class="anchor-icon"></span></a>Demo</h2>
+
+<p>For more information about configuring and using the JBoss Unified Push PushPlugin for Cordova, refer to <code>JBoss Unified Push Helloworld Cordova</code> and <code>JBoss Unified Push Contacts Mobile Cordova</code>, as examples of projects using the push feature with JBoss Unified Push for Cordova.</p>
+
+<p>###JBoss Unified Push Server
+For more information about deploying, configuring and using the JBoss Unified Push Server, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+</body></html>

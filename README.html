@@ -1,0 +1,115 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="red-hat-jboss-unified-push-quickstarts" class="anchor" href="#red-hat-jboss-unified-push-quickstarts"><span class="anchor-icon"></span></a>Red Hat JBoss Unified Push Quickstarts</h1>
+
+<p>Summary: The JBoss Unified Push quickstarts are ready-to-assemble applications, provided in a variety of mobile API formats. The mobile formats typically have prerequisite library and application configuration that must be completed before the applications can be built and deployed.    </p>
+
+<h2><a id="introduction" class="anchor" href="#introduction"><span class="anchor-icon"></span></a>Introduction</h2>
+
+<p>These quickstarts run on Red Hat JBoss Enterprise Application Platform 6.3. We recommend using the JBoss EAP ZIP file. This version uses the correct dependencies and ensures you test and compile against your runtime environment. </p>
+
+<p>Be sure to read this entire document before you attempt to work with the quickstarts. It contains the following information:</p>
+
+<ul>
+<li><p><a href="#available-quickstarts">Available Quickstarts</a>: List of the available quickstarts and details about each one.</p></li>
+<li><p><a href="#suggested-approach-to-the-quickstarts">Suggested Approach to the Quickstarts</a>: A suggested approach on how to work with the quickstarts.</p></li>
+<li><p><a href="#system-requirements">System Requirements</a>: List of software required to run the quickstarts.</p></li>
+<li><p><a href="https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_MAVEN.md#configure-maven-to-build-and-deploy-the-quickstarts">Configure Maven</a>: How to configure the Maven repository for use by the quickstarts.</p></li>
+<li><p><a href="#run-the-quickstarts">Run the Quickstarts</a>: General instructions for building, deploying, and running the quickstarts.</p></li>
+<li><p><a href="#optional-components">Optional Components</a>: How to install and configure optional components required by some of the quickstarts.</p></li>
+</ul>
+
+<h2><a id="use-of-eaphome-and-jbosshome-variables" class="anchor" href="#use-of-eaphome-and-jbosshome-variables"><span class="anchor-icon"></span></a>Use of EAP_HOME and JBOSS_HOME Variables</h2>
+
+<p>The quickstart README files use the <em>replaceable</em> value <code>EAP_HOME</code> to denote the path to the JBoss EAP 6 installation. When you encounter this value in a README file, be sure to replace it with the actual path to your JBoss EAP 6 installation. </p>
+
+<ul>
+<li><p>If you installed JBoss EAP using the ZIP, the install directory is the path you specified when you ran the command.</p></li>
+<li><p>If you installed JBoss EAP using the RPM, the install directory is <code>/var/lib/jbossas/</code>.</p></li>
+<li><p>If you used the installer to install JBoss EAP, the default path for <code>EAP_HOME</code> is <code>${user.home}/EAP-6.3.0</code>.  </p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w"> </span><span class="o">/</span><span class="vg">home</span><span class="o">/</span><span class="vg">USER_NAME</span><span class="o">/</span><span class="vg">EAP</span><span class="mf">-6.3.0</span><span class="o">/</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="s2">&quot;C:\Users\USER_NAME\EAP-6.3.0\&quot;</span>
+</pre></div></li>
+<li><p>If you used the JBoss Developer Studio installer to install and configure the JBoss EAP Server, the default path for <code>EAP_HOME</code> is <code>${user.home}/jbdevstudio/runtimes/jboss-eap</code>.  </p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w"> </span><span class="o">/</span><span class="vg">home</span><span class="o">/</span><span class="vg">USER_NAME</span><span class="o">/</span><span class="vg">jbdevstudio</span><span class="o">/</span><span class="vg">runtimes</span><span class="o">/</span><span class="vg">jboss</span><span class="o">-</span><span class="vg">eap</span><span class="o">/</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="s2">&quot;C:\Users\USER_NAME\jbdevstudio\runtimes\jboss-eap&quot;</span><span class="w"> </span><span class="vg">or</span><span class="w"> </span><span class="s2">&quot;C:\Documents and Settings\USER_NAME\jbdevstudio\runtimes\jboss-eap\&quot;</span><span class="w"> </span>
+</pre></div></li>
+</ul>
+
+<p>The <code>JBOSS_HOME</code> <em>environment</em> variable, which is used in scripts, continues to work as it has in the past.</p>
+
+<h2><a id="available-quickstarts" class="anchor" href="#available-quickstarts"><span class="anchor-icon"></span></a>Available Quickstarts</h2>
+
+<ul>
+<li><p><a href="push-helloworld-android/README.html">push-helloworld-android</a>, <a href="push-helloworld-cordova/README.html">push-helloworld-cordova</a>, and <a href="push-helloworld-ios/README.html">push-helloworld-ios</a> demonstrate how to include basic push functionality in mobile applications, provided in Android, Cordova and iOS variants. Once the application is deployed to a mobile device, the push functionality enables the device to register with a running JBoss Unified Push Server OpenShift instance and receive push notifications.</p></li>
+<li><p><a href="push-contacts-mobile/README.html">push-contacts-mobile</a> shows how to develop a more advanced push example, centered around a CRUD contacts application. The complete <code>push-contacts-mobile</code> example functionality is provided by a server application and a client application. The server application sends push notification requests to a running JBoss Unified Push Server OpenShift instance when new contacts are added. The client application enables devices to register with the Unified Push Server and receive push notifications with details of newly added contacts. The client application is provided in Android, Cordova, iOS and web application variants.</p></li>
+</ul>
+
+<p>All available quickstarts can be found here: <a href="http://site-jdf.rhcloud.com/quickstarts/get-started/">http://site-jdf.rhcloud.com/quickstarts/get-started/</a>. You can filter by the quickstart name, the product, and the technologies demonstrated by the quickstart. You can also limit the results based on skill level and date published. The resulting page provides a brief description of each matching quickstart, the skill level, and the technologies used. Click on the quickstart to see more detailed information about how to run it. Some quickstarts require deployment of other quickstarts. This information is noted in the <code>Prerequisites</code> section of the quickstart README file.</p>
+
+<p><em>Note</em>: Some of these quickstart use the H2 database included with JBoss EAP 6. It is a lightweight, relational example datasource that is used for examples only. It is not robust or scalable and should NOT be used in a production environment!</p>
+
+<h2><a id="suggested-approach-to-the-quickstarts" class="anchor" href="#suggested-approach-to-the-quickstarts"><span class="anchor-icon"></span></a>Suggested Approach to the Quickstarts</h2>
+
+<p>We suggest you approach the quickstarts as follows:</p>
+
+<ul>
+<li>If you are a beginner or new to JBoss, start with the quickstarts labeled <strong>Beginner</strong>, then try those marked as <strong>Intermediate</strong>. When you are comfortable with those, move on to the <strong>Advanced</strong> quickstarts.</li>
+<li>Some quickstarts are based upon other quickstarts but have expanded capabilities and functionality. If a prerequisite quickstart is listed, be sure to deploy and test it before looking at the expanded version.</li>
+</ul>
+
+<h2><a id="system-requirements" class="anchor" href="#system-requirements"><span class="anchor-icon"></span></a>System Requirements</h2>
+
+<p>The applications these projects produce are designed to be run on Red Hat JBoss Enterprise Application Platform 6.3. </p>
+
+<p>To run these quickstarts with the provided build scripts, you need the following:</p>
+
+<ol>
+<li><p>Java 1.6, to run JBoss EAP and Maven. You can choose from the following:</p>
+
+<ul>
+<li>OpenJDK</li>
+<li>Oracle Java SE</li>
+<li>Oracle JRockit</li>
+</ul></li>
+<li><p>Maven 3.0.0 or newer, to build and deploy the examples</p>
+
+<ul>
+<li>If you have not yet installed Maven, see the <a href="http://maven.apache.org/guides/getting-started/index.html">Maven Getting Started Guide</a> for details.</li>
+<li><p>If you have installed Maven, you can check the version by typing the following in a command prompt:</p>
+
+<p>mvn &ndash;version </p></li>
+</ul></li>
+<li><p>The JBoss EAP distribution ZIP.</p>
+
+<ul>
+<li>For information on how to install and run JBoss, see the <a href="https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/">JBoss Enterprise Application Platform Documentation</a> <em>Getting Started Guide</em> located on the Customer Portal.</li>
+</ul></li>
+<li><p>You can also use <a href="#use-jboss-developer-studio-or-eclipse-to-run-the-quickstarts">JBoss Developer Studio or Eclipse</a> to run the quickstarts. </p></li>
+</ol>
+
+<h2><a id="run-the-quickstarts" class="anchor" href="#run-the-quickstarts"><span class="anchor-icon"></span></a>Run the Quickstarts</h2>
+
+<p>The root folder of each individual quickstart contains a README file with specific details on how to build and run the example. </p>
+
+<h2><a id="use-jboss-developer-studio-or-eclipse-to-run-the-quickstarts" class="anchor" href="#use-jboss-developer-studio-or-eclipse-to-run-the-quickstarts"><span class="anchor-icon"></span></a>Use JBoss Developer Studio or Eclipse to Run the Quickstarts</h2>
+
+<p>You can also deploy the quickstarts from Eclipse using JBoss tools. For more information on how to set up Maven and the JBoss tools, see the <a href="https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/">JBoss Enterprise Application Platform Documentation</a> <em>Getting Started Guide</em> and <em>Development Guide</em> or <a href="http://www.jboss.org/products/devstudio/get-started/" title="Get Started with JBoss Developer Studio">Get Started with JBoss Developer Studio</a>.</p>
+
+<h2><a id="optional-components" class="anchor" href="#optional-components"><span class="anchor-icon"></span></a>Optional Components</h2>
+
+<p>The following components are needed for only a small subset of the quickstarts. Do not install or configure them unless the quickstart requires it.</p>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a></li>
+<li><a href="http://maven.apache.org">Maven 3.1.1</a></li>
+<li><a href="https://developer.android.com/sdk/index.html">Android SDK</a> and <a href="http://developer.android.com/tools/revisions/platforms.html">Platform version 19</a></li>
+<li><a href="http://developer.android.com/tools/support-library/index.html">Android Support Library</a> and <a href="http://developer.android.com/google/play-services/index.html">Google Play Services</a></li>
+<li><a href="https://github.com/mosabua/maven-android-sdk-deployer">Maven Android SDK Deployer</a></li>
+<li><a href="http://nodejs.org/download/">Node.js</a></li>
+<li><a href="http://cordova.apache.org/">Apache Cordova</a></li>
+<li><a href="http://ant.apache.org/manual/install.html">Ant</a></li>
+<li><a href="https://developer.apple.com/xcode/">XCode 5.1+</a></li>
+</ul>
+
+<p>For information about JBoss Unified Push, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+</body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="contactsmobileproxy-contacts-mobile-proxy" class="anchor" href="#contactsmobileproxy-contacts-mobile-proxy"><span class="anchor-icon"></span></a>contacts-mobile-proxy: Contacts Mobile Proxy</h1>
+
+<p>Author: Daniel Bevenius<br/>
+Level: Beginner<br/>
+Technologies: REST<br/>
+Summary: A basic example of CRUD operations that are proxied to a backend system.<br/>
+Target Product: JBoss Unified Push<br/>
+Versions: 1.0<br/>
+Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">https://github.com/jboss-developer/jboss-mobile-quickstarts/</a>  </p>
+
+<h2><a id="what-is-it" class="anchor" href="#what-is-it"><span class="anchor-icon"></span></a>What is it?</h2>
+
+<p>It&rsquo;s a deployable Maven 3 project to help you get started in developing <code>proxied web applications</code> with Java EE 6 on JBoss EAP.</p>
+
+<p><em>So what is a <code>proxied web application</code>?</em><br/>
+The need of a proxied web application arises when you have a backend system that is not allowed to be exposed to direct traffic from the internet, but there is a service in this backend system that needs to be exposed, without jeopardizing the whole backend system (backend systems would most often be protected by a firewall).</p>
+
+<p>A proxied web application would be deployed on a server on the other side of that firewall (on a server that is safe to expose to direct traffic from the internet), and would proxy its request to the exposed service in this backend system.</p>
+
+<h2><a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it"><span class="anchor-icon"></span></a>How do I use it?</h2>
+
+<h3><a id="0-system-requirements" class="anchor" href="#0-system-requirements"><span class="anchor-icon"></span></a>0. System Requirements</h3>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 6</a></li>
+<li><a href="http://maven.apache.org">Maven 3.0</a> or later</li>
+<li>Red Hat JBoss Enterprise Application Platform (EAP) 6.3.0.GA</li>
+</ul>
+
+<h3><a id="1-prepare-maven-libraries" class="anchor" href="#1-prepare-maven-libraries"><span class="anchor-icon"></span></a>1. Prepare Maven Libraries</h3>
+
+<p>This quickstart is designed to be built with Maven. It requires the JBoss Unified Push and JBoss EAP 6.3.0 Maven repositories.</p>
+
+<p>You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a> or the README distributed with the JBoss Unified Push Maven repository.</p>
+
+<h3><a id="2-start-the-jboss-eap-server" class="anchor" href="#2-start-the-jboss-eap-server"><span class="anchor-icon"></span></a>2. Start the JBoss EAP Server</h3>
+
+<p>This quickstart requires three instances of JBoss EAP running with the following quickstart deployed:
+<code>push-contacts-mobile-picketlink-secured</code>, <code>contacts-mobile-webapp</code>, and <code>contacts-mobile-proxy</code></p>
+
+<p>If you have previously deployed the above quickstart then please undeploy them so we start from a clean state. Then follow
+the instructions below to startup the server with the correct ports and also to deploy the quickstart to the correct
+servers.</p>
+
+<ol>
+<li>Open a command line and navigate to the root of the JBoss EAP directory.</li>
+<li><p>Start the server instance that will host the <code>push-contacts-mobile-picketlink-secured</code> quickstart</p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span>
+</pre></div></li>
+<li><p>Start the server instance that will host the <code>contacts-mobile-webapp</code> quickstart</p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">.</span><span class="vg">socket</span><span class="o">.</span><span class="vg">binding</span><span class="o">.</span><span class="vg">port</span><span class="o">-</span><span class="vg">offset</span><span class="o">=</span><span class="il">100</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">.</span><span class="vg">socket</span><span class="o">.</span><span class="vg">binding</span><span class="o">.</span><span class="vg">port</span><span class="o">-</span><span class="vg">offset</span><span class="o">=</span><span class="il">100</span>
+</pre></div></li>
+<li><p>Start the server instance that will host the <code>contacts-mobile-proxy quickstart</code> quickstart</p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">.</span><span class="vg">socket</span><span class="o">.</span><span class="vg">binding</span><span class="o">.</span><span class="vg">port</span><span class="o">-</span><span class="vg">offset</span><span class="o">=</span><span class="il">200</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">.</span><span class="vg">socket</span><span class="o">.</span><span class="vg">binding</span><span class="o">.</span><span class="vg">port</span><span class="o">-</span><span class="vg">offset</span><span class="o">=</span><span class="il">200</span>
+</pre></div></li>
+</ol>
+
+<p><strong>Note:</strong> Adding &ldquo;-b 0.0.0.0&rdquo; to the above commands will allow external clients (phones, tablets, desktops, etc&hellip;) to connect through your local network.</p>
+
+<p>For example</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span><span class="w"> </span><span class="o">-</span><span class="vg">b</span><span class="w"> </span><span class="mf">0.0.0.0</span>
+<span class="w">    </span><span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span><span class="w"> </span><span class="o">-</span><span class="vg">b</span><span class="w"> </span><span class="mf">0.0.0.0</span>
+</pre></div>
+<h3><a id="3-configure-contactsmobilewebapp" class="anchor" href="#3-configure-contactsmobilewebapp"><span class="anchor-icon"></span></a>3. Configure contacts-mobile-webapp</h3>
+
+<p>By default the <code>contacts-mobile-webapp</code> is set up to work directly against <code>push-contacts-mobile-picketlink-secured</code> as its backend. For this quickstart we will instead have <code>contacts-mobile_webapp</code> work against <code>contacts-mobile-proxy</code>. This requires a change to <code>contacts-mobile-webapp/src/main/webapp/js/app.js</code>.  </p>
+
+<p>Please open for edit  <code>contacts-mobile-webapp/src/main/webapp/js/app.js</code> and update the <code>CONTACTS.app.serverURL</code> variable to:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">CONTACTS</span><span class="o">.</span><span class="vg">app</span><span class="o">.</span><span class="vg">serverUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://localhost:8280/jboss-contacts-mobile-proxy&quot;</span><span class="p">;</span>
+</pre></div>
+<h3><a id="4-build-and-deploy-the-quickstart" class="anchor" href="#4-build-and-deploy-the-quickstart"><span class="anchor-icon"></span></a>4. Build and Deploy the Quickstart</h3>
+
+<ol>
+<li>Make sure you have started the JBoss EAP servers as described above.</li>
+<li>Open a command line and navigate to the root directory of this quickstart.</li>
+<li><p>From the <code>push-contacts-mobile-picketlink-secured</code> directory run the following command to deploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">deploy</span>
+</pre></div></li>
+<li><p>From the <code>contacts-mobile-webapp</code> directory run the following command to deploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">deploy</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">-</span><span class="vg">as</span><span class="o">.</span><span class="vg">port</span><span class="o">=</span><span class="il">10099</span>
+</pre></div></li>
+<li><p>From the <code>contacts-mobile-proxy</code> directory run the following command to deploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">deploy</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">-</span><span class="vg">as</span><span class="o">.</span><span class="vg">port</span><span class="o">=</span><span class="il">10199</span>
+</pre></div></li>
+</ol>
+
+<p>The reason why we need the servers to be started before deploying is that since all server are using the same configuration file, <code>standalone.xml</code>, all deployments are persisted to this file. This means that if you restart the server all three quickstart will be deployed which is not desirable. You can either undeploy each quickstart or edit <code>standalone/configuration/standalone.xml</code> and remove the <code>deployments</code> element.</p>
+
+<h3><a id="5-test-the-application" class="anchor" href="#5-test-the-application"><span class="anchor-icon"></span></a>5. Test the Application</h3>
+
+<p>Access the running client application in a browser at the following URL: <a href="http://localhost:8180/jboss-contacts-mobile-webapp/#signin-page">http://localhost:8180/jboss-contacts-mobile-webapp/#signin-page</a>.<br/>
+Please refer to the documentation for <a href="../../client/contacts-mobile-webapp">contacts-mobile-webapp</a> for details about testing these quickstarts.</p>
+
+<h3><a id="6-undeploy-the-quickstart" class="anchor" href="#6-undeploy-the-quickstart"><span class="anchor-icon"></span></a>6. Undeploy the Quickstart</h3>
+
+<ol>
+<li>Make sure you have started the JBoss EAP server as described above.</li>
+<li>Open a command line and navigate to the root directory of this quickstart</li>
+<li><p>From the <code>contacts-mobile-webapp</code> directory run the following command to undeploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">undeploy</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">-</span><span class="vg">as</span><span class="o">.</span><span class="vg">port</span><span class="o">=</span><span class="il">10099</span>
+</pre></div></li>
+<li><p>From the <code>contacts-mobile-proxy</code> directory run the following command to undeploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">undeploy</span><span class="w"> </span><span class="o">-</span><span class="vg">Djboss</span><span class="o">-</span><span class="vg">as</span><span class="o">.</span><span class="vg">port</span><span class="o">=</span><span class="il">10199</span>
+</pre></div></li>
+<li><p>From the <code>push-contacts-mobile-picketlink-secured</code> directory run the following command to undeploy the quickstart:</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">undeploy</span>
+</pre></div></li>
+</ol>
+
+<h2><a id="" class="anchor" href="#"><span class="anchor-icon"></span></a>FAQ</h2>
+
+<p>How do I configure the proxy application?</p>
+
+<p>By default there is nothing to configure in this quickstart. But you might be interested in how the proxy is configured. The rules for the proxy can be found in
+<a href="./src/main/webapp/WEB-INF/proxy-gateway-config.json">proxy-gateway-config.json</a>.</p>
+
+<p>This JSON file defines the mapping of URLs that the proxy can handle. You can define as many rules are you like; the basic single rule looks like this:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;rule&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/rest/contacts&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts&quot;</span><span class="p">}</span>
+</pre></div>
+<p>The above can be read as: any request with a request URI of <code>/rest/contacts</code> should be sent to the URI of <code>to</code>.<br/>
+You can also have path parameters in your rules. For example, we have the following rule in addition to the one above exists in this quickstart:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;rule&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/rest/contacts/{id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;to&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080/jboss-push-contacts-mobile-picketlink-secured/rest/contacts{id}&quot;</span><span class="p">}</span>
+</pre></div>
+<p>With this rule, any request URI in the format <code>/rest/contacts/10001</code> will be proxied to the URI of <code>to</code>.</p>
+
+<h2><a id="use-the-project-with-an-ide" class="anchor" href="#use-the-project-with-an-ide"><span class="anchor-icon"></span></a>Use the Project with an IDE</h2>
+
+<p>You can import this project into an IDE (JBoss Developer Studio, NetBeans or IntelliJ IDEA). If you are using JBoss Developer Studio you must import the project as a Maven project. If you are using NetBeans 6.8 or IntelliJ IDEA 9, then you can open the project as an existing project as both of these IDEs recognize Maven projects natively.</p>
+
+<p>You can also start the server and deploy the quickstarts from JBoss Developer Studio. For more information , see the <a href="http://www.jboss.org/products/devstudio/get-started/" title="Get Started with JBoss Developer Studio">Get Started with JBoss Developer Studio</a>.</p>
+
+<p>If you want to debug the source code of any library in the project, run the following command to pull the source into your local repository. The IDE should then detect it.</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="nl">dependency:</span><span class="vg">sources</span>
+</pre></div></body></html>

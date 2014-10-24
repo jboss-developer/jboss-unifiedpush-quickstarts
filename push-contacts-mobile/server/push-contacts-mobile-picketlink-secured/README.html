@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="pushcontactsmobilepicketlinksecured-push-contacts-mobile-picketlink-secured" class="anchor" href="#pushcontactsmobilepicketlinksecured-push-contacts-mobile-picketlink-secured"><span class="anchor-icon"></span></a>push-contacts-mobile-picketlink-secured: Push Contacts Mobile Picketlink Secured</h1>
+
+<p>Author: Joshua Wilson, Pedro Igor, Erik Jan De Wit, Daniel Bevenius<br/>
+Level: Beginner<br/>
+Technologies: REST, Unified Push Java Client, PicketLink<br/>
+Summary: A PicketLink secured example of CRUD REST endpoints with push functionality.<br/>
+Target Product: JBoss Unified Push<br/>
+Versions: 1.0<br/>
+Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">https://github.com/jboss-developer/jboss-mobile-quickstarts/</a>  </p>
+
+<h2><a id="what-is-it" class="anchor" href="#what-is-it"><span class="anchor-icon"></span></a>What is it?</h2>
+
+<p>This quickstart demonstrates how to develop secured server-side applications with push functionality, centered around a CRUD contacts application. It creates a PicketLink secured Java EE 6 application using JAX-RS, CDI 1.0, EJB 3.1, JPA 2.0 and Bean Validation 1.0.</p>
+
+<p>When the <code>push-contacts-mobile-picketlink-secured</code> application is deployed, the push functionality enables the application to register with the running JBoss Unified Push Server OpenShift instance and send it push notification requests. The server-side application rest endpoints are secured with PicketLink and can only be accessed by client applications with authenticated users.</p>
+
+<p>When contacts are created with the client contacts-mobile application, the contact information is relayed to the <code>push-contacts-mobile-picketlink-secured</code> application. On receiving the contact infomation, this backend application sends a push notification request to the Unified Push Server OpenShift instance. The Unified Push Server OpenShift instance then routes a push notification containing details of the newly added contact to devices that are registered with the Unified Push Server OpenShift instance for the specific client application. </p>
+
+<p><strong>Note:</strong> This quickstart uses the following Jackson libraries that are a part of the JBoss EAP private API.</p>
+
+<ul>
+<li><em>org.codehaus.jackson.jackson-core-asl</em></li>
+<li><em>org.codehaus.jackson.jackson-mapper-asl</em></li>
+</ul>
+
+<p>A public API will become available in a future EAP release and the private classes will be deprecated, but these classes continue to be maintained and available for the duration of the EAP 6.x release cycle.</p>
+
+<h2><a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it"><span class="anchor-icon"></span></a>How do I use it?</h2>
+
+<h3><a id="0-system-requirements" class="anchor" href="#0-system-requirements"><span class="anchor-icon"></span></a>0. System Requirements</h3>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 6</a></li>
+<li><a href="http://maven.apache.org">Maven 3.0</a> or later</li>
+<li>Red Hat JBoss Enterprise Application Platform (EAP) 6.3.0.GA</li>
+</ul>
+
+<h3><a id="1-prepare-maven-libraries" class="anchor" href="#1-prepare-maven-libraries"><span class="anchor-icon"></span></a>1. Prepare Maven Libraries</h3>
+
+<p>This quickstart is designed to be built with Maven. It requires the JBoss Unified Push and JBoss EAP 6.3.0 Maven repositories.</p>
+
+<p>You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a> or the README distributed with the JBoss Unified Push Maven repository.</p>
+
+<h3><a id="2-register-application-with-push-services" class="anchor" href="#2-register-application-with-push-services"><span class="anchor-icon"></span></a>2. Register Application with Push Services</h3>
+
+<p>You must register the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance. For information on installing the Unified Push Server, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+
+<ol>
+<li>Log into the Unified Push Server OpenShift instance console.</li>
+<li>In the <code>Applications</code> view, click <code>Create Application</code>.</li>
+<li>In the <code>Name</code> and <code>Description</code> fields, type values for the application and click <code>Create</code>.</li>
+<li>When created, click the application name and make note of the <code>Server URL</code>, <code>Application ID</code>, and <code>Master Secret</code>.</li>
+</ol>
+
+<h3><a id="3-customize-jboss-unified-push-java-sender-and-build-application" class="anchor" href="#3-customize-jboss-unified-push-java-sender-and-build-application"><span class="anchor-icon"></span></a>3. Customize JBoss Unified Push Java Sender and Build Application</h3>
+
+<p>The project source code must be customized with the unique metadata assigned to the application by the JBoss Unified Push Server OpenShift instance. </p>
+
+<ol>
+<li>Open <a href="./src/main/resources/META-INF/quickstarts-config.json">quickstarts-config.json</a> configuration file for editing.</li>
+<li>Enter the <code>serverUrl</code>,  <code>pushApplicationId</code> and <code>masterSecret</code> parameters.</li>
+<li>Save the file.</li>
+<li><p>Build the application</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="vg">QUICKSTART_HOME</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">/</span><span class="vg">server</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">-</span><span class="vg">picketlink</span><span class="o">-</span><span class="vg">secured</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span>
+</pre></div></li>
+</ol>
+
+<h3><a id="4-test-the-application" class="anchor" href="#4-test-the-application"><span class="anchor-icon"></span></a>4. Test the Application</h3>
+
+<h4><a id="0-prerequisites" class="anchor" href="#0-prerequisites"><span class="anchor-icon"></span></a>0. Prerequisites</h4>
+
+<p>The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that it successfully registers with the Unified Push Server on deployment.</p>
+
+<h4><a id="1-deploy-for-testing" class="anchor" href="#1-deploy-for-testing"><span class="anchor-icon"></span></a>1. Deploy for Testing</h4>
+
+<ol>
+<li><p>Start JBoss EAP</p>
+<div class="highlight"><pre><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span>
+<span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span>
+</pre></div></li>
+<li><p>Build and deploy the packaged application</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="vg">QUICKSTART_HOME</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">/</span><span class="vg">server</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">-</span><span class="vg">picketlink</span><span class="o">-</span><span class="vg">secured</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">deploy</span>
+</pre></div></li>
+</ol>
+
+<p>This deploys <code>QUICKSTART_HOME/push-contacts-mobile/server/push-contacts-mobile-picketlink-secured/target/jboss-push-contacts-mobile-picketlink-secured.war</code> to the running instance of the server.</p>
+
+<p><strong>Note:</strong> Adding &ldquo;-b 0.0.0.0&rdquo; to the above commands will allow external clients (phones, tablets, desktops, etc&hellip;) to connect through your local network.
+For example</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">For</span><span class="w"> </span><span class="nl">Linux:</span><span class="w">   </span><span class="vg">EAP_HOME</span><span class="o">/</span><span class="vg">bin</span><span class="o">/</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">sh</span><span class="w"> </span><span class="o">-</span><span class="vg">b</span><span class="w"> </span><span class="mf">0.0.0.0</span>
+<span class="w">    </span><span class="vg">For</span><span class="w"> </span><span class="nl">Windows:</span><span class="w"> </span><span class="vg">EAP_HOME</span><span class="o">\</span><span class="vg">bin</span><span class="o">\</span><span class="vg">standalone</span><span class="o">.</span><span class="vg">bat</span><span class="w"> </span><span class="o">-</span><span class="vg">b</span><span class="w"> </span><span class="mf">0.0.0.0</span>
+</pre></div>
+<h4><a id="2-send-a-push-message" class="anchor" href="#2-send-a-push-message"><span class="anchor-icon"></span></a>2. Send a Push Message</h4>
+
+<p>You can create a new contact using any of the client applications.<br/>
+Please follow the <code>Build and Deploy the Quickstart</code> instructions in <a href="../../client/contacts-mobile-webapp">contacts-mobile-webapp</a> which describe how to build, deploy, and access the web application.<br/>
+For information on building and deploying any of the client application variants, see the READMEs distributed with these applications.  </p>
+
+<h4><a id="3-undeploy-the-quickstart" class="anchor" href="#3-undeploy-the-quickstart"><span class="anchor-icon"></span></a>3. Undeploy the Quickstart</h4>
+
+<ol>
+<li>Make sure you have started the JBoss EAP server as described above.</li>
+<li><p>When you are finished testing, type this command to undeploy the archive:</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="vg">QUICKSTART_HOME</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">/</span><span class="vg">server</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">contacts</span><span class="o">-</span><span class="vg">mobile</span><span class="o">-</span><span class="vg">picketlink</span><span class="o">-</span><span class="vg">secured</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">jboss</span><span class="o">-</span><span class="nl">as:</span><span class="vg">undeploy</span>
+</pre></div></li>
+</ol>
+
+<h2><a id="" class="anchor" href="#"><span class="anchor-icon"></span></a>FAQ</h2>
+
+<p>Why cannot I enter a date in the birthdate field?</p>
+
+<ul>
+<li>Chrome has a <a href="https://code.google.com/p/chromium/issues/detail?id=232296">bug</a> in it.
+
+<ul>
+<li>Use the arrow keys to change the date: up arrow key, tab to day, up arrow key, tab to year, up arrow key.</li>
+<li>Use the date picker: a large black down arrow between the up/down arrows and the big X on the right side.</li>
+</ul></li>
+<li>Firefox, IE, and Safari require strict formatting of YYYY-DD-MM, <em>Note:</em> It must be a dash and not a slash.</li>
+</ul>
+
+<h2><a id="use-the-project-with-an-ide" class="anchor" href="#use-the-project-with-an-ide"><span class="anchor-icon"></span></a>Use the Project with an IDE</h2>
+
+<p>You can import this project into an IDE (JBoss Developer Studio, NetBeans or IntelliJ IDEA). If you are using JBoss Developer Studio you must import the project as a Maven project. If you are using NetBeans 6.8 or IntelliJ IDEA 9, then you can open the project as an existing project as both of these IDEs recognize Maven projects natively.</p>
+
+<p>You can also start the server and deploy the quickstarts from JBoss Developer Studio. For more information , see the <a href="http://www.jboss.org/products/devstudio/get-started/" title="Get Started with JBoss Developer Studio">Get Started with JBoss Developer Studio</a>.</p>
+
+<p>If you want to debug the source code of any library in the project, run the following command to pull the source into your local repository. The IDE should then detect it.</p>
+<div class="highlight"><pre><span class="vg">mvn</span><span class="w"> </span><span class="nl">dependency:</span><span class="vg">sources</span>
+</pre></div></body></html>

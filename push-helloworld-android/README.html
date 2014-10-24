@@ -1,0 +1,205 @@
+<!DOCTYPE html><html><head><title>README</title><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/documentation.css" rel="stylesheet"></link><link href="http://static.jboss.org/ffe/0/www/vendor/redhat/pygments.css" rel="stylesheet"></link></head><body>
+<h1><a id="pushhelloworldandroid-push-helloworld-android" class="anchor" href="#pushhelloworldandroid-push-helloworld-android"><span class="anchor-icon"></span></a>push-helloworld-android: Push Helloworld Android</h1>
+
+<p>Author: Daniel Passos (dpassos)<br/>
+Level: Beginner<br/>
+Technologies: Java, Android<br/>
+Summary: A basic example of Push : Registration and receiving messages.<br/>
+Target Product: JBoss Unified Push<br/>
+Versions: 1.0<br/>
+Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">https://github.com/jboss-developer/jboss-mobile-quickstarts/</a>  </p>
+
+<h2><a id="what-is-it" class="anchor" href="#what-is-it"><span class="anchor-icon"></span></a>What is it?</h2>
+
+<p>This quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Unified Push Android Push plug-in.</p>
+
+<p>This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Unified Push Server OpenShift instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. </p>
+
+<p>When the application is deployed to an Android device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications.</p>
+
+<h2><a id="how-do-i-run-it" class="anchor" href="#how-do-i-run-it"><span class="anchor-icon"></span></a>How do I run it?</h2>
+
+<h3><a id="0-system-requirements" class="anchor" href="#0-system-requirements"><span class="anchor-icon"></span></a>0. System Requirements</h3>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a></li>
+<li><a href="http://maven.apache.org">Maven 3.1.1</a></li>
+<li>Latest <a href="https://developer.android.com/sdk/index.html">Android SDK</a> and <a href="http://developer.android.com/tools/revisions/platforms.html">Platform version 19</a></li>
+<li>Latest <a href="http://developer.android.com/tools/support-library/index.html">Android Support Library</a> and <a href="http://developer.android.com/google/play-services/index.html">Google Play Services</a></li>
+</ul>
+
+<h3><a id="1-prepare-maven-libraries" class="anchor" href="#1-prepare-maven-libraries"><span class="anchor-icon"></span></a>1. Prepare Maven Libraries</h3>
+
+<p>This quickstart is designed to be built with Maven. It requires the JBoss Unified Push Maven repository and Google libraries.</p>
+
+<p>You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a> or the README distributed with the JBoss Unified Push Maven repository.</p>
+
+<p>Google does not ship all the required libraries to Maven Central so you must deploy them locally with the helper utility <a href="https://github.com/mosabua/maven-android-sdk-deployer">maven-android-sdk-deployer</a> as detailed here.</p>
+
+<ol>
+<li><p>Checkout maven-android-sdk-deployer</p>
+<div class="highlight"><pre><span class="vg">git</span><span class="w"> </span><span class="vg">clone</span><span class="w"> </span><span class="nl">git:</span><span class="o">//</span><span class="vg">github</span><span class="o">.</span><span class="vg">com</span><span class="o">/</span><span class="vg">mosabua</span><span class="o">/</span><span class="vg">maven</span><span class="o">-</span><span class="vg">android</span><span class="o">-</span><span class="vg">sdk</span><span class="o">-</span><span class="vg">deployer</span><span class="o">.</span><span class="vg">git</span>
+</pre></div></li>
+<li><p>Set up the environment variable <code>ANDROID_HOME</code> to contain the Android SDK path</p></li>
+<li><p>Install Maven version of Android platform 19</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="o">/</span><span class="vg">path</span><span class="o">/</span><span class="vg">to</span><span class="o">/</span><span class="vg">maven</span><span class="o">-</span><span class="vg">android</span><span class="o">-</span><span class="vg">sdk</span><span class="o">-</span><span class="vg">deployer</span><span class="o">/</span><span class="vg">platforms</span><span class="o">/</span><span class="vg">android</span><span class="il">-19</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">N</span>
+</pre></div></li>
+<li><p>Install Maven version of google-play-services</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="o">/</span><span class="vg">path</span><span class="o">/</span><span class="vg">to</span><span class="o">/</span><span class="vg">maven</span><span class="o">-</span><span class="vg">android</span><span class="o">-</span><span class="vg">sdk</span><span class="o">-</span><span class="vg">deployer</span><span class="o">/</span><span class="vg">extras</span><span class="o">/</span><span class="vg">google</span><span class="o">-</span><span class="vg">play</span><span class="o">-</span><span class="vg">services</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">N</span>
+</pre></div></li>
+<li><p>Install Maven version of compatibility-v4</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="o">/</span><span class="vg">path</span><span class="o">/</span><span class="vg">to</span><span class="o">/</span><span class="vg">maven</span><span class="o">-</span><span class="vg">android</span><span class="o">-</span><span class="vg">sdk</span><span class="o">-</span><span class="vg">deployer</span><span class="o">/</span><span class="vg">extras</span><span class="o">/</span><span class="vg">compatibility</span><span class="o">-</span><span class="vg">v4</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">N</span>
+</pre></div></li>
+<li><p>Install Maven version of compatibility-v7-appcompat</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="o">/</span><span class="vg">path</span><span class="o">/</span><span class="vg">to</span><span class="o">/</span><span class="vg">maven</span><span class="o">-</span><span class="vg">android</span><span class="o">-</span><span class="vg">sdk</span><span class="o">-</span><span class="vg">deployer</span><span class="o">/</span><span class="vg">extras</span><span class="o">/</span><span class="vg">compatibility</span><span class="o">-</span><span class="vg">v7</span><span class="o">-</span><span class="vg">appcompat</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">N</span>
+</pre></div></li>
+</ol>
+
+<h3><a id="2-register-the-application-with-push-services" class="anchor" href="#2-register-the-application-with-push-services"><span class="anchor-icon"></span></a>2. Register the Application with Push Services</h3>
+
+<p>First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the Unified Push Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account.</p>
+
+<ol>
+<li>Log into the <a href="https://console.developers.google.com">Google Cloud Console</a></li>
+<li>In the <code>Projects</code> view, click <code>Create Project</code>.</li>
+<li>In the <code>PROJECT NAME</code> field type a project name, select the check box to agree to the Terms of Service and click <code>Create</code>.</li>
+<li>Reload the page and in the <code>Projects</code> view click the project you just created. Make note of the <code>Project Number</code>.</li>
+<li>Click <code>APIs and auth</code>&gt;<code>APIs</code> and change the status of <code>Google Cloud Messaging for Android</code> to <code>ON</code>.</li>
+<li>Click <code>APIs and auth</code>&gt;<code>Credentials</code> and under <code>Public API access</code> click <code>Create new Key</code>.</li>
+<li>Click <code>Server Key</code> and click <code>Create</code>. Make note of the <code>API KEY</code>.</li>
+</ol>
+
+<p>Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+
+<ol>
+<li>Log into the Unified Push Server OpenShift instance console.</li>
+<li>In the <code>Applications</code> view, click <code>Create Application</code>.</li>
+<li>In the <code>Name</code> and <code>Description</code> fields, type values for the application and click <code>Create</code>.</li>
+<li>When created, under the application click <code>No variants</code>.</li>
+<li>Click <code>Add Variant</code>.</li>
+<li>In the <code>Name</code> and <code>Description</code> fields, type values for the Android application variant.</li>
+<li>Click <code>Android</code> and in the <code>Google Cloud Messaging Key</code> and <code>Project Number</code> fields type the values assigned to the project by GCM.</li>
+<li>Click <code>Add</code>.</li>
+<li>When created, expand the variant name and make note of the <code>Server URL</code>, <code>Variant ID</code>, and <code>Secret</code>.</li>
+</ol>
+
+<h3><a id="3-customize-and-build-application" class="anchor" href="#3-customize-and-build-application"><span class="anchor-icon"></span></a>3. Customize and Build Application</h3>
+
+<p>The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server OpenShift instance and GCM. </p>
+
+<ol>
+<li>Open <code>QUICKSTART_HOME/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java</code> for editing.</li>
+<li><p>Enter the application variant values allocated by the Unified Push Server OpenShift instance and GCM for the following constants:</p>
+<div class="highlight"><pre><span class="vg">String</span><span class="w"> </span><span class="vg">UNIFIED_PUSH_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push &gt;&quot;</span><span class="p">;</span>
+<span class="vg">String</span><span class="w"> </span><span class="vg">VARIANT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;variantID e.g. 1234456-234320&gt;&quot;</span><span class="p">;</span>
+<span class="vg">String</span><span class="w"> </span><span class="vg">SECRET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;variantSecret e.g. 1234456-234320&gt;&quot;</span><span class="p">;</span>
+<span class="vg">String</span><span class="w"> </span><span class="vg">GCM_SENDER_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;senderID e.g Google Project ID only for android&gt;&quot;</span><span class="p">;</span>
+</pre></div></li>
+<li><p>Save the file.</p></li>
+<li><p>Build the application</p>
+<div class="highlight"><pre><span class="vg">cd</span><span class="w"> </span><span class="vg">QUICKSTART_HOME</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">-</span><span class="vg">android</span>
+<span class="vg">mvn</span><span class="w"> </span><span class="vg">compile</span>
+</pre></div></li>
+</ol>
+
+<h3><a id="4-test-the-application" class="anchor" href="#4-test-the-application"><span class="anchor-icon"></span></a>4. Test the Application</h3>
+
+<h4><a id="0-prerequisites" class="anchor" href="#0-prerequisites"><span class="anchor-icon"></span></a>0. Prerequisites</h4>
+
+<p>The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.</p>
+
+<h4><a id="1-deploy-the-application-for-testing" class="anchor" href="#1-deploy-the-application-for-testing"><span class="anchor-icon"></span></a>1. Deploy the Application for testing</h4>
+
+<p>The application can be tested on physical Android devices only; push notifications are not available for Android emulators. To deploy, run and debug the application on an Android device attached to your system, on the command line enter the following:</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="vg">QUICKSTART_HOME</span><span class="o">/</span><span class="vg">push</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">-</span><span class="vg">android</span>
+<span class="w">    </span><span class="vg">mvn</span><span class="w"> </span><span class="vg">clean</span><span class="w"> </span><span class="vg">package</span><span class="w"> </span><span class="nl">android:</span><span class="vg">deploy</span><span class="w"> </span><span class="nl">android:</span><span class="vg">run</span>
+</pre></div>
+<p>Application output is displayed in the command line window.</p>
+
+<h4><a id="2-send-a-push-message" class="anchor" href="#2-send-a-push-message"><span class="anchor-icon"></span></a>2. Send a Push Message</h4>
+
+<p>You can send a push notification to your device using the Unified Push Server console by completing the following steps:</p>
+
+<ol>
+<li>Log into the Unified Push Server OpenShift instance console.</li>
+<li>Click <code>Send Push</code>.</li>
+<li>From the <code>Applications</code> list, select the application.</li>
+<li>In the <code>Messages</code> field, type the text to be sent as the push notification.</li>
+<li>Click <code>Send Push Notification</code>.</li>
+</ol>
+
+<h2><a id="how-does-it-work" class="anchor" href="#how-does-it-work"><span class="anchor-icon"></span></a>How does it work?</h2>
+
+<h3><a id="registration" class="anchor" href="#registration"><span class="anchor-icon"></span></a>Registration</h3>
+
+<p><code>RegisterActivity</code> is invoked right after a successful application login. The Activity life cycle <code>onCreate</code> is called first invoking the <code>register</code> method — attempting to register the application to receive push notifications.</p>
+<div class="highlight"><pre><span class="w">    </span><span class="vg">PushConfig</span><span class="w"> </span><span class="vg">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">PushConfig</span><span class="p">(</span><span class="vg">new</span><span class="w"> </span><span class="vg">URI</span><span class="p">(</span><span class="vg">UNIFIED_PUSH_URL</span><span class="p">),</span><span class="w"> </span><span class="vg">GCM_SENDER_ID</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">config</span><span class="o">.</span><span class="vg">setVariantID</span><span class="p">(</span><span class="vg">VARIANT_ID</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">config</span><span class="o">.</span><span class="vg">setSecret</span><span class="p">(</span><span class="vg">SECRET</span><span class="p">);</span>
+
+<span class="w">    </span><span class="vg">Registrations</span><span class="w"> </span><span class="vg">registrations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Registrations</span><span class="p">();</span>
+<span class="w">    </span><span class="vg">PushRegistrar</span><span class="w"> </span><span class="vg">registrar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">registrations</span><span class="o">.</span><span class="vg">push</span><span class="p">(</span><span class="s2">&quot;register&quot;</span><span class="p">,</span><span class="w"> </span><span class="vg">config</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">registrar</span><span class="o">.</span><span class="vg">register</span><span class="p">(</span><span class="vg">getApplicationContext</span><span class="p">(),</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Callback</span><span class="o">&lt;</span><span class="vg">Void</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="err">@</span><span class="vg">Override</span>
+<span class="w">        </span><span class="vg">public</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">onSuccess</span><span class="p">(</span><span class="vg">Void</span><span class="w"> </span><span class="vg">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="vg">Toast</span><span class="o">.</span><span class="vg">makeText</span><span class="p">(</span><span class="vg">getApplicationContext</span><span class="p">(),</span>
+<span class="w">                    </span><span class="vg">getApplicationContext</span><span class="p">()</span><span class="o">.</span><span class="vg">getString</span><span class="p">(</span><span class="vg">R</span><span class="o">.</span><span class="vg">string</span><span class="o">.</span><span class="vg">registration_successful</span><span class="p">),</span>
+<span class="w">                    </span><span class="vg">Toast</span><span class="o">.</span><span class="vg">LENGTH_LONG</span><span class="p">)</span><span class="o">.</span><span class="vg">show</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="err">@</span><span class="vg">Override</span>
+<span class="w">        </span><span class="vg">public</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">onFailure</span><span class="p">(</span><span class="vg">Exception</span><span class="w"> </span><span class="vg">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="vg">Toast</span><span class="o">.</span><span class="vg">makeText</span><span class="p">(</span><span class="vg">getApplicationContext</span><span class="p">(),</span><span class="w"> </span><span class="vg">e</span><span class="o">.</span><span class="vg">getMessage</span><span class="p">(),</span><span class="w"> </span><span class="vg">Toast</span><span class="o">.</span><span class="vg">LENGTH_LONG</span><span class="p">)</span><span class="o">.</span><span class="vg">show</span><span class="p">();</span>
+<span class="w">            </span><span class="vg">finish</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+<h3><a id="receiving-notifications" class="anchor" href="#receiving-notifications"><span class="anchor-icon"></span></a>Receiving Notifications</h3>
+
+<p>Before the usage of GCM notifications on Android, we need to include some permissions for GCM and a broadcast receiver to handle push messages from the service.</p>
+
+<p>To enable the permissions we add these as child of the manifest element.</p>
+<div class="highlight"><pre><span class="w">    </span><span class="o">&lt;</span><span class="vg">uses</span><span class="o">-</span><span class="vg">permission</span><span class="w"> </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;android.permission.INTERNET&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">uses</span><span class="o">-</span><span class="vg">permission</span><span class="w"> </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;android.permission.GET_ACCOUNTS&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">uses</span><span class="o">-</span><span class="vg">permission</span><span class="w"> </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;android.permission.WAKE_LOCK&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">uses</span><span class="o">-</span><span class="vg">permission</span><span class="w"> </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;com.google.android.c2dm.permission.RECEIVE&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">permission</span>
+<span class="w">        </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;com.mypackage.C2D_MESSAGE&quot;</span>
+<span class="w">        </span><span class="nl">android:</span><span class="vg">protectionLevel</span><span class="o">=</span><span class="s2">&quot;signature&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+
+<span class="w">    </span><span class="o">&lt;</span><span class="vg">uses</span><span class="o">-</span><span class="vg">permission</span><span class="w"> </span><span class="nl">android:</span><span class="vg">name</span><span class="o">=</span><span class="s2">&quot;org.jboss.aerogear.unifiedpush.helloworld&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+</pre></div>
+<p>And add this element as a child of the application element, to register the default JBoss Unified Push for Android broadcast receiver. It will receive all messages and dispatch the message to registered handlers.</p>
+<div class="highlight"><pre>    <span class="nt">&lt;receiver</span>
+        <span class="na">android:name=</span><span class="s">&quot;org.jboss.aerogear.android.unifiedpush.AeroGearGCMMessageReceiver&quot;</span>
+        <span class="na">android:permission=</span><span class="s">&quot;com.google.android.c2dm.permission.SEND&quot;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;intent-filter&gt;</span>
+            <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&quot;com.google.android.c2dm.intent.RECEIVE&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&quot;org.jboss.aerogear.unifiedpush.helloworld&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/intent-filter&gt;</span>
+    <span class="nt">&lt;/receiver&gt;</span>
+</pre></div>
+<p>All push messages are received by an instance of <code>AeroGearGCMMessageReceiver</code>. They are processed and passed to Registrations via the <code>notifyHandlers</code> method.</p>
+
+<p>The <code>NotificationBarMessageHandler</code> is able to receive that message and show it in the Notification Bar.</p>
+
+<p>In the <code>MessagesActivity</code> we need to remove the handler when the Activity goes into the background and re-enable it when it comes into the foreground.</p>
+<div class="highlight"><pre><span class="w">    </span><span class="err">@</span><span class="vg">Override</span>
+<span class="w">    </span><span class="vg">protected</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">onResume</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">super</span><span class="o">.</span><span class="vg">onResume</span><span class="p">();</span>
+<span class="w">        </span><span class="vg">Registrations</span><span class="o">.</span><span class="vg">registerMainThreadHandler</span><span class="p">(</span><span class="vg">this</span><span class="p">);</span>
+<span class="w">        </span><span class="vg">Registrations</span><span class="o">.</span><span class="vg">unregisterBackgroundThreadHandler</span><span class="p">(</span><span class="vg">NotificationBarMessageHandler</span><span class="o">.</span><span class="vg">instance</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="err">@</span><span class="vg">Override</span>
+<span class="w">    </span><span class="vg">protected</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">onPause</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">super</span><span class="o">.</span><span class="vg">onPause</span><span class="p">();</span>
+<span class="w">        </span><span class="vg">Registrations</span><span class="o">.</span><span class="vg">unregisterMainThreadHandler</span><span class="p">(</span><span class="vg">this</span><span class="p">);</span>
+<span class="w">        </span><span class="vg">Registrations</span><span class="o">.</span><span class="vg">registerBackgroundThreadHandler</span><span class="p">(</span><span class="vg">NotificationBarMessageHandler</span><span class="o">.</span><span class="vg">instance</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div></body></html>
