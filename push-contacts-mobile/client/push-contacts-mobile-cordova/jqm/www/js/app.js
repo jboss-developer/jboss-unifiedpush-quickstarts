@@ -26,21 +26,8 @@ CONTACTS.app.baseUrl = "< backend URL e.g http(s)//host:port >/jboss-push-contac
 CONTACTS.app.restEndpoint = CONTACTS.app.baseUrl.replace(/\/+$/, "") + "/rest/contacts";
 
 CONTACTS.app.registerWithUPS = function() {
-    var pushConfig = {
-        pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
-        alias: "<alias e.g. a username or an email address optional>",
-        android: {
-          senderID: "<senderID e.g Google Project ID only for android>",
-          variantID: "<variantID e.g. 1234456-234320>",
-          variantSecret: "<variantSecret e.g. 1234456-234320>"
-        },
-      ios: {
-          variantID: "<variantID e.g. 1234456-234320>",
-          variantSecret: "<variantSecret e.g. 1234456-234320>"
-      }
-    };
     if (typeof push !== 'undefined') {
-      push.register(CONTACTS.app.onNotification, successHandler, errorHandler, pushConfig);
+      push.register(CONTACTS.app.onNotification, successHandler, errorHandler);
     } else {
       alert('Push plugin not installed!');
     }
