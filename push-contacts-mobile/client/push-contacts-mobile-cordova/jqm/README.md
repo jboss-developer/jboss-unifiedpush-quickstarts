@@ -2,22 +2,22 @@
 
 Please first refer to the Cordova guide located in this [README](../README.md)
 
-* In `www/js/app.js` find the _pushConfig_ (at the bottom) and change _pushServerURL_ with the url of your Unified Push Server OpenShift instance. You also need to change _senderID_, _variantID_ and _variantSecret_ with the values assigned by Unified Push Server OpenShift instance and GCM or APNS:
+* In `www/push-config.json` change _pushServerURL_ with the url of your Unified Push Server OpenShift instance. You also need to change _senderID_, _variantID_ and _variantSecret_ with the values assigned by Unified Push Server OpenShift instance and GCM or APNS:
 
 
-        var pushConfig = {
-           pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
-           alias: "<alias e.g. a username or an email address optional>",
-           android: {
-              senderID: "<senderID e.g Google Project ID only for android>",
-              variantID: "<variantID e.g. 1234456-234320>",
-              variantSecret: "<variantSecret e.g. 1234456-234320>"
+        {
+           "pushServerURL": "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
+           "android": {
+              "senderID": "<senderID e.g Google Project ID only for android>",
+              "variantID": "<variantID e.g. 1234456-234320>",
+              "variantSecret": "<variantSecret e.g. 1234456-234320>"
            },
-           ios: {
-              variantID: "<variantID e.g. 1234456-234320>",
-              variantSecret: "<variantSecret e.g. 1234456-234320>"
+           "ios": {
+              "variantID": "<variantID e.g. 1234456-234320>",
+              "variantSecret": "<variantSecret e.g. 1234456-234320>"
            }
-        };
+        }
+
 
 **Note:** You can also copy/paste these settings from your Unified Push Server OpenShift instance console
 

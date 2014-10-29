@@ -102,22 +102,10 @@ angular.module('quickstart.controllers', [])
 
 .controller('LoginCtrl', function ($scope, $rootScope, $location, authz, users) {
   function registerWithUPS() {
-    var pushConfig = {
-      pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
-      android: {
-        senderID: "<senderID e.g Google Project ID only for android>",
-        variantID: "<variantID e.g. 1234456-234320>",
-        variantSecret: "<variantSecret e.g. 1234456-234320>"
-      },
-      ios: {
-        variantID: "<variantID e.g. 1234456-234320>",
-        variantSecret: "<variantSecret e.g. 1234456-234320>"
-      }
-    };
 
     //to be able to test this in your browser where there is no push plugin installed
     if (typeof push !== "undefined") {
-      push.register(onNotification, successHandler, errorHandler, pushConfig);
+      push.register(onNotification, successHandler, errorHandler);
     } else {
       alert('Push plugin not installed!');
     }
