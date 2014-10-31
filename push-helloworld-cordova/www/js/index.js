@@ -35,13 +35,12 @@ var app = {
       }
 
       function successHandler() {
-         document.getElementById("messages").removeChild(document.getElementById("waiting"));
-         app.addMessage('Successfully Registered');
+         document.getElementById("waiting").innerHTML = 'Successfully registered';
       }
 
       function errorHandler(error) {
          app.clearMessages();
-         app.addMessage('Error Registering ' + error);
+         app.addMessage('Error registering ' + error);
       }
    },
    onNotification: function (event) {
