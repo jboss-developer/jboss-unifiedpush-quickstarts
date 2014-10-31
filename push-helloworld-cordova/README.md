@@ -48,7 +48,7 @@ For the configuration and registration of Android or iOS Applications with PushS
 
 ### 2. Customize and Build Application
 
-In `www/push-config.json` change `pushServerURL` with the url of your Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server OpenShift instance and GCM or APNS:
+In `www/push-config.json` change `pushServerURL` with the url of your JBoss Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by JBoss Unified Push Server OpenShift instance and GCM or APNS:
 
         {
            "pushServerURL": "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",
@@ -63,7 +63,7 @@ In `www/push-config.json` change `pushServerURL` with the url of your Unified Pu
            }
         }
 
-**Note:** You can also copy/paste these settings from your Unified Push Server console
+**Note:** You can also copy/paste these settings from your JBoss Unified Push Server console
 
 ### 3. Install platforms
 
@@ -88,9 +88,9 @@ The application can be tested on physical Android or iOS devices only; push noti
 
 #### Send a Push Message
 
-You can send a push notification to your device using the Unified Push Server console by completing the following steps:
+You can send a push notification to your device using the JBoss Unified Push Server console by completing the following steps:
 
-1. Log into the Unified Push Server OpenShift instance console.
+1. Log into the JBoss Unified Push Server OpenShift instance console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
@@ -100,7 +100,7 @@ You can send a push notification to your device using the Unified Push Server co
 
 ### Registration
 
-When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.
+When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the JBoss Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.
 
 
 ## Run push-helloworld-cordova in JBoss Developer Studio or Eclipse

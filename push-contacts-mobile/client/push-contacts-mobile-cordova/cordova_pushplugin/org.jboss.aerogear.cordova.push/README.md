@@ -37,7 +37,7 @@ Done! Your project now contains the JBoss Unified Push PushPlugin. For an integr
 
 ## Example Usage
 ### 1. Register the application
-The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change `pushServerURL` with the url of your Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by Unified Push Server and GCM or APNS:
+The following JavaScript code shows how to register a device with the JBoss Unified Push Server. You need to change `pushServerURL` with the url of your JBoss Unified Push Server OpenShift instance. You also need to change `senderID`, `variantID` and `variantSecret` with the values assigned by JBoss Unified Push Server and GCM or APNS:
 
         var pushConfig = {
             pushServerURL: "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >",

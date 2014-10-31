@@ -14,7 +14,7 @@ This quickstart demonstrates how to develop more advanced iOS push applications,
 
 This client-side iOS project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality. 
 
-When the client application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the Unified Push Server OpenShift instance in response to new contacts being created. Push notifications received by the iOS device contain details of newly added contacts.
+When the client application is deployed to an iOS device, the push functionality enables the device to register with the running JBoss Unified Push Server OpenShift instance and receive push notifications. The server-side application provides login authentication for the client application and sends push notification requests to the JBoss Unified Push Server OpenShift instance in response to new contacts being created. Push notifications received by the iOS device contain details of newly added contacts.
 
 ## How do I run it?
 
@@ -32,7 +32,7 @@ First you need to submit a request for a new digital certificate, which is based
 1. Request a new CSR (Certificate Signing Request) using `KeyChain Access` tool found in `Applications > Utilities` folder on your Mac.  Once opened, in the `KeyChain Access` menu, choose `Certificate Assistant > Request a Certificate from a Certificate Authority`. Make sure that you have choosen to store the CSR _on file_, so we can upload it later in the provisioning portal when requesting the actual SSL cert.
 2. Go to the [Provisioning Portal](https://developer.apple.com/account/overview.action) and log in with your Apple developer account. Now, click on the `Identifiers` link in order to create a new `App ID` (use the `PLUS` Icon on the right). In the formular give the `App ID` a descriptive name. Double check that the `Push Notifications` checkbox is _selected_.
 3. Later in the same page you are asked for an `Explicit App ID`, since the generic `Wildcard App ID` does not work with Push Notifications. In the `Bundle ID` field enter _YOUR_ `Bundle ID`. This is similar to Java packages. **NOTE:** The `Bundle ID` has to match the one from the actual iOS application that you are building later in this guide.
-4. In the next screen confirm your new `App ID`, and double check that the `Push Notifications` option is _enabled_. Afterwards click the `Submit` button. In the next screen, click on on the newly created `App ID`, then click the `Edit` button and scroll down to the `Push Notifications` section. Here we are asked to generate a `Development` and a `Production` certificate that will be used by the Unified Push Server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. 
+4. In the next screen confirm your new `App ID`, and double check that the `Push Notifications` option is _enabled_. Afterwards click the `Submit` button. In the next screen, click on on the newly created `App ID`, then click the `Edit` button and scroll down to the `Push Notifications` section. Here we are asked to generate a `Development` and a `Production` certificate that will be used by the JBoss Unified Push Server when contacting the Apple Push Notification service to send messages. If you plan to distribute your app in the App Store, you are required to generate a Production certificate. 
   *  `Development Certificate`: Click the `Create Certificate` button on the `Development SSL Certificate` section. Upload the `Certificate Signing Request` that you created earlier and click the `Generate` button. The `Development SSL Certificate` file is being downloaded as `aps_development.cer`. 
   *  `Production Certificate`: Click the `Create Certificate` button on the `Production SSL Certificate` section. Upload the `Certificate Signing Request` that you created earlier and click the `Generate` button. The `Production SSL Certificate` file is being downloaded as `aps_production.cer`.
   
@@ -46,9 +46,9 @@ In order to test Push Notifications you neeed to create a _Provisioning Profile_
   
 ### 2. Register Application with Push Services
 
-You must register the application and an iOS variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by APNS. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+You must register the application and an iOS variant of the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by APNS. For information on installing the JBoss Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server OpenShift instance console.
+1. Log into the JBoss Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -70,17 +70,17 @@ Ensure the Apple _Provisioning profile_ is correctly set:
 
 ![change provisioning profile](doc/change-provisioning-profile.png)
   
-The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server and APNS.  
+The project source code must be customized with the unique metadata assigned to the application variant by the JBoss Unified Push Server and APNS.  
 
 1. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Controllers/AGLoginViewController.m` for editing.
-2. Modify the URL, variant and secret to match the values allocated by the Unified Push Server and APNS for the following constants:
+2. Modify the URL, variant and secret to match the values allocated by the JBoss Unified Push Server and APNS for the following constants:
 
         AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running JBoss Unified Push Server OpenShift instance #>"]];
         ...
         [clientInfo setVariantID:@"<# Variant Id #>"];
         [clientInfo setVariantSecret:@"<# Variant Secret #>"];
 
-   **Note :** You can also copy/paste these settings from your Unified Push Server console  
+   **Note :** You can also copy/paste these settings from your JBoss Unified Push Server console  
 3. Save the file.
 4. Open `QUICKSTART_HOME/push-contacts-mobile/client/push-contacts-mobile-ios/Contacts/Networking/AGContactsNetworker.m` for editing.
 5. Modify the URL to match the path to the Contacts server backend:
@@ -94,7 +94,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-1. The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+1. The JBoss Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the JBoss Unified Push Server on application deployment.
 2. The `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application must be running before attempting to log into the mobile client application to ensure successful login. For more information, see the README distributed with the `push-contacts-mobile-picketlink-secured` application.
 
 #### 1. Deploy for Testing
@@ -124,7 +124,7 @@ You can also send a push notification to your device using the `push-contacts-mo
 1. Open the web interface of the `push-contacts-mobile/client/contacts-mobile-webapp` application in a browser at the following URL: <http://localhost:8080/jboss-contacts-mobile-webapp/> .
 2. Add a new Contact.
 
-This automatically triggers a push notification request to the Unified Push Server OpenShift instance and subsequently the push notification displays on the mobile device.
+This automatically triggers a push notification request to the JBoss Unified Push Server OpenShift instance and subsequently the push notification displays on the mobile device.
 
 ![contact details](doc/notification.png)
 

@@ -78,7 +78,7 @@
             // initialize "Registration helper" object using the
             // base URL where the "Unified Push Server" is running.
             AGDeviceRegistration *registration = [[AGDeviceRegistration alloc]
-                                                  initWithServerURL:[NSURL URLWithString:@"<# URL of the running JBoss Unified Push Server OpenShift instance #>"]];
+                                                  initWithServerURL:[NSURL URLWithString:@"<# URL of the running Unified Push Server OpenShift instance #>"]];
             
             // perform registration of this device
             [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {

@@ -61,7 +61,7 @@ Google does not ship all the required libraries to Maven Central so you must dep
 
 ### 2. Register the Application with Push Services
 
-First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the Unified Push Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account.
+First, you must register the application with Google Cloud Messaging for Android and enable access to the Google Cloud Messaging for Android APIs and Google APIs. This ensures access to the APIs by the JBoss Unified Push Server when it routes push notification requests from the application to the GCM. Registering an application with GCM requires that you have a Google account.
 
 1. Log into the [Google Cloud Console](https://console.developers.google.com)
 2. In the `Projects` view, click `Create Project`.
@@ -71,9 +71,9 @@ First, you must register the application with Google Cloud Messaging for Android
 6. Click `APIs and auth`>`Credentials` and under `Public API access` click `Create new Key`.
 7. Click `Server Key` and click `Create`. Make note of the `API KEY`.
 
-Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+Second, you must register the application and an Android variant of the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the JBoss Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
 
-1. Log into the Unified Push Server OpenShift instance console.
+1. Log into the JBoss Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
 3. In the `Name` and `Description` fields, type values for the application and click `Create`.
 4. When created, under the application click `No variants`.
@@ -85,10 +85,10 @@ Second, you must register the application and an Android variant of the applicat
 
 ### 3. Customize and Build Application
 
-The project source code must be customized with the unique metadata assigned to the application variant by the Unified Push Server OpenShift instance and GCM. 
+The project source code must be customized with the unique metadata assigned to the application variant by the JBoss Unified Push Server OpenShift instance and GCM. 
 
 1. Open `QUICKSTART_HOME/push-helloworld-android/src/org/jboss/aerogear/unifiedpush/helloworld/Constants.java` for editing.
-2. Enter the application variant values allocated by the Unified Push Server OpenShift instance and GCM for the following constants:
+2. Enter the application variant values allocated by the JBoss Unified Push Server OpenShift instance and GCM for the following constants:
 
         String UNIFIED_PUSH_URL = "<pushServerURL e.g https://{OPENSHIFT_UNIFIEDPUSHSERVER_URL}/ag-push >";
         String VARIANT_ID = "<variantID e.g. 1234456-234320>";
@@ -106,7 +106,7 @@ The project source code must be customized with the unique metadata assigned to 
 
 #### 0. Prerequisites
 
-The Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the Unified Push Server on application deployment.
+The JBoss Unified Push Server OpenShift instance must be running before the application is deployed to ensure that the device successfully registers with the JBoss Unified Push Server on application deployment.
 
 #### 1. Deploy the Application for testing
 
@@ -120,9 +120,9 @@ Application output is displayed in the command line window.
 
 #### 2. Send a Push Message
 
-You can send a push notification to your device using the Unified Push Server console by completing the following steps:
+You can send a push notification to your device using the JBoss Unified Push Server console by completing the following steps:
 
-1. Log into the Unified Push Server OpenShift instance console.
+1. Log into the JBoss Unified Push Server OpenShift instance console.
 2. Click `Send Push`.
 3. From the `Applications` list, select the application.
 4. In the `Messages` field, type the text to be sent as the push notification.
