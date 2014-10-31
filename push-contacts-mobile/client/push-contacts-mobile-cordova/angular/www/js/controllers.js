@@ -138,6 +138,8 @@ angular.module('quickstart.controllers', [])
     users.login({}, function () {
       registerWithUPS();
       $location.url('/app/contacts');
+    }, function() {
+      alert('Invalid username/password');
     });
   };
   $scope.signup = function (data) {
