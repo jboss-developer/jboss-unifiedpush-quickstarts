@@ -18,7 +18,7 @@
         npm install -g ios-deploy
   
 
-### 1. Pre-requisites
+### 1. Prerequisites
 
 Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 
@@ -122,4 +122,3 @@ For more information about configuring and using the JBoss Unified Push PushPlug
 
 ###JBoss Unified Push Server
 For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
-
