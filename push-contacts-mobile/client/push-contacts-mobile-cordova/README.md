@@ -40,11 +40,12 @@ If you want to change your bundleId later on, you will still have to run a `cord
 
 #### Android
 
-To deploy and run Cordova applications on Android the Apache Ant tool needs to be [installed](http://ant.apache.org/manual/install.html).
+To deploy and run Cordova applications on Android, the Apache Ant tool needs to be [installed](http://ant.apache.org/manual/install.html).
+
 
 ### 1. Register Application with Push Services
 
-For the configuration and registration of Android or iOS Applications with PushServices, please refer to the specific guides inside *push-contacts-mobile-android* and *push-contacts-mobile-ios* quickstarts.
+For the configuration and registration of Android or iOS Applications with push services, please refer to the specific guides inside *push-helloworld-android* and *push-helloworld-ios* quickstarts.
 
 ### 2. Customize and Build Application
 
