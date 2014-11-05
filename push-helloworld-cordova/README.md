@@ -39,12 +39,12 @@ If you want to change your bundleId later on, you will still have to run a `cord
 
 #### Android
 
-To deploy and run Cordova applications on Android the Apache Ant tool needs to be [installed](http://ant.apache.org/manual/install.html).
+To deploy and run Cordova applications on Android, the Apache Ant tool needs to be [installed](http://ant.apache.org/manual/install.html).
 
 
 ### 1. Register Application with Push Services
 
-For the configuration and registration of Android or iOS Applications with PushServices, please refer to the specific guides inside *push-helloworld-android* and *push-helloworld-ios* quickstarts.
+For the configuration and registration of Android or iOS Applications with push services, please refer to the specific guides inside *push-helloworld-android* and *push-helloworld-ios* quickstarts.
 
 ### 2. Customize and Build Application
 
@@ -100,7 +100,7 @@ You can send a push notification to your device using the JBoss Unified Push Ser
 
 ### Registration
 
-When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the JBoss Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.
+When you start the application Cordova will fire a `deviceready` event when Cordova initialization is done and the device is ready (see `www/js/index.js`). On this event the `register` function will be executed registering the device with the JBoss Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the registration was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console. A new instance will appear with your deviceId, platform and status.
 
 
 ## Run push-helloworld-cordova in JBoss Developer Studio or Eclipse
