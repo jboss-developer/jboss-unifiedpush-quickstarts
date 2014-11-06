@@ -100,8 +100,9 @@ The following components are needed for only a small subset of the quickstarts. 
 
 * [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Maven 3.1.1](http://maven.apache.org)
-* [Android SDK](https://developer.android.com/sdk/index.html) and [Platform version 19](http://developer.android.com/tools/revisions/platforms.html)
-* [Android Support Library](http://developer.android.com/tools/support-library/index.html) and [Google Play Services](http://developer.android.com/google/play-services/index.html)
+* Latest [Android SDK](https://developer.android.com/sdk/index.html)
+* Latest Platform Version and [Platform version 19](http://developer.android.com/tools/revisions/platforms.html)
+* Latest [Android Support Library](http://developer.android.com/tools/support-library/index.html) and [Google Play Services](http://developer.android.com/google/play-services/index.html)
 * [Maven Android SDK Deployer](https://github.com/mosabua/maven-android-sdk-deployer)
 * [Node.js](http://nodejs.org/download/)
 * [Apache Cordova](http://cordova.apache.org/)
