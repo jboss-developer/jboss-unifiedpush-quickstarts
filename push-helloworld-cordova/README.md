@@ -134,7 +134,7 @@ Debug the Application
 
    * For iOS
 
-        Develop -> device name> -> index.html
+        Develop -> device name -> index.html
 
    * For Android
 
