@@ -1,9 +1,9 @@
-push-contacts-mobile: Push Contacts Mobile Assorted Examples
+push-contacts-mobile: Contacts CRUD Mobile Assortment with Push Notification
 ===========================================================
 Author: Daniel Passos, Erik Jan de Wit, Christos Vasilakis, Daniel Bevenius, Joshua Wilson, Pedro Igor  
 Level: Intermediate  
 Technologies: Java, JavaScript, jQuery Mobile, Android, Cordova, HTML5, REST, Unified Push Java Client, PicketLink    
-Summary: A secured contacts CRUD mobile application with push notification integration with Android, Cordova and iOS.  
+Summary: The `push-contacts-mobile` quickstart is a secured contacts CRUD mobile application with push notification integration with Android, Cordova and iOS.  
 Target Product: JBoss Unified Push   
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
