@@ -1,16 +1,16 @@
-contacts-mobile-webapp: Contacts Mobile Webapp
+contacts-mobile-webapp: Contacts CRUD Mobile Example Using HTML5 and jQuery
 ===========================
 Author: Joshua Wilson  
 Level: Beginner  
 Technologies: jQuery Mobile, jQuery, JavaScript, HTML5, REST  
-Summary: A basic example of CRUD operations in a mobile only website.  
+Summary: The `contacts-mobile-webapp`  quickstart demonstrates how to develop a contacts CRUD Mobile application using HTML5 and jQuery Mobile.  
 Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-It's a deployable Maven 3 project to help you get started in developing HTML5 based mobile web applications on JBoss EAP. This project is set up to allow you to create a basic Java EE 6 application using HTML5 and jQuery Mobile.
+The `contacts-mobile-webapp`  quickstart is a deployable Maven 3 project to help you get started in developing HTML5 based mobile web applications on JBoss EAP. This project is set up to allow you to create a basic Java EE 6 application using HTML5 and jQuery Mobile.
 
 This application is built using HTML5. This uses a pure HTML client that interacts with the application server via restful end-points (JAX-RS). This application also uses some of the latest HTML5 features. And since testing is just as important with client side as it is with server side, this application uses QUnit to show you how to unit test your JavaScript.
 

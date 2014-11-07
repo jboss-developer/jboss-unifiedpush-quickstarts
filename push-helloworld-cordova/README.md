@@ -1,16 +1,16 @@
-push-helloworld-cordova: Push Helloworld Cordova
+push-helloworld-cordova: Helloworld JBoss Unified Push Cordova Push Plug-in
 ===========================
 Author: Erik Jan de Wit (edewit)   
 Level: Beginner   
 Technologies: JavaScript Cordova   
-Summary: A basic example of Push : Registration and receiving messages.   
+Summary: The `push-helloworld-cordova` quickstart shows how to use the JBoss Unified Push Cordova Push plug-in to register and receive push notifications.   
 Target Product: JBoss Unified Push   
 Versions: 1.0   
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-This quickstart demonstrates how to include basic push functionality in Cordova applications using the JBoss Unified Push Cordova Push plug-in.
+The `push-helloworld-cordova` quickstart demonstrates how to include basic push functionality in Cordova applications using the JBoss Unified Push Cordova Push plug-in.
 
 This simple project consists of a ready-to-build Cordova application. Before building the application, you must register the Android or iOS variant of the application with a running JBoss Unified Push Server OpenShift instance and Google Cloud Messaging for Android or Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android or iOS devices.
 

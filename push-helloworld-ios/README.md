@@ -1,15 +1,15 @@
-push-helloworld-ios: Push Helloworld iOS
+push-helloworld-ios: Helloworld Using JBoss Unified Push iOS Push Plug-in
 ===========================
 Author: Corinne Krych (ckrych)   
 Level: Beginner   
 Technologies: Objective-C, iOS   
-Summary: A basic example of Push : Registration and receiving messages.   
+Summary: The `push-helloworld-ios` quickstart shows how to include basic push functionality in iOS applications using the JBoss Unified Push iOS Push plug-in.   
 Target Product: JBoss Unified Push   
 Versions: 1.0   
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>   
 
 ## What is it?
-This quickstart demonstrates how to include basic push functionality in iOS applications using the JBoss Unified Push iOS Push plug-in.
+The `push-helloworld-ios` quickstart demonstrates how to include basic push functionality in iOS applications using the JBoss Unified Push iOS Push plug-in.
 
 This simple project consists of a ready-to-build iOS application. Before building the application, you must register the iOS variant of the application with a running JBoss Unified Push Server OpenShift instance and Apple Push Notification Service for iOS. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to iOS devices. 
 

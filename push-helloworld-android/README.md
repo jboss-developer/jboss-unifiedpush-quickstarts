@@ -3,14 +3,14 @@ push-helloworld-android: Push Helloworld Android
 Author: Daniel Passos (dpassos)  
 Level: Beginner  
 Technologies: Java, Android  
-Summary: A basic example of Push : Registration and receiving messages.  
+Summary: The `push-helloworld-android` quickstart shows how to use the JBoss Unified Push Android Push plug-in to register and receive push notifications.  
 Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-This quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Unified Push Android Push plug-in.
+The `push-helloworld-android` quickstart demonstrates how to include basic push functionality in Android applications using the JBoss Unified Push Android Push plug-in.
 
 This simple project consists of a ready-to-build Android application. Before building the application, you must register the Android variant of the application with a running JBoss Unified Push Server OpenShift instance and Google Cloud Messaging for Android. The resulting unique IDs and other parameters must then be inserted into the application source code. After this is complete, the application can be built and deployed to Android devices. 
 

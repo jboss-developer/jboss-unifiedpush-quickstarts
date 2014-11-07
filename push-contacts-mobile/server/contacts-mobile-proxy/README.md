@@ -1,16 +1,16 @@
-contacts-mobile-proxy: Contacts Mobile Proxy
+contacts-mobile-proxy: Contacts CRUD Mobile Proxied Web Application
 ===========================
 Author: Daniel Bevenius  
 Level: Beginner  
 Technologies: REST  
-Summary: A basic example of CRUD operations that are proxied to a backend system.  
+Summary: The `contacts-mobile-proxy` quickstart is basic example of CRUD operations that are proxied to a backend system.  
 Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-It's a deployable Maven 3 project to help you get started in developing `proxied web applications` with Java EE 6 on JBoss EAP.
+The `contacts-mobile-proxy` quickstart is a deployable Maven 3 project to help you get started in developing `proxied web applications` with Java EE 6 on JBoss EAP.
 
 _So what is a `proxied web application`?_  
 The need of a proxied web application arises when you have a backend system that is not allowed to be exposed to direct traffic from the internet, but there is a service in this backend system that needs to be exposed, without jeopardizing the whole backend system (backend systems would most often be protected by a firewall).
