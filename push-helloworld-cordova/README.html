@@ -36,11 +36,11 @@ Replace the bundleId with your bundleId (the one associated with your certificat
 
 <h4><a id="android" class="anchor" href="#android"><span class="anchor-icon"></span></a>Android</h4>
 
-<p>To deploy and run Cordova applications on Android the Apache Ant tool needs to be <a href="http://ant.apache.org/manual/install.html">installed</a>.</p>
+<p>To deploy and run Cordova applications on Android, the Apache Ant tool needs to be <a href="http://ant.apache.org/manual/install.html">installed</a>.</p>
 
 <h3><a id="1-register-application-with-push-services" class="anchor" href="#1-register-application-with-push-services"><span class="anchor-icon"></span></a>1. Register Application with Push Services</h3>
 
-<p>For the configuration and registration of Android or iOS Applications with PushServices, please refer to the specific guides inside <em>push-helloworld-android</em> and <em>push-helloworld-ios</em> quickstarts.</p>
+<p>For the configuration and registration of Android or iOS Applications with push services, please refer to the specific guides inside <em>push-helloworld-android</em> and <em>push-helloworld-ios</em> quickstarts.</p>
 
 <h3><a id="2-customize-and-build-application" class="anchor" href="#2-customize-and-build-application"><span class="anchor-icon"></span></a>2. Customize and Build Application</h3>
 
@@ -91,7 +91,7 @@ Replace the bundleId with your bundleId (the one associated with your certificat
 
 <h3><a id="registration" class="anchor" href="#registration"><span class="anchor-icon"></span></a>Registration</h3>
 
-<p>When you start the application Cordova will fire a <code>deviceready</code> event when Cordova initialization is done and the device is ready (see <code>www/js/index.js</code>). On this event the <code>register</code> function will be executed registering the device with the Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the register was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console there a new instance will have appeared with your deviceId, platform and status.</p>
+<p>When you start the application Cordova will fire a <code>deviceready</code> event when Cordova initialization is done and the device is ready (see <code>www/js/index.js</code>). On this event the <code>register</code> function will be executed registering the device with the JBoss Unified Push Server. The first argument is a function that gets executed when the device receives a push event, followed by a success and errorCallback that are invoked when the registration was successful or not and the last parameter is the push configuration that indicates where the push server is located and which variant/secret to use. When registration is successful it will display this on the UI. You can also verify that the registration was successful by going to the console. A new instance will appear with your deviceId, platform and status.</p>
 
 <h2><a id="run-pushhelloworldcordova-in-jboss-developer-studio-or-eclipse" class="anchor" href="#run-pushhelloworldcordova-in-jboss-developer-studio-or-eclipse"><span class="anchor-icon"></span></a>Run push-helloworld-cordova in JBoss Developer Studio or Eclipse</h2>
 
@@ -124,7 +124,7 @@ Replace the bundleId with your bundleId (the one associated with your certificat
 
 <ul>
 <li><p>For iOS</p>
-<div class="highlight"><pre><span class="vg">Develop</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="vg">lt</span><span class="p">;</span><span class="vg">device</span><span class="w"> </span><span class="vg">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">index</span><span class="o">.</span><span class="vg">html</span>
+<div class="highlight"><pre><span class="vg">Develop</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">device</span><span class="w"> </span><span class="vg">name</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">index</span><span class="o">.</span><span class="vg">html</span>
 </pre></div></li>
 <li><p>For Android</p>
 <div class="highlight"><pre><span class="vg">Menu</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">Tools</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">Inspect</span><span class="w"> </span><span class="vg">Devices</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="vg">inspect</span>
