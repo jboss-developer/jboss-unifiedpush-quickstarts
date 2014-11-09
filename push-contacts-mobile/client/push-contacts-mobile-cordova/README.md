@@ -1,16 +1,16 @@
-push-contacts-mobile-cordova: Push Contacts Mobile Cordova
+push-contacts-mobile-cordova: Contacts CRUD Mobile Cordova with Push Notification
 ===========================
 Author: Erik Jan de Wit (edewit)  
 Level: Intermediate  
 Technologies: JavaScript Cordova  
-Summary: A contacts CRUD mobile application with push notification integration.  
+Summary: The `push-contacts-mobile-cordova` quickstart demonstrates how to develop a contacts CRUD Cordova application with push notification integration.  
 Target Product: JBoss Unified Push   
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-This quickstart demonstrates how to develop more advanced Cordova push applications, centered around a CRUD contacts application.
+The `push-contacts-mobile-cordova` quickstart demonstrates how to develop more advanced Cordova push applications, centered around a CRUD contacts application.
 
 This client-side Cordova project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality.  
 

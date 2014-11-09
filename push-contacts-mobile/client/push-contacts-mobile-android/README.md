@@ -1,9 +1,9 @@
-push-contacts-mobile-android: Push Contacts Mobile Android
+push-contacts-mobile-android: Contacts CRUD Mobile Android with Push Notification
 ===========================
 Author: Daniel Passos (dpassos)  
 Level: Intermediate  
 Technologies: Java, Android  
-Summary: A contacts CRUD mobile application with push notification integration.  
+Summary: The `push-contacts-mobile-android` quickstart demonstrates how to develop a contacts CRUD mobile Android application with push notification integration.  
 Prerequisites: push-contacts-mobile-picketlink-secured  
 Target Product: JBoss Unified Push  
 Versions: 1.0  
@@ -11,7 +11,7 @@ Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>
 
 ## What is it?
 
-This quickstart demonstrates how to develop more advanced Android push applications, centered around a CRUD contacts application.
+The `push-contacts-mobile-android` quickstart demonstrates how to develop more advanced Android push applications, centered around a CRUD contacts application.
 
 This client-side Android project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality. 
 

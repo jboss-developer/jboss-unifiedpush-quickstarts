@@ -1,16 +1,16 @@
-push-contacts-mobile-ios: Push Contacts Mobile iOS
+push-contacts-mobile-ios: Contacts CRUD Mobile iOS with Push Notification
 ===========================
 Author: Christos Vasilakis (cvasilak)  
 Level: Intermediate  
 Technologies: Objective-C, iOS  
-Summary: A contacts CRUD mobile application with push notification integration.  
+Summary: The `push-contacts-mobile-ios` quickstart demonstrates how to develop a contacts CRUD iOS application with push notification integration.  
 Target Product: JBoss Unified Push   
 Versions: 1.0   
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-This quickstart demonstrates how to develop more advanced iOS push applications, centered around a CRUD contacts application.
+The `push-contacts-mobile-ios` quickstart demonstrates how to develop more advanced iOS push applications, centered around a CRUD contacts application.
 
 This client-side iOS project must be used in conjunction with the `push-contacts-mobile/server/push-contacts-mobile-picketlink-secured` application, which provide the accompanying server-side functionality. 
 

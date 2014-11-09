@@ -3,14 +3,14 @@ push-contacts-mobile-picketlink-secured: Push Contacts Mobile Picketlink Secured
 Author: Joshua Wilson, Pedro Igor, Erik Jan De Wit, Daniel Bevenius  
 Level: Beginner  
 Technologies: REST, Unified Push Java Client, PicketLink  
-Summary: A PicketLink secured example of CRUD REST endpoints with push functionality.  
+Summary: The `push-contacts-mobile-picketlink-secured` quickstart shows how to develop a PicketLink secured CRUD application with push notification functionality.  
 Target Product: JBoss Unified Push  
 Versions: 1.0  
 Source: <https://github.com/jboss-developer/jboss-mobile-quickstarts/>  
 
 ## What is it?
 
-This quickstart demonstrates how to develop secured server-side applications with push functionality, centered around a CRUD contacts application. It creates a PicketLink secured Java EE 6 application using JAX-RS, CDI 1.0, EJB 3.1, JPA 2.0 and Bean Validation 1.0.
+The `push-contacts-mobile-picketlink-secured` quickstart demonstrates how to develop secured server-side applications with push functionality, centered around a CRUD contacts application. It creates a PicketLink secured Java EE 6 application using JAX-RS, CDI 1.0, EJB 3.1, JPA 2.0 and Bean Validation 1.0.
 
 When the `push-contacts-mobile-picketlink-secured` application is deployed, the push functionality enables the application to register with the running JBoss Unified Push Server OpenShift instance and send it push notification requests. The server-side application rest endpoints are secured with PicketLink and can only be accessed by client applications with authenticated users.
 
