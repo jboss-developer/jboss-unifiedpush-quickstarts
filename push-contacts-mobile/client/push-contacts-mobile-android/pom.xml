@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.quickstarts.mobile</groupId>
     <artifactId>jboss-push-contacts-mobile-android</artifactId>
-    <version>1.0.0.redhat-SNAPSHOT</version>
+    <version>1.0.0.Beta1</version>
     <packaging>apk</packaging>
     <name>JBoss Unified Push Quickstart: push-contacts-mobile-android</name>
     <description>JBoss Unified Push Quickstart push-contacts-mobile-android</description>
@@ -32,8 +32,8 @@
     </licenses>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <aerogear.bom.version>0.2.6</aerogear.bom.version>
-        <aerogear.android.push.version>1.0.0</aerogear.android.push.version>
+        <aerogear.bom.version>0.2.9.redhat-1</aerogear.bom.version>
+        <aerogear.android.push.version>1.0.1.redhat-4</aerogear.android.push.version>
 
         <!-- Plugin properties-->
         <maven.android.plugin.version>3.8.0</maven.android.plugin.version>
@@ -147,7 +147,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore/>
+                                        <ignore></ignore>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>

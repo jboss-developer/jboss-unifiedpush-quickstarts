@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.quickstarts.mobile</groupId>
     <artifactId>jboss-push-contacts-mobile-picketlink-secured</artifactId>
-    <version>1.0.0.redhat-SNAPSHOT</version>
+    <version>1.0.0.Beta1</version>
     <packaging>war</packaging>
     <name>JBoss Unified Push Quickstart: push-contacts-mobile-picketlink-secured</name>
     <description>A Java EE 6 HTML5 mobile web application for use with JBoss.</description>
@@ -39,7 +39,7 @@
         <!-- You can reference property in pom.xml or filtered resources (must enable third-party plugin if using Maven < 2.1) -->
 
         <!-- JBoss dependency versions -->
-        <version.unifiedpush.java.client>1.0.0</version.unifiedpush.java.client>
+        <version.unifiedpush.java.client>1.0.1.redhat-5</version.unifiedpush.java.client>
         <version.com.google.code.gson>2.3</version.com.google.code.gson>
         <version.org.ebaysf.web>1.0.0</version.org.ebaysf.web>
 

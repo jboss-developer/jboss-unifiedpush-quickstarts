@@ -1,4 +1,4 @@
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.jboss.aerogear.cordova.push" version="1.0.2">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.jboss.aerogear.cordova.push" version="1.0.2.redhat-2">
   <name>
     JBoss Unified Push PushPlugin
   </name>
@@ -45,9 +45,9 @@
         <meta-data android:name="DEFAULT_MESSAGE_HANDLER_KEY" android:value="org.jboss.aerogear.cordova.push.NotificationMessageHandler"/>
       </receiver>
     </config-file>
-    <source-file src="src/android/libs/aerogear-android-push-1.0.0.jar" target-dir="libs/"/>
-    <source-file src="src/android/libs/gson-2.2.4.jar" target-dir="libs/"/>
-    <source-file src="src/android/libs/guava-13.0.1.jar" target-dir="libs/"/>
+    <source-file src="src/android/libs/aerogear-android-push-1.0.1.redhat-4.jar" target-dir="libs/"/>
+    <source-file src="src/android/libs/gson-2.2.4.redhat-1.jar" target-dir="libs/"/>
+    <source-file src="src/android/libs/guava-13.0.1-redhat-1.jar" target-dir="libs/"/>
     <source-file src="src/android/org/jboss/aerogear/cordova/push/NotificationMessageHandler.java" target-dir="src/org/jboss/aerogear/cordova/push/"/>
     <source-file src="src/android/org/jboss/aerogear/cordova/push/PushPlugin.java" target-dir="src/org/jboss/aerogear/cordova/push/"/>
     <source-file src="src/android/org/jboss/aerogear/cordova/push/PushHandlerActivity.java" target-dir="src/org/jboss/aerogear/cordova/push/"/>
@@ -70,6 +70,6 @@
     <header-file src="src/ios/AGDeviceRegistration.h"/>
     <header-file src="src/ios/AGClientDeviceInformation.h"/>
     <header-file src="src/ios/AeroGearPush.h"/>
-    <source-file src="src/ios/libpush-sdk-1.0.0.a" framework="true"/>
+    <source-file src="src/ios/libpush-sdk-1.0.0.redhat-5.a" framework="true"/>
   </platform>
 </plugin>
