@@ -35,5 +35,5 @@ The source for the client applications is located in the `QUICKSTART_HOME/push-c
 
 * [contacts-mobile-webapp](client/contacts-mobile-webapp/README.md) is an implementation of the client application for deployment to a server rather than a mobile device. Like the mobile client applications, this application requires authentication to view and manage contacts. But this application has no push functionality; it does not register with the JBoss Unified Push Server OpenShift instance on deployment and it does not receive push notifications when contacts are created by other client applications. 
 
-For information about JBoss Unified Push, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/unifiedpush.pdf) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
 

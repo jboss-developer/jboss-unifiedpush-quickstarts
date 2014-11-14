@@ -121,4 +121,4 @@ For applications using the Cordova Push API and running on Android 4.1 or earlie
 For more information about configuring and using the JBoss Unified Push PushPlugin for Cordova, refer to `JBoss Unified Push Helloworld Cordova` and `JBoss Unified Push Contacts Mobile Cordova`, as examples of projects using the push feature with JBoss Unified Push for Cordova.
 
 ###JBoss Unified Push Server
-For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/unifiedpush.pdf) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
