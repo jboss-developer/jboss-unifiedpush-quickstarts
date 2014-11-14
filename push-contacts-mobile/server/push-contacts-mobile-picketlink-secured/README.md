@@ -35,11 +35,11 @@ A public API will become available in a future EAP release and the private class
 
 This quickstart is designed to be built with Maven. It requires the JBoss Unified Push and JBoss EAP 6.3.0 Maven repositories.
 
-You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/) or the README distributed with the JBoss Unified Push Maven repository.
+You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the [Configure Maven](https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_MAVEN.md#configure-maven-to-build-and-deploy-the-quickstarts) or the README distributed with the [JBoss Unified Push Maven repository](https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-maven-repository.zip).
 
 ### 2. Register Application with Push Services
 
-You must register the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance. For information on installing the Unified Push Server, see the [JBoss Unified Push documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/).
+You must register the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance. For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/unifiedpush.pdf) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
 
 1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.

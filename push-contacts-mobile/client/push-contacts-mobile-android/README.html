@@ -34,7 +34,7 @@ Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">h
 
 <p>This quickstart is designed to be built with Maven. It requires the JBoss Unified Push Maven repository and Google libraries.</p>
 
-<p>You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a> or the README distributed with the JBoss Unified Push Maven repository.</p>
+<p>You must have the JBoss Unified Push Maven repository available and Maven configured to use it. For more information, see the <a href="https://github.com/jboss-developer/jboss-developer-shared-resources/blob/master/guides/CONFIGURE_MAVEN.md#configure-maven-to-build-and-deploy-the-quickstarts">Configure Maven</a> or the README distributed with the <a href="https://www.jboss.org/download-manager/file/jboss-unified-push-1.0.0.Beta1-maven-repository.zip">JBoss Unified Push Maven repository</a>.</p>
 
 <p>Google does not ship all the required libraries to Maven Central so you must deploy them locally with the helper utility <a href="https://github.com/mosabua/maven-android-sdk-deployer">maven-android-sdk-deployer</a> as detailed here.</p>
 
@@ -75,7 +75,7 @@ Source: <a href="https://github.com/jboss-developer/jboss-mobile-quickstarts/">h
 <li>Click <code>Server Key</code> and click <code>Create</code>. Make note of the <code>API KEY</code>.</li>
 </ol>
 
-<p>Second, you must register the application and an Android variant of the application with the Unified Push Server. This requires a running Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For information on installing the Unified Push Server, see the <a href="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/">JBoss Unified Push documentation</a>.</p>
+<p>Second, you must register the application and an Android variant of the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For more information about deploying, configuring and using the JBoss Unified Push Server, see the <a href="http://docs.jboss.org/unifiedpush/unifiedpush.pdf">JBoss Unified Push documentation</a> and <a href="https://developers.openshift.com/en/xpaas.html#_mobile_services">JBoss xPaaS Services for OpenShift</a>.</p>
 
 <ol>
 <li>Log into the Unified Push Server OpenShift instance console.</li>
