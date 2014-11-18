@@ -73,7 +73,7 @@ First, you must register the application with Google Cloud Messaging for Android
 6. Click `APIs and auth`>`Credentials` and under `Public API access` click `Create new Key`.
 7. Click `Server Key` and click `Create`. Make note of the `API KEY`.
 
-Second, you must register the application and an Android variant of the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/unifiedpush.pdf) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
+Second, you must register the application and an Android variant of the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance and uses the unique metadata assigned to the application by GCM. For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
 
 1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.

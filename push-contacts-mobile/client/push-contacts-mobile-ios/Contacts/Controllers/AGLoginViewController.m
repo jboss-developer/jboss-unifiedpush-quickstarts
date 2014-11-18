@@ -92,7 +92,7 @@
                 // You need to fill the 'Variant Id' together with the 'Variant Secret'
                 // both received when performing the variant registration with the server.
                 // For more information about JBoss Unified Push,
-                // see https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Unified_Push/
+                // see http://docs.jboss.org/unifiedpush
                 [clientInfo setVariantID:@"<# Variant Id #>"];
                 [clientInfo setVariantSecret:@"<# Variant Secret #>"];
                 

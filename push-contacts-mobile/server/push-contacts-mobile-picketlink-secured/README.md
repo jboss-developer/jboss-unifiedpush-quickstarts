@@ -39,7 +39,7 @@ You must have the JBoss Unified Push Maven repository available and Maven config
 
 ### 2. Register Application with Push Services
 
-You must register the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance. For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/unifiedpush.pdf) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
+You must register the application with the JBoss Unified Push Server. This requires a running JBoss Unified Push Server OpenShift instance. For more information about deploying, configuring and using the JBoss Unified Push Server, see the [JBoss Unified Push documentation](http://docs.jboss.org/unifiedpush/) and [JBoss xPaaS Services for OpenShift](https://developers.openshift.com/en/xpaas.html#_mobile_services).
 
 1. Log into the Unified Push Server OpenShift instance console.
 2. In the `Applications` view, click `Create Application`.
